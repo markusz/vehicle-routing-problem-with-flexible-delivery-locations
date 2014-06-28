@@ -1,0 +1,7 @@
+.idea*
+src/de/tum/ziller/thesis/thrp/image_output
+files/instances/*.thrp
+files/solutions/*.thrp
+/*.iml
+target/
+src/de/tum/ziller/thesis/thrp/log/*.xml
