@@ -1,10 +1,8 @@
 package de.tum.ziller.thesis.thrp.common.exceptions;
 
-import lombok.Getter;
-
 public class GeneralInfeasibilityException extends Exception {
 	
-	private @Getter String uuid;
+	private String uuid;
 
 	public GeneralInfeasibilityException(String string, String uuid) {
 		super(string);
@@ -18,4 +16,7 @@ public class GeneralInfeasibilityException extends Exception {
 	 */
 	private static final long serialVersionUID = 1L;
 
+    public String getUuid() {
+        return this.uuid;
+    }
 }

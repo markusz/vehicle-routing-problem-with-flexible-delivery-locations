@@ -1,47 +1,171 @@
 package de.tum.ziller.thesis.thrp.common.entities;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
-import java.util.UUID;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 import com.google.common.collect.TreeMultimap;
 import com.rits.cloning.Cloner;
-
 import de.tum.ziller.thesis.thrp.common.controller.Comparators;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.BreakJob;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.IdleJob;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.OutpatientJob;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.TreatmentJob;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.WardJob;
+import de.tum.ziller.thesis.thrp.common.entities.jobs.*;
 import de.tum.ziller.thesis.thrp.common.entities.rooms.TherapyCenter;
 import de.tum.ziller.thesis.thrp.common.exceptions.RouteConstructionException;
 import de.tum.ziller.thesis.thrp.common.utils.OutputUtil;
 import de.tum.ziller.thesis.thrp.common.utils.TimeUtil;
 import de.tum.ziller.thesis.thrp.heuristic.SolverConfiguration;
 
-public @Getter
-@Setter
-class Solution implements Cloneable, Serializable {
+import java.io.Serializable;
+import java.util.*;
 
-	@AllArgsConstructor
-	static class SolutionStatusWrapper implements Serializable{
+public class Solution implements Cloneable, Serializable {
+
+    public Long getT() {
+        return this.t;
+    }
+
+    public Double getCosts() {
+        return this.costs;
+    }
+
+    public Cloner getCloner() {
+        return this.cloner;
+    }
+
+    public Solution getPredecessor() {
+        return this.predecessor;
+    }
+
+    public TreeMultimap<Therapist, Route> getRoutes() {
+        return this.routes;
+    }
+
+    public Long getT_s() {
+        return this.t_s;
+    }
+
+    public Long getT_S_init() {
+        return this.t_S_init;
+    }
+
+    public Long getT_S_compl() {
+        return this.t_S_compl;
+    }
+
+    public String getUid() {
+        return this.uid;
+    }
+
+    public SolutionStatusWrapper getSsw() {
+        return this.ssw;
+    }
+
+    public Integer getMinutesPerTimeslot() {
+        return this.minutesPerTimeslot;
+    }
+
+    public Set<Job> getUnscheduledJobs() {
+        return this.unscheduledJobs;
+    }
+
+    public Instance getInstance() {
+        return this.instance;
+    }
+
+    public SolverConfiguration getConfig() {
+        return this.config;
+    }
+
+    public Insertion getI_last() {
+        return this.i_last;
+    }
+
+    public TreeMultimap<Therapist, Node> getP_routes() {
+        return this.P_routes;
+    }
+
+    public Set<Node> getN_all() {
+        return this.N_all;
+    }
+
+    public void setT(Long t) {
+        this.t = t;
+    }
+
+    public void setCosts(Double costs) {
+        this.costs = costs;
+    }
+
+    public void setCloner(Cloner cloner) {
+        this.cloner = cloner;
+    }
+
+    public void setPredecessor(Solution predecessor) {
+        this.predecessor = predecessor;
+    }
+
+    public void setRoutes(TreeMultimap<Therapist, Route> routes) {
+        this.routes = routes;
+    }
+
+    public void setT_s(Long t_s) {
+        this.t_s = t_s;
+    }
+
+    public void setT_S_init(Long t_S_init) {
+        this.t_S_init = t_S_init;
+    }
+
+    public void setT_S_compl(Long t_S_compl) {
+        this.t_S_compl = t_S_compl;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public void setSsw(SolutionStatusWrapper ssw) {
+        this.ssw = ssw;
+    }
+
+    public void setMinutesPerTimeslot(Integer minutesPerTimeslot) {
+        this.minutesPerTimeslot = minutesPerTimeslot;
+    }
+
+    public void setUnscheduledJobs(Set<Job> unscheduledJobs) {
+        this.unscheduledJobs = unscheduledJobs;
+    }
+
+    public void setInstance(Instance instance) {
+        this.instance = instance;
+    }
+
+    public void setConfig(SolverConfiguration config) {
+        this.config = config;
+    }
+
+    public void setI_last(Insertion i_last) {
+        this.i_last = i_last;
+    }
+
+    public void setP_routes(TreeMultimap<Therapist, Node> P_routes) {
+        this.P_routes = P_routes;
+    }
+
+    public void setN_all(Set<Node> N_all) {
+        this.N_all = N_all;
+    }
+
+    static class SolutionStatusWrapper implements Serializable{
 
 		/**
 		 * 
 		 */
 		private static final long	serialVersionUID	= 2973784589420087042L;
-		public static SolutionStatusWrapper createNew() {
+
+        @java.beans.ConstructorProperties({"P_availabilities", "P_locations", "R_availabilities"})
+        public SolutionStatusWrapper(TreeMultimap<Therapist, Timeslot> P_availabilities, TreeMap<Therapist, Room[]> P_locations, TreeMultimap<Room, Timeslot> R_availabilities) {
+            this.P_availabilities = P_availabilities;
+            this.P_locations = P_locations;
+            this.R_availabilities = R_availabilities;
+        }
+
+        public static SolutionStatusWrapper createNew() {
 			return new SolutionStatusWrapper(TreeMultimap.create(Comparators.THERAPIST_ID_ASCENDING, Comparators.TIMESLOTS_ASCENDING_BY_START), new TreeMap<Therapist, Room[]>(
 					Comparators.THERAPIST_ID_ASCENDING), TreeMultimap.create(Comparators.ROOM_ID_ASCENDING, Comparators.TIMESLOTS_ASCENDING_BY_START) 
 					);

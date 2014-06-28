@@ -1,10 +1,9 @@
 package de.tum.ziller.thesis.thrp.instancegenerator.imports;
 
-import java.io.Serializable;
-
-import lombok.Getter;
-import lombok.SneakyThrows;
 import de.tum.ziller.thesis.thrp.common.utils.ImportUtil;
+
+import java.io.IOException;
+import java.io.Serializable;
 
 public class SolomonInstance implements ImportableInstance, Serializable {
 	
@@ -16,12 +15,12 @@ public class SolomonInstance implements ImportableInstance, Serializable {
 	private static final long	serialVersionUID	= 1709219164230810470L;
 	private int[] meta;
 	private int[][] raw;
-	private @Getter String name;
-	private @Getter double gamma;
-	private @Getter double rho;
+	private String name;
+	private double gamma;
+	private double rho;
 	
-	@SneakyThrows
-	public SolomonInstance(int size, String name, double gamma, double rho){
+
+	public SolomonInstance(int size, String name, double gamma, double rho) throws IOException {
 		meta 	= ImportUtil.importSolomonMetaData(size, name);
 		raw 	= ImportUtil.importSolomonRawData(size, name);
 		this.name = name;
@@ -46,4 +45,15 @@ public class SolomonInstance implements ImportableInstance, Serializable {
 		return raw;
 	}
 
+    public String getName() {
+        return this.name;
+    }
+
+    public double getGamma() {
+        return this.gamma;
+    }
+
+    public double getRho() {
+        return this.rho;
+    }
 }

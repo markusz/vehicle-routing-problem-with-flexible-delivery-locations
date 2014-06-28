@@ -1,10 +1,9 @@
 package de.tum.ziller.thesis.thrp.common.entities;
 
-import java.io.Serializable;
-
 import com.google.common.base.Objects;
-
 import de.tum.ziller.thesis.thrp.common.abstraction.Identifiable;
+
+import java.io.Serializable;
 
 public class Qualification extends Identifiable implements Serializable{
 	

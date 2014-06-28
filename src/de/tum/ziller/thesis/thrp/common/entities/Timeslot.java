@@ -2,9 +2,6 @@ package de.tum.ziller.thesis.thrp.common.entities;
 
 import java.io.Serializable;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * Repr�sentiert einen Zeitraum von [start, end]. Start und Ende sind inkl.
  * @author Markus
@@ -13,8 +10,8 @@ import lombok.Setter;
 public class Timeslot implements Comparable<Timeslot>, Serializable{
 
 	private static final long serialVersionUID = 1872586515941837298L;
-	private @Getter @Setter Integer start;
-	private @Getter @Setter Integer end;
+	private Integer start;
+	private Integer end;
 
 	public Timeslot(Integer start, Integer end) {
 		
@@ -89,4 +86,19 @@ public class Timeslot implements Comparable<Timeslot>, Serializable{
 		return 0;
 	}
 
+    public Integer getStart() {
+        return this.start;
+    }
+
+    public Integer getEnd() {
+        return this.end;
+    }
+
+    public void setStart(Integer start) {
+        this.start = start;
+    }
+
+    public void setEnd(Integer end) {
+        this.end = end;
+    }
 }

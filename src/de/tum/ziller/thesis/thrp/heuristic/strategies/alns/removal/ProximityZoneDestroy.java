@@ -1,11 +1,10 @@
 package de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal;
 
-import java.util.ArrayList;
-
-import lombok.AllArgsConstructor;
 import de.tum.ziller.thesis.thrp.common.entities.Node;
 import de.tum.ziller.thesis.thrp.common.entities.Solution;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.ALNSAbstractOperation;
+
+import java.util.ArrayList;
 
 /**
  * W�hlt einen zuf�lligen Knoten. Entfernt alle Knoten die sich in einem Gebiet der X*Y / n um den Knoten befinden. X entspricht dem
@@ -35,13 +34,19 @@ public class ProximityZoneDestroy extends ALNSAbstractOperation implements IALNS
 		}
 	}
 
-	@AllArgsConstructor
 	class Area {
 		int		x_c;
 		int		y_c;
 		double	d;
 
-		public boolean isInside(Node n) {
+        @java.beans.ConstructorProperties({"x_c", "y_c", "d"})
+        public Area(int x_c, int y_c, double d) {
+            this.x_c = x_c;
+            this.y_c = y_c;
+            this.d = d;
+        }
+
+        public boolean isInside(Node n) {
 			int x = n.getRoom().getX();
 			int y = n.getRoom().getY();
 			return x <= x_c + d / 2 && x >= x_c - d / 2 && y <= y_c + d / 2 && y >= y_c - d / 2;

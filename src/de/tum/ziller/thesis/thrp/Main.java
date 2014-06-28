@@ -1,11 +1,5 @@
 package de.tum.ziller.thesis.thrp;
 
-import java.io.IOException;
-
-import lombok.SneakyThrows;
-
-import org.dom4j.DocumentException;
-
 import de.tum.ziller.thesis.thrp.common.entities.Instance;
 import de.tum.ziller.thesis.thrp.common.entities.Solution;
 import de.tum.ziller.thesis.thrp.common.exceptions.GeneralInfeasibilityException;
@@ -19,6 +13,10 @@ import de.tum.ziller.thesis.thrp.instancegenerator.EntityPool;
 import de.tum.ziller.thesis.thrp.instancegenerator.InstanceConfiguration;
 import de.tum.ziller.thesis.thrp.instancegenerator.InstanceGenerator;
 import de.tum.ziller.thesis.thrp.instancegenerator.imports.SolomonInstance;
+import lombok.SneakyThrows;
+import org.dom4j.DocumentException;
+
+import java.io.IOException;
 
 public class Main {
 
@@ -108,7 +106,7 @@ public class Main {
 	}
 	
 	@SuppressWarnings("unused")
-	private static Solution[] solveRandomInstance(int cores, IALNSConfig c) throws GeneralInfeasibilityException, IOException{
+	private static Solution[] solveRandomInstance(int cores, IALNSConfig c) throws GeneralInfeasibilityException, IOException, InterruptedException {
 		// Initialisiere Entit�tenpool
 		EntityPool.initPool();
 		// Lade Instanzkonfiguration

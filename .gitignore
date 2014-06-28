@@ -4,4 +4,4 @@ files/instances/*.thrp
 files/solutions/*.thrp
 /*.iml
 target/
-src/de/tum/ziller/thesis/thrp/log/*.xml
+src/de/tum/ziller/thesis/thrp/log/comp.experinent-*.xml

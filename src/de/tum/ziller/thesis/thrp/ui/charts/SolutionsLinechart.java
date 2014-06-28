@@ -1,10 +1,12 @@
 package de.tum.ziller.thesis.thrp.ui.charts;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-
+import de.tum.ziller.thesis.thrp.common.entities.Solution;
+import de.tum.ziller.thesis.thrp.heuristic.helper.IProcessVisualizer;
+import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.config.IALNSConfig;
+import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.insertion.IALNSRepair;
+import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal.IALNSDestroy;
+import de.tum.ziller.thesis.thrp.heuristic.strategies.phasetwo.ALNSProcess;
 import lombok.SneakyThrows;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
@@ -16,12 +18,7 @@ import org.jfree.chart.title.TextTitle;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-import de.tum.ziller.thesis.thrp.common.entities.Solution;
-import de.tum.ziller.thesis.thrp.heuristic.helper.IProcessVisualizer;
-import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.config.IALNSConfig;
-import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.insertion.IALNSRepair;
-import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal.IALNSDestroy;
-import de.tum.ziller.thesis.thrp.heuristic.strategies.phasetwo.ALNSProcess;
+import java.awt.*;
 
 public class SolutionsLinechart implements IProcessVisualizer{
 	

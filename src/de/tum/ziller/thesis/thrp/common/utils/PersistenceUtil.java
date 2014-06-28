@@ -1,31 +1,16 @@
 package de.tum.ziller.thesis.thrp.common.utils;
 
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Iterator;
-
+import de.tum.ziller.thesis.thrp.common.entities.Instance;
+import de.tum.ziller.thesis.thrp.common.entities.Solution;
 import lombok.SneakyThrows;
-
 import org.apache.commons.io.FileUtils;
+import org.dom4j.DocumentException;
 import org.jboss.serial.io.JBossObjectInputStream;
 import org.jboss.serial.io.JBossObjectOutputStream;
 
-import de.tum.ziller.thesis.thrp.common.entities.Instance;
-import de.tum.ziller.thesis.thrp.common.entities.Solution;
+import java.io.*;
+import java.sql.*;
+import java.util.Iterator;
 
 public class PersistenceUtil {
 
@@ -74,7 +59,7 @@ public class PersistenceUtil {
 
 	}
 
-	public Long persistToDatabase(Instance i) throws SQLException {
+	public Long persistToDatabase(Instance i) throws SQLException, DocumentException, ClassNotFoundException {
 
 		connectToDB();
 
@@ -113,7 +98,7 @@ public class PersistenceUtil {
 		throw new SQLException();
 	}
 
-	public Instance getInstanceFromDatabase(String uuid) {
+	public Instance getInstanceFromDatabase(String uuid) throws SQLException, DocumentException, ClassNotFoundException {
 
 		connectToDB();
 
@@ -151,7 +136,7 @@ public class PersistenceUtil {
 		return i;
 	}
 
-	public Instance getInstanceFromDatabase(Long id) {
+	public Instance getInstanceFromDatabase(Long id) throws SQLException, DocumentException, ClassNotFoundException {
 
 		connectToDB();
 
@@ -190,7 +175,7 @@ public class PersistenceUtil {
 	}
 
 	// untested
-	public Solution getSolutionFromDatabase(Long id) {
+	public Solution getSolutionFromDatabase(Long id) throws SQLException, DocumentException, ClassNotFoundException {
 
 		connectToDB();
 		Solution i = null;
@@ -264,16 +249,16 @@ public class PersistenceUtil {
 	 * HELPER --->
 	 */
 
-	@SneakyThrows
-	private void connectToDB() {
+
+	private void connectToDB() throws ClassNotFoundException, SQLException, DocumentException {
 		if (con == null || con.isClosed()) {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost/thrp", XMLUtil.getProgramConfigXMLEntry("sqluser"), XMLUtil.getProgramConfigXMLEntry("sqlpw"));
 		}
 	}
 
-	@SneakyThrows
-	private void closeConnectionToDB() {
+
+	private void closeConnectionToDB() throws SQLException {
 		con.close();
 	}
 

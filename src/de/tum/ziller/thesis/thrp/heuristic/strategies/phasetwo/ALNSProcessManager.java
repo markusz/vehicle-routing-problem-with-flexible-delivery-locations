@@ -1,17 +1,14 @@
 package de.tum.ziller.thesis.thrp.heuristic.strategies.phasetwo;
 
+import com.google.common.util.concurrent.FutureCallback;
+import de.tum.ziller.thesis.thrp.common.entities.Solution;
+
 import java.util.Comparator;
 import java.util.TreeSet;
 
-import lombok.Getter;
-
-import com.google.common.util.concurrent.FutureCallback;
-
-import de.tum.ziller.thesis.thrp.common.entities.Solution;
-
 public class ALNSProcessManager implements FutureCallback<Solution> {
 
-	@Getter private TreeSet<Solution> solutions = new TreeSet<>(new Comparator<Solution>() {
+	private TreeSet<Solution> solutions = new TreeSet<>(new Comparator<Solution>() {
 
 		@Override
 		public int compare(Solution s1, Solution s2) {
@@ -37,4 +34,7 @@ public class ALNSProcessManager implements FutureCallback<Solution> {
 
 	}
 
+    public TreeSet<Solution> getSolutions() {
+        return this.solutions;
+    }
 }

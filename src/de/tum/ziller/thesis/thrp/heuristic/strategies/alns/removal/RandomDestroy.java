@@ -1,11 +1,11 @@
 package de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import de.tum.ziller.thesis.thrp.common.entities.Solution;
 import de.tum.ziller.thesis.thrp.common.exceptions.RouteConstructionException;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.ALNSAbstractOperation;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Entfernt q zuf�llige Knoten

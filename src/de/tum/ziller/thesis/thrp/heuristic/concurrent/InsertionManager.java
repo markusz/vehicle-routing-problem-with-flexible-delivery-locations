@@ -1,19 +1,13 @@
 package de.tum.ziller.thesis.thrp.heuristic.concurrent;
 
+import com.google.common.util.concurrent.FutureCallback;
+import de.tum.ziller.thesis.thrp.common.entities.Insertion;
+import lombok.NonNull;
+
 import java.util.Comparator;
 import java.util.TreeSet;
 
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-
-import com.google.common.util.concurrent.FutureCallback;
-
-import de.tum.ziller.thesis.thrp.common.entities.Insertion;
-
- @RequiredArgsConstructor 
-public class InsertionManager implements FutureCallback<Insertion> {
+ public class InsertionManager implements FutureCallback<Insertion> {
 
 	private final int THRESHOLD = 20;
 	
@@ -33,10 +27,13 @@ public class InsertionManager implements FutureCallback<Insertion> {
 		}
 	});
 	
-	private @Getter @Setter Double best = Double.MAX_VALUE;
-	private  @Getter @Setter Insertion bestVal = null;
-	
-	public void insertNodeList(Insertion result){
+	private Double best = Double.MAX_VALUE;
+	private Insertion bestVal = null;
+
+     public InsertionManager() {
+     }
+
+     public void insertNodeList(Insertion result){
 		synchronized (result) {
 		if(list.size() == 0 || result.getCosts() < list.last().getCosts()){
 				
@@ -73,4 +70,19 @@ public class InsertionManager implements FutureCallback<Insertion> {
 		System.out.println("Fail message: "+t.getMessage());
 	}
 
-}
+     public Double getBest() {
+         return this.best;
+     }
+
+     public Insertion getBestVal() {
+         return this.bestVal;
+     }
+
+     public void setBest(Double best) {
+         this.best = best;
+     }
+
+     public void setBestVal(Insertion bestVal) {
+         this.bestVal = bestVal;
+     }
+ }

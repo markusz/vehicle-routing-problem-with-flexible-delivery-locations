@@ -1,25 +1,12 @@
 package de.tum.ziller.thesis.thrp.heuristic.strategies.alns.insertion;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
 import com.google.common.collect.TreeMultimap;
-
-import de.tum.ziller.thesis.thrp.common.entities.Insertion;
-import de.tum.ziller.thesis.thrp.common.entities.Job;
-import de.tum.ziller.thesis.thrp.common.entities.Node;
-import de.tum.ziller.thesis.thrp.common.entities.Room;
-import de.tum.ziller.thesis.thrp.common.entities.Solution;
-import de.tum.ziller.thesis.thrp.common.entities.Therapist;
-import de.tum.ziller.thesis.thrp.common.entities.Timeslot;
+import de.tum.ziller.thesis.thrp.common.entities.*;
 import de.tum.ziller.thesis.thrp.common.exceptions.GeneralInfeasibilityException;
 import de.tum.ziller.thesis.thrp.common.exceptions.RouteConstructionException;
 import de.tum.ziller.thesis.thrp.common.utils.TimeUtil;
+
+import java.util.*;
 
 public class RegretRepair extends ALNSAbstractRepair implements IALNSRepair {
 	@Override

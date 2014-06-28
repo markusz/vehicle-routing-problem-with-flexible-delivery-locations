@@ -1,17 +1,13 @@
 package de.tum.ziller.thesis.thrp.common.entities;
 
+import com.google.common.base.Objects;
+import de.tum.ziller.thesis.thrp.common.abstraction.Identifiable;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import lombok.Getter;
-import lombok.Setter;
-
-import com.google.common.base.Objects;
-
-import de.tum.ziller.thesis.thrp.common.abstraction.Identifiable;
 
 /**
  * Ein Therapeut
@@ -31,21 +27,21 @@ public class Therapist extends Identifiable implements Comparable<Therapist>,Ser
 	 * **********************
 	 */
 	
-	private @Getter @Setter String name = "";
+	private String name = "";
 	
-	private @Getter Set<Qualification>	qualifications		= new HashSet<>();
+	private Set<Qualification>	qualifications		= new HashSet<>();
 	private List<Timeslot>				available;
-	private @Getter @Setter Timeslot	firstPauseRange;
-	private @Getter @Setter Timeslot	secondPauseRange;
-	private @Getter @Setter Integer		latestFirstPauseStart;
-	private @Getter @Setter Integer		earliestFirstPauseStart;
-	private @Getter @Setter Integer		latestSecondPauseStart;
-	private @Getter @Setter Integer		earliestSecondPauseStart;
+	private Timeslot	firstPauseRange;
+	private Timeslot	secondPauseRange;
+	private Integer		latestFirstPauseStart;
+	private Integer		earliestFirstPauseStart;
+	private Integer		latestSecondPauseStart;
+	private Integer		earliestSecondPauseStart;
 
-	private @Setter @Getter Integer		qHash				= 0;
-	private @Setter @Getter String		binary				= "";
-	private @Setter @Getter Integer		shiftStart;
-	private @Setter @Getter Integer		regularShiftEnd;
+	private Integer		qHash				= 0;
+	private String		binary				= "";
+	private Integer		shiftStart;
+	private Integer		regularShiftEnd;
 	
 	public void addQualification(Qualification q){
 		qualifications.add(q);
@@ -91,4 +87,95 @@ public class Therapist extends Identifiable implements Comparable<Therapist>,Ser
 		}
 	}
 
+    public String getName() {
+        return this.name;
+    }
+
+    public Set<Qualification> getQualifications() {
+        return this.qualifications;
+    }
+
+    public Timeslot getFirstPauseRange() {
+        return this.firstPauseRange;
+    }
+
+    public Timeslot getSecondPauseRange() {
+        return this.secondPauseRange;
+    }
+
+    public Integer getLatestFirstPauseStart() {
+        return this.latestFirstPauseStart;
+    }
+
+    public Integer getEarliestFirstPauseStart() {
+        return this.earliestFirstPauseStart;
+    }
+
+    public Integer getLatestSecondPauseStart() {
+        return this.latestSecondPauseStart;
+    }
+
+    public Integer getEarliestSecondPauseStart() {
+        return this.earliestSecondPauseStart;
+    }
+
+    public Integer getQHash() {
+        return this.qHash;
+    }
+
+    public String getBinary() {
+        return this.binary;
+    }
+
+    public Integer getShiftStart() {
+        return this.shiftStart;
+    }
+
+    public Integer getRegularShiftEnd() {
+        return this.regularShiftEnd;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setFirstPauseRange(Timeslot firstPauseRange) {
+        this.firstPauseRange = firstPauseRange;
+    }
+
+    public void setSecondPauseRange(Timeslot secondPauseRange) {
+        this.secondPauseRange = secondPauseRange;
+    }
+
+    public void setLatestFirstPauseStart(Integer latestFirstPauseStart) {
+        this.latestFirstPauseStart = latestFirstPauseStart;
+    }
+
+    public void setEarliestFirstPauseStart(Integer earliestFirstPauseStart) {
+        this.earliestFirstPauseStart = earliestFirstPauseStart;
+    }
+
+    public void setLatestSecondPauseStart(Integer latestSecondPauseStart) {
+        this.latestSecondPauseStart = latestSecondPauseStart;
+    }
+
+    public void setEarliestSecondPauseStart(Integer earliestSecondPauseStart) {
+        this.earliestSecondPauseStart = earliestSecondPauseStart;
+    }
+
+    public void setQHash(Integer qHash) {
+        this.qHash = qHash;
+    }
+
+    public void setBinary(String binary) {
+        this.binary = binary;
+    }
+
+    public void setShiftStart(Integer shiftStart) {
+        this.shiftStart = shiftStart;
+    }
+
+    public void setRegularShiftEnd(Integer regularShiftEnd) {
+        this.regularShiftEnd = regularShiftEnd;
+    }
 }

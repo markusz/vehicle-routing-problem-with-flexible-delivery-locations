@@ -1,25 +1,18 @@
 package de.tum.ziller.thesis.thrp.ui;
 
-import java.awt.Color;
-import java.awt.Component;
+import de.tum.ziller.thesis.thrp.common.entities.Node;
+import de.tum.ziller.thesis.thrp.common.entities.Solution;
+import de.tum.ziller.thesis.thrp.common.entities.Therapist;
+import de.tum.ziller.thesis.thrp.common.entities.jobs.*;
+
+import javax.swing.*;
+import javax.swing.border.MatteBorder;
+import javax.swing.table.TableCellRenderer;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import javax.swing.JLabel;
-import javax.swing.JTable;
-import javax.swing.border.MatteBorder;
-import javax.swing.table.TableCellRenderer;
-
-import de.tum.ziller.thesis.thrp.common.entities.Node;
-import de.tum.ziller.thesis.thrp.common.entities.Solution;
-import de.tum.ziller.thesis.thrp.common.entities.Therapist;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.BreakJob;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.ICUJob;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.IdleJob;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.OutpatientJob;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.WardJob;
 
 public class CustomRenderer extends JLabel implements TableCellRenderer {
 

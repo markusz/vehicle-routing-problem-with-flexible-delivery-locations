@@ -1,29 +1,21 @@
 package de.tum.ziller.thesis.thrp.heuristic.concurrent;
 
-import java.util.List;
-import java.util.concurrent.Callable;
-
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.Setter;
-import de.tum.ziller.thesis.thrp.common.entities.Insertion;
-import de.tum.ziller.thesis.thrp.common.entities.Job;
-import de.tum.ziller.thesis.thrp.common.entities.Room;
-import de.tum.ziller.thesis.thrp.common.entities.Solution;
-import de.tum.ziller.thesis.thrp.common.entities.Therapist;
+import de.tum.ziller.thesis.thrp.common.entities.*;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.OutpatientJob;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.WardJob;
 import de.tum.ziller.thesis.thrp.common.entities.rooms.TherapyCenter;
 import de.tum.ziller.thesis.thrp.common.exceptions.RouteConstructionException;
+import lombok.NonNull;
 
-@NoArgsConstructor
+import java.util.List;
+import java.util.concurrent.Callable;
 
 public class InsertionEvaluator implements Callable<Insertion> {
 
 
 	@NonNull private List<Insertion> list;
-	@NonNull  @Getter @Setter private Solution solution;
+	@NonNull
+    private Solution solution;
 	Insertion bestNode = null;
 
 	public InsertionEvaluator(List<Insertion> list, Solution s) {
@@ -35,7 +27,10 @@ public class InsertionEvaluator implements Callable<Insertion> {
 		solution = s;
 	}
 
-	@Override
+    public InsertionEvaluator() {
+    }
+
+    @Override
 	public Insertion call() throws Exception {
 		
 		
@@ -102,4 +97,13 @@ public class InsertionEvaluator implements Callable<Insertion> {
 		
 		return c_delta;
 	}
+
+    @NonNull
+    public Solution getSolution() {
+        return this.solution;
+    }
+
+    public void setSolution(Solution solution) {
+        this.solution = solution;
+    }
 }

@@ -1,17 +1,12 @@
 package de.tum.ziller.thesis.thrp.common.utils;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.TreeMap;
-
 import de.tum.ziller.thesis.thrp.common.entities.Job;
 import de.tum.ziller.thesis.thrp.common.entities.Room;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.ICUJob;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.WardJob;
 import de.tum.ziller.thesis.thrp.common.entities.rooms.ICU;
+
+import java.util.*;
 
 public class HeuristicUtil {
 

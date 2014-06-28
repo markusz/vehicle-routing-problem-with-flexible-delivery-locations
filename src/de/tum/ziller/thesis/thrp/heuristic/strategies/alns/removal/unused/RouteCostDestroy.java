@@ -1,12 +1,6 @@
 package de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal.unused;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.TreeSet;
-
 import com.google.common.collect.TreeMultimap;
-
 import de.tum.ziller.thesis.thrp.common.entities.Node;
 import de.tum.ziller.thesis.thrp.common.entities.Route;
 import de.tum.ziller.thesis.thrp.common.entities.Solution;
@@ -14,6 +8,11 @@ import de.tum.ziller.thesis.thrp.common.entities.Therapist;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.ALNSAbstractOperation;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal.IALNSDestroy;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal.Removal;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class RouteCostDestroy extends ALNSAbstractOperation implements IALNSDestroy {
 	

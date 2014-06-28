@@ -40,7 +40,7 @@ public class Solver {
 		return s2.improveSolution(is, i);
 	}
 
-	public Solution[] improveSolution(Solution is, int i, IALNSConfig ac, ControlParameter cp) {
+	public Solution[] improveSolution(Solution is, int i, IALNSConfig ac, ControlParameter cp) throws InterruptedException {
 		return s2.improveSolution(is, i, ac, cp);
 	}
 }

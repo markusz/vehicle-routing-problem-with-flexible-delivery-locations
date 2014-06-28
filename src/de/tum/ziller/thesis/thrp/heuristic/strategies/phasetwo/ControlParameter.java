@@ -1,13 +1,10 @@
 package de.tum.ziller.thesis.thrp.heuristic.strategies.phasetwo;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 public class ControlParameter {
 
-	private @Getter boolean solutionsLinechart;
-	private @Getter boolean operationsLinechart;
-	private @Getter boolean solutionImages;
+	private boolean solutionsLinechart;
+	private boolean operationsLinechart;
+	private boolean solutionImages;
 
 	public ControlParameter(boolean showSolutionsLinechart, boolean showOperationsLinechart, boolean createSolutionImages){
 		solutionsLinechart  =   showSolutionsLinechart;
@@ -15,4 +12,15 @@ public class ControlParameter {
         solutionImages      =   createSolutionImages;
 	}
 
+    public boolean isSolutionsLinechart() {
+        return this.solutionsLinechart;
+    }
+
+    public boolean isOperationsLinechart() {
+        return this.operationsLinechart;
+    }
+
+    public boolean isSolutionImages() {
+        return this.solutionImages;
+    }
 }

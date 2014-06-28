@@ -8,6 +8,6 @@ public interface ImprovementStrategy {
 
 	Solution[] improveSolution(Solution s);
 	Solution[] improveSolution(Solution is, int i);
-	Solution[] improveSolution(Solution s, int threads, IALNSConfig ac, ControlParameter cp);
+	Solution[] improveSolution(Solution s, int threads, IALNSConfig ac, ControlParameter cp) throws InterruptedException;
 
 }

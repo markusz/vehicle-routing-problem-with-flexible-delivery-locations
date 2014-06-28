@@ -1,22 +1,16 @@
 package de.tum.ziller.thesis.thrp.heuristic.strategies.alns.insertion;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import lombok.Getter;
-import lombok.Setter;
-import de.tum.ziller.thesis.thrp.common.entities.Insertion;
-import de.tum.ziller.thesis.thrp.common.entities.Job;
-import de.tum.ziller.thesis.thrp.common.entities.Room;
-import de.tum.ziller.thesis.thrp.common.entities.Solution;
-import de.tum.ziller.thesis.thrp.common.entities.Therapist;
+import de.tum.ziller.thesis.thrp.common.entities.*;
 import de.tum.ziller.thesis.thrp.heuristic.concurrent.InsertionEvaluator;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.ALNSAbstractOperation;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public abstract class ALNSAbstractRepair extends ALNSAbstractOperation {
 	
 	private InsertionEvaluator ie = new InsertionEvaluator();
-	private @Getter @Setter List<Insertion> tabus = new LinkedList<>();
+	private List<Insertion> tabus = new LinkedList<>();
 
 	public double getNodeCosts(Solution s, Insertion is){
 		ie.setSolution(s);
@@ -60,4 +54,11 @@ public abstract class ALNSAbstractRepair extends ALNSAbstractOperation {
 		return false;
 	}
 
+    public List<Insertion> getTabus() {
+        return this.tabus;
+    }
+
+    public void setTabus(List<Insertion> tabus) {
+        this.tabus = tabus;
+    }
 }

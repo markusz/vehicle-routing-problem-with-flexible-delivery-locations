@@ -1,10 +1,17 @@
 package de.tum.ziller.thesis.thrp.common.utils;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import de.tum.ziller.thesis.thrp.common.controller.Comparators;
+import de.tum.ziller.thesis.thrp.common.entities.*;
+import de.tum.ziller.thesis.thrp.common.entities.Node;
+import de.tum.ziller.thesis.thrp.common.entities.jobs.*;
+import de.tum.ziller.thesis.thrp.instancegenerator.metrics.IMetric;
+import org.apache.logging.log4j.Logger;
+import org.dom4j.*;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
+
+import java.io.*;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,34 +19,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.TreeSet;
 
-import lombok.extern.log4j.Log4j2;
-
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
-import org.dom4j.XPath;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
-
-import de.tum.ziller.thesis.thrp.common.controller.Comparators;
-import de.tum.ziller.thesis.thrp.common.entities.Instance;
-import de.tum.ziller.thesis.thrp.common.entities.Node;
-import de.tum.ziller.thesis.thrp.common.entities.Route;
-import de.tum.ziller.thesis.thrp.common.entities.Solution;
-import de.tum.ziller.thesis.thrp.common.entities.Therapist;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.BreakJob;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.ICUJob;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.OutpatientJob;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.TreatmentJob;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.WardJob;
-import de.tum.ziller.thesis.thrp.instancegenerator.metrics.IMetric;
-
-@Log4j2
 public class XMLUtil {
 
-	private static String	SYSTEM_CONFIG_PATH	= new StringBuilder("src").append(File.separator).append("de").append(File.separator).append("tum").append(File.separator).append("ziller")
+    private static final Logger log = org.apache.logging.log4j.LogManager.getLogger(XMLUtil.class);
+    private static String	SYSTEM_CONFIG_PATH	= new StringBuilder("src").append(File.separator).append("de").append(File.separator).append("tum").append(File.separator).append("ziller")
 														.append(File.separator).append("thesis").append(File.separator).append("thrp").append(File.separator).append("config").append(File.separator)
 														.append("system-config.xml").toString();
 

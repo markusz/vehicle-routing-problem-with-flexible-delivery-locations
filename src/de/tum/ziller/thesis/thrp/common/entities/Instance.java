@@ -1,33 +1,8 @@
 package de.tum.ziller.thesis.thrp.common.entities;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.UUID;
-import java.util.logging.Logger;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.SneakyThrows;
-import lombok.ToString;
-
-import org.apache.commons.math.util.MathUtils;
-import org.ejml.simple.SimpleMatrix;
-
 import com.google.common.base.Preconditions;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Sets;
-
 import de.tum.ziller.thesis.thrp.common.entities.jobs.ICUJob;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.JobWithFixedRoom;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.OutpatientJob;
@@ -43,48 +18,180 @@ import de.tum.ziller.thesis.thrp.instancegenerator.InstanceConfiguration;
 import de.tum.ziller.thesis.thrp.instancegenerator.imports.SolomonInstance;
 import de.tum.ziller.thesis.thrp.instancegenerator.random.GaussDistribution;
 import de.tum.ziller.thesis.thrp.instancegenerator.random.IProbabilityDistribution;
+import lombok.SneakyThrows;
+import org.apache.commons.math.util.MathUtils;
+import org.ejml.simple.SimpleMatrix;
 
-@ToString
+import java.io.Serializable;
+import java.util.*;
+import java.util.logging.Logger;
+
 public class Instance implements Serializable {
-	
-	@AllArgsConstructor
-	class SolomonMeta{
+
+    public String toString() {
+        return "de.tum.ziller.thesis.thrp.common.entities.Instance(isInstanceModifiable=" + this.isInstanceModifiable + ", DBPrimaryKey=" + this.DBPrimaryKey + ", uid=" + this.uid + ", solomonInstance=" + this.solomonInstance + ", numberOfTimeSlots=" + this.numberOfTimeSlots + ", timestamp=" + this.timestamp + ", c_max=" + this.c_max + ", jobs=" + this.jobs + ", rooms=" + this.rooms + ", qualifications=" + this.qualifications + ", breakroom=" + this.breakroom + ", therapists=" + this.therapists + ", i_conf=" + this.i_conf + ", roomsForJob=" + this.roomsForJob + ", jobsForRoom=" + this.jobsForRoom + ", eligibleJobsForTherapist=" + this.eligibleJobsForTherapist + ", proficientTherapistsForJob=" + this.proficientTherapistsForJob + ", wards=" + this.wards + ", icus=" + this.icus + ", tcs=" + this.tcs + ", wardjobs=" + this.wardjobs + ", icujobs=" + this.icujobs + ", outjobs=" + this.outjobs + ", maxX=" + this.maxX + ", minX=" + this.minX + ", maxY=" + this.maxY + ", minY=" + this.minY + ", distances=" + this.distances + ", hospitalLayout=" + this.hospitalLayout + ")";
+    }
+
+    public Long getDBPrimaryKey() {
+        return this.DBPrimaryKey;
+    }
+
+    public String getUid() {
+        return this.uid;
+    }
+
+    public SolomonInstance getSolomonInstance() {
+        return this.solomonInstance;
+    }
+
+    public long getTimestamp() {
+        return this.timestamp;
+    }
+
+    public double getC_max() {
+        return this.c_max;
+    }
+
+    public Set<Job> getJobs() {
+        return this.jobs;
+    }
+
+    public Set<Room> getRooms() {
+        return this.rooms;
+    }
+
+    public Set<Qualification> getQualifications() {
+        return this.qualifications;
+    }
+
+    public Room getBreakroom() {
+        return this.breakroom;
+    }
+
+    public Set<Therapist> getTherapists() {
+        return this.therapists;
+    }
+
+    public InstanceConfiguration getI_conf() {
+        return this.i_conf;
+    }
+
+    public List<Ward> getWards() {
+        return this.wards;
+    }
+
+    public List<ICU> getIcus() {
+        return this.icus;
+    }
+
+    public List<TherapyCenter> getTcs() {
+        return this.tcs;
+    }
+
+    public List<WardJob> getWardjobs() {
+        return this.wardjobs;
+    }
+
+    public List<ICUJob> getIcujobs() {
+        return this.icujobs;
+    }
+
+    public List<OutpatientJob> getOutjobs() {
+        return this.outjobs;
+    }
+
+    public int getMaxX() {
+        return this.maxX;
+    }
+
+    public int getMinX() {
+        return this.minX;
+    }
+
+    public int getMaxY() {
+        return this.maxY;
+    }
+
+    public int getMinY() {
+        return this.minY;
+    }
+
+    public void setDBPrimaryKey(Long DBPrimaryKey) {
+        this.DBPrimaryKey = DBPrimaryKey;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public void setJobs(Set<Job> jobs) {
+        this.jobs = jobs;
+    }
+
+    public void setRooms(Set<Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    public void setQualifications(Set<Qualification> qualifications) {
+        this.qualifications = qualifications;
+    }
+
+    public void setBreakroom(Room breakroom) {
+        this.breakroom = breakroom;
+    }
+
+    public void setTherapists(Set<Therapist> therapists) {
+        this.therapists = therapists;
+    }
+
+    public void setI_conf(InstanceConfiguration i_conf) {
+        this.i_conf = i_conf;
+    }
+
+    class SolomonMeta{
 		private String name;
 		private double lamba;
 		private double rho;
-	}
+
+        @java.beans.ConstructorProperties({"name", "lamba", "rho"})
+        public SolomonMeta(String name, double lamba, double rho) {
+            this.name = name;
+            this.lamba = lamba;
+            this.rho = rho;
+        }
+    }
 
 	private static final long						serialVersionUID		= -28317760558644109L;
 
 	private final static Logger						log						= Logger.getLogger(Instance.class.getName());
 	private boolean									isInstanceModifiable	= true;
-	private @Getter @Setter transient Long			DBPrimaryKey			= null;
-	private @Getter @Setter transient String		uid						= UUID.randomUUID().toString();
-	private @Getter SolomonInstance					solomonInstance;
+	private transient Long			DBPrimaryKey			= null;
+	private transient String		uid						= UUID.randomUUID().toString();
+	private SolomonInstance					solomonInstance;
 
 	private Integer									numberOfTimeSlots;
-	private @Getter long							timestamp				= System.currentTimeMillis();
-	private @Getter double							c_max;
-	private @Getter @Setter Set<Job>				jobs;
-	private @Getter @Setter Set<Room>				rooms;
-	private @Getter @Setter Set<Qualification>		qualifications;
-	private @Getter @Setter Room					breakroom;
-	private @Getter @Setter Set<Therapist>			therapists;
-	private @Getter @Setter InstanceConfiguration	i_conf;
+	private long							timestamp				= System.currentTimeMillis();
+	private double							c_max;
+	private Set<Job>				jobs;
+	private Set<Room>				rooms;
+	private Set<Qualification>		qualifications;
+	private Room					breakroom;
+	private Set<Therapist>			therapists;
+	private InstanceConfiguration	i_conf;
 	private LinkedHashMultimap<Job, Room>			roomsForJob;
 	private LinkedHashMultimap<Room, Job>			jobsForRoom;
 	private LinkedHashMultimap<Therapist, Job>		eligibleJobsForTherapist;
 	private LinkedHashMultimap<Job, Therapist>		proficientTherapistsForJob;
-	private @Getter List<Ward>						wards;
-	private @Getter List<ICU>						icus;
-	private @Getter List<TherapyCenter>				tcs;
-	private @Getter List<WardJob>					wardjobs;
-	private @Getter List<ICUJob>					icujobs;
-	private @Getter List<OutpatientJob>				outjobs;
-	private @Getter int 							maxX;
-	private @Getter int 							minX;
-	private @Getter int 							maxY;
-	private @Getter int 							minY;
+	private List<Ward>						wards;
+	private List<ICU>						icus;
+	private List<TherapyCenter>				tcs;
+	private List<WardJob>					wardjobs;
+	private List<ICUJob>					icujobs;
+	private List<OutpatientJob>				outjobs;
+	private int 							maxX;
+	private int 							minX;
+	private int 							maxY;
+	private int 							minY;
 	
 
 	private SimpleMatrix							distances;
@@ -329,7 +436,6 @@ public class Instance implements Serializable {
 
 	}
 
-	@SneakyThrows
 	public Instance(InstanceConfiguration ic) {
 	
 		try {
@@ -341,8 +447,12 @@ public class Instance implements Serializable {
 			System.err.print("\n");
 	
 			for (int i = 0; i < 80; i++) {
-				Thread.sleep(100);
-				System.err.print("!");
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                System.err.print("!");
 			}
 			System.err.print("\n");
 	
@@ -589,7 +699,6 @@ public class Instance implements Serializable {
 		return max*i_conf.getPatientTransportCostFactor();
 	}
 
-	@SneakyThrows
 	private void linkJobsAndTherapistsByQualification() {
 
 		eligibleJobsForTherapist = LinkedHashMultimap.create();
@@ -627,8 +736,12 @@ public class Instance implements Serializable {
 					}
 
 				} else {
-					throw new GeneralInfeasibilityException("No therapist is proficient to perform Job " + j.getId() + " and altering the instance is disallowed. The instance is infeasible", uid);
-				}
+                    try {
+                        throw new GeneralInfeasibilityException("No therapist is proficient to perform Job " + j.getId() + " and altering the instance is disallowed. The instance is infeasible", uid);
+                    } catch (GeneralInfeasibilityException e) {
+                        e.printStackTrace();
+                    }
+                }
 
 			}
 		}
