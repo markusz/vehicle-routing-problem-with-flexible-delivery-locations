@@ -53,7 +53,8 @@ public class Main {
 						1, 							//Threads
 						new ControlParameter(		
 								true, 				//Liniendiagramm der L�sungsqualit�t anzeigen?
-								true 				//Liniendiagramm der Operatoren-Wahrscheinlichkeit anzeigen?
+								true, 				//Liniendiagramm der Operatoren-Wahrscheinlichkeit anzeigen?
+                                true                //Lösungen als PNGs ausgeben
 								));			
 				XMLUtil.backupComputationExperimentResults(""+j);
 				} catch (Exception e2) {
@@ -120,7 +121,7 @@ public class Main {
 		Solver 					s 		= Solver.getSolver();
 		
 		Solution is  = s.getInitialSolution(i);
-		Solution[] ims = s.improveSolution(is, cores, c, new ControlParameter(true, true));
+		Solution[] ims = s.improveSolution(is, cores, c, new ControlParameter(true, true, true));
 		
 		return ims;
 	}

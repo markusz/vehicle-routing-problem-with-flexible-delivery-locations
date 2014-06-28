@@ -65,7 +65,7 @@ class ALNSProcess implements Callable<Solution> {
 
 	@SneakyThrows
 	public ALNSProcess(Solution s_, IALNSConfig c, ControlParameter cp) {
-		cpng = cp.isC();
+		cpng = cp.isSolutionImages();
 		is = s_.getInstance();
 		s_.nullifyWrapper();
 		config = c;
@@ -112,7 +112,9 @@ class ALNSProcess implements Callable<Solution> {
 				s_c = s_t;
 				if (fitness(s_t) < fitness(s_g)) {
 					System.out.println(String.format("[%d]: Found new global minimum: %.2f, Required Vehicles: %d, I_uns: %d", i, s_t.getCostFitness(), s_t.activeVehicles(), s_g.getUnscheduledJobs().size()));
-					OutputUtil.createPNG(s_t, i);
+					if(this.cpng){
+                        OutputUtil.createPNG(s_t, i);
+                    }
                     s_g = s_t;
 					_destroy.addToPi(config.getSigma_1());
 					_repair.addToPi(config.getSigma_1());
