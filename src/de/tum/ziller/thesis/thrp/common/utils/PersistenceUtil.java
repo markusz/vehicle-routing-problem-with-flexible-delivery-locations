@@ -1,31 +1,16 @@
 package de.tum.ziller.thesis.thrp.common.utils;
 
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Iterator;
-
+import de.tum.ziller.thesis.thrp.common.entities.Instance;
+import de.tum.ziller.thesis.thrp.common.entities.Solution;
 import lombok.SneakyThrows;
-
 import org.apache.commons.io.FileUtils;
+import org.dom4j.DocumentException;
 import org.jboss.serial.io.JBossObjectInputStream;
 import org.jboss.serial.io.JBossObjectOutputStream;
 
-import de.tum.ziller.thesis.thrp.common.entities.Instance;
-import de.tum.ziller.thesis.thrp.common.entities.Solution;
+import java.io.*;
+import java.sql.*;
+import java.util.Iterator;
 
 public class PersistenceUtil {
 
@@ -264,17 +249,28 @@ public class PersistenceUtil {
 	 * HELPER --->
 	 */
 
-	@SneakyThrows
+
 	private void connectToDB() {
-		if (con == null || con.isClosed()) {
-			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost/thrp", XMLUtil.getProgramConfigXMLEntry("sqluser"), XMLUtil.getProgramConfigXMLEntry("sqlpw"));
+		try {
+			if (con == null || con.isClosed()) {
+                Class.forName("com.mysql.jdbc.Driver");
+                con = DriverManager.getConnection("jdbc:mysql://localhost/thrp", XMLUtil.getProgramConfigXMLEntry("sqluser"), XMLUtil.getProgramConfigXMLEntry("sqlpw"));
+            }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			e.printStackTrace();
 		}
 	}
 
-	@SneakyThrows
 	private void closeConnectionToDB() {
-		con.close();
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@SuppressWarnings("unchecked")

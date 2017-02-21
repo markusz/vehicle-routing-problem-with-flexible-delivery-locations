@@ -1,26 +1,12 @@
 package de.tum.ziller.thesis.thrp.heuristic.strategies.alns;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.NavigableSet;
-import java.util.Random;
-import java.util.Set;
-import java.util.TreeSet;
-
-import lombok.Getter;
-import lombok.Setter;
-
 import com.google.common.base.Objects;
-
-import de.tum.ziller.thesis.thrp.common.entities.Instance;
-import de.tum.ziller.thesis.thrp.common.entities.Node;
-import de.tum.ziller.thesis.thrp.common.entities.Room;
-import de.tum.ziller.thesis.thrp.common.entities.Route;
-import de.tum.ziller.thesis.thrp.common.entities.Solution;
-import de.tum.ziller.thesis.thrp.common.entities.Therapist;
+import de.tum.ziller.thesis.thrp.common.entities.*;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.TreatmentJob;
 import de.tum.ziller.thesis.thrp.heuristic.helper.ALNSStrategieVisualizationManager;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal.Removal;
+
+import java.util.*;
 
 public abstract class ALNSAbstractOperation implements IALNSOperation {
 	protected ALNSStrategieVisualizationManager	asvm	= new ALNSStrategieVisualizationManager();
@@ -30,10 +16,10 @@ public abstract class ALNSAbstractOperation implements IALNSOperation {
 		return asvm;
 	}
 
-	@Setter @Getter private int		pi;
-	@Setter @Getter private double	p;
-	@Setter @Getter private int		draws;
-	@Setter @Getter private double	w;
+	private int		pi;
+	private double	p;
+	private int		draws;
+	private double	w;
 	private Random					r	= new Random();
 
 	@Override
@@ -133,4 +119,36 @@ public abstract class ALNSAbstractOperation implements IALNSOperation {
 	public String toString() {
 		return Objects.toStringHelper(this.getClass()).add("pi", pi).add("p", p).toString();
 	}
+
+    public int getPi() {
+        return this.pi;
+    }
+
+    public double getP() {
+        return this.p;
+    }
+
+    public int getDraws() {
+        return this.draws;
+    }
+
+    public double getW() {
+        return this.w;
+    }
+
+    public void setPi(int pi) {
+        this.pi = pi;
+    }
+
+    public void setP(double p) {
+        this.p = p;
+    }
+
+    public void setDraws(int draws) {
+        this.draws = draws;
+    }
+
+    public void setW(double w) {
+        this.w = w;
+    }
 }

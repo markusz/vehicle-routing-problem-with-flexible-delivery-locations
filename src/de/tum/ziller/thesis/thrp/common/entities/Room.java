@@ -1,22 +1,18 @@
 package de.tum.ziller.thesis.thrp.common.entities;
 
-import java.io.Serializable;
-
-import lombok.Getter;
-import lombok.Setter;
-
 import com.google.common.base.Objects;
-
 import de.tum.ziller.thesis.thrp.common.abstraction.Identifiable;
+
+import java.io.Serializable;
 
 public abstract class Room extends Identifiable implements Serializable{
 
 	private static final long serialVersionUID = 144471639227785745L;
 	private String name;
 	
-	@Getter @Setter int  x;
-	@Getter @Setter int y;
-	@Getter @Setter int k;
+	int  x;
+	int y;
+	int k;
 
 	public String getName() {
 		return name;
@@ -33,4 +29,27 @@ public abstract class Room extends Identifiable implements Serializable{
 	            .toString();
 	}
 
+    public int getX() {
+        return this.x;
+    }
+
+    public int getY() {
+        return this.y;
+    }
+
+    public int getK() {
+        return this.k;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setK(int k) {
+        this.k = k;
+    }
 }

@@ -1,12 +1,11 @@
 package de.tum.ziller.thesis.thrp.common.exceptions;
 
-import lombok.Getter;
 import de.tum.ziller.thesis.thrp.common.entities.Job;
 
 public class JobInfeasibilityException extends Exception {
 	
-	private @Getter String uuid;
-	private @Getter Job job;
+	private String uuid;
+	private Job job;
 
 	public JobInfeasibilityException(String string, String uuid, Job j) {
 		super(string);
@@ -21,4 +20,11 @@ public class JobInfeasibilityException extends Exception {
 	 */
 	private static final long serialVersionUID = 1L;
 
+    public String getUuid() {
+        return this.uuid;
+    }
+
+    public Job getJob() {
+        return this.job;
+    }
 }

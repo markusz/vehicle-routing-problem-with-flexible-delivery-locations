@@ -1,19 +1,17 @@
 package de.tum.ziller.thesis.thrp.common.utils;
 
+import com.google.common.collect.Ordering;
+import de.tum.ziller.thesis.thrp.common.controller.Comparators;
+import de.tum.ziller.thesis.thrp.common.entities.Timeslot;
+import de.tum.ziller.thesis.thrp.common.exceptions.TimeException;
+import lombok.SneakyThrows;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
-
-import lombok.SneakyThrows;
-
-import com.google.common.collect.Ordering;
-
-import de.tum.ziller.thesis.thrp.common.controller.Comparators;
-import de.tum.ziller.thesis.thrp.common.entities.Timeslot;
-import de.tum.ziller.thesis.thrp.common.exceptions.TimeException;
 
 public class TimeUtil {
 
@@ -293,8 +291,8 @@ public class TimeUtil {
 	 * @return
 	 * 
 	 */
-	@SneakyThrows
-	public static List<Timeslot> makeTimeslotList(Integer... bounds) {
+
+	public static List<Timeslot> makeTimeslotList(Integer... bounds) throws TimeException {
 
 		List<Timeslot> list = new LinkedList<>();
 

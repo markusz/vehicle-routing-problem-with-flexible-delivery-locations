@@ -1,36 +1,22 @@
 package de.tum.ziller.thesis.thrp.common.utils;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Shape;
-import java.awt.geom.AffineTransform;
+import com.google.common.collect.LinkedListMultimap;
+import de.tum.ziller.thesis.thrp.common.entities.*;
+import de.tum.ziller.thesis.thrp.common.entities.jobs.BreakJob;
+import de.tum.ziller.thesis.thrp.common.entities.jobs.IdleJob;
+import de.tum.ziller.thesis.thrp.common.entities.jobs.OutpatientJob;
+import de.tum.ziller.thesis.thrp.common.entities.jobs.WardJob;
+import org.apache.commons.io.FileUtils;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.PathIterator;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-
-import javax.imageio.ImageIO;
-
-import org.apache.commons.io.FileUtils;
-
-import com.google.common.collect.LinkedListMultimap;
-
-import de.tum.ziller.thesis.thrp.common.entities.Node;
-import de.tum.ziller.thesis.thrp.common.entities.Room;
-import de.tum.ziller.thesis.thrp.common.entities.Route;
-import de.tum.ziller.thesis.thrp.common.entities.Solution;
-import de.tum.ziller.thesis.thrp.common.entities.Therapist;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.BreakJob;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.IdleJob;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.OutpatientJob;
-import de.tum.ziller.thesis.thrp.common.entities.jobs.WardJob;
 
 public class OutputUtil {
 	private static String	IMAGE_PATH	= new StringBuilder("src").append(File.separator).append("de").append(File.separator).append("tum").append(File.separator).append("ziller")

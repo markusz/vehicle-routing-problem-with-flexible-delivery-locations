@@ -1,17 +1,7 @@
 package de.tum.ziller.thesis.thrp.instancegenerator;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import lombok.Getter;
-import lombok.SneakyThrows;
 import de.tum.ziller.thesis.thrp.common.abstraction.Identifiable;
-import de.tum.ziller.thesis.thrp.common.entities.Job;
-import de.tum.ziller.thesis.thrp.common.entities.Qualification;
-import de.tum.ziller.thesis.thrp.common.entities.Room;
-import de.tum.ziller.thesis.thrp.common.entities.Therapist;
-import de.tum.ziller.thesis.thrp.common.entities.Timeslot;
+import de.tum.ziller.thesis.thrp.common.entities.*;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.ICUJob;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.OutpatientJob;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.WardJob;
@@ -20,6 +10,11 @@ import de.tum.ziller.thesis.thrp.common.entities.rooms.ICU;
 import de.tum.ziller.thesis.thrp.common.entities.rooms.TherapyCenter;
 import de.tum.ziller.thesis.thrp.common.entities.rooms.Ward;
 import de.tum.ziller.thesis.thrp.instancegenerator.random.IProbabilityDistribution;
+import lombok.SneakyThrows;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Der EntityPool is ein reiner Entit�tenspeicher, welcher eine gro�e Menge an nutzerfreundlichen Entit�ten bereit h�lt aus denen Instanzen
@@ -40,7 +35,7 @@ public class EntityPool {
 	private static List<WardJob>		WARDJobMaster			= null;
 	private static List<OutpatientJob>	OutpatientJobMaster		= null;
 	private static List<Job>			genericJobMaster		= null;
-	private static @Getter Room			breakroom				= new BreakRoom(0, "BreakRoom");
+	private static Room			breakroom				= new BreakRoom(0, "BreakRoom");
 	public static String[]				therapistFirstNames		= new String[] { "Andreas", "Bernd", "Christian", "Daniela", "Elke", "Friedrich", "Gerda", "Hubert", "Inge", "Johannes", "Karl",
 			"Lukas", "Markus", "Nadine", "Olaf", "Peter", "Quentin", "Rosa", "Stefanie", "Thomas", "Udo", "Verena", "Walter", "Xaver", "Yvonne", "Zenta" };
 	public static String[]				therapistSecondNames	= new String[] { "A.", "B.", "C.", "D.", "E.", "F.", "G.", "H.", "I.", "J.", "K.", "L.", "M.", "N.", "O.", "P.", "Q.", "R.", "S.",
@@ -422,4 +417,8 @@ public class EntityPool {
 		}
 		return random;
 	}
+
+    public static Room getBreakroom() {
+        return EntityPool.breakroom;
+    }
 }

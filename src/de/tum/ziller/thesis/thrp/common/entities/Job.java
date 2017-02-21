@@ -1,26 +1,18 @@
 package de.tum.ziller.thesis.thrp.common.entities;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import lombok.Getter;
-import lombok.Setter;
-
 import com.google.common.base.Objects;
-
 import de.tum.ziller.thesis.thrp.common.abstraction.Identifiable;
 
-public abstract @Getter @Setter class Job extends Identifiable implements Serializable{
+import java.io.Serializable;
+import java.util.*;
+
+public abstract class Job extends Identifiable implements Serializable{
 	
 	private static final long serialVersionUID = 7414188193795448780L;
 	
-	private @Getter Set<Qualification>	qualifications		= new HashSet<>();
-	private @Getter Integer				qHash				= 0;
-	private @Setter @Getter String		binary				= "";
+	private Set<Qualification>	qualifications		= new HashSet<>();
+	private Integer				qHash				= 0;
+	private String		binary				= "";
 	
 	List<Timeslot>						availabilty			= new ArrayList<>();
 	Integer								durationSlots;
@@ -63,4 +55,79 @@ public abstract @Getter @Setter class Job extends Identifiable implements Serial
 		
 	}
 
+    public List<Timeslot> getAvailabilty() {
+        return this.availabilty;
+    }
+
+    public Integer getDurationSlots() {
+        return this.durationSlots;
+    }
+
+    public Integer getTotalDuration() {
+        return this.totalDuration;
+    }
+
+    public Double getSchedulingPriority() {
+        return this.schedulingPriority;
+    }
+
+    public Integer getPauseBefore() {
+        return this.pauseBefore;
+    }
+
+    public Integer getPauseAfter() {
+        return this.pauseAfter;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setQualifications(Set<Qualification> qualifications) {
+        this.qualifications = qualifications;
+    }
+
+    public void setAvailabilty(List<Timeslot> availabilty) {
+        this.availabilty = availabilty;
+    }
+
+    public void setDurationSlots(Integer durationSlots) {
+        this.durationSlots = durationSlots;
+    }
+
+    public void setTotalDuration(Integer totalDuration) {
+        this.totalDuration = totalDuration;
+    }
+
+    public void setSchedulingPriority(Double schedulingPriority) {
+        this.schedulingPriority = schedulingPriority;
+    }
+
+    public void setPauseBefore(Integer pauseBefore) {
+        this.pauseBefore = pauseBefore;
+    }
+
+    public void setPauseAfter(Integer pauseAfter) {
+        this.pauseAfter = pauseAfter;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Qualification> getQualifications() {
+        return this.qualifications;
+    }
+
+    public Integer getQHash() {
+        return this.qHash;
+    }
+
+    public String getBinary() {
+        return this.binary;
+    }
+
+    public void setBinary(String binary) {
+        this.binary = binary;
+    }
 }

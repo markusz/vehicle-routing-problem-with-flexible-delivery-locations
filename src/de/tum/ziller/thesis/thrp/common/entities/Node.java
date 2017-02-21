@@ -1,29 +1,33 @@
 package de.tum.ziller.thesis.thrp.common.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.IdleJob;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.JobWithFixedRoom;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.TreatmentJob;
 import de.tum.ziller.thesis.thrp.common.entities.rooms.BreakRoom;
 
-public
-@NoArgsConstructor
-@AllArgsConstructor
-class Node implements Comparable<Node> {
+public class Node implements Comparable<Node> {
 
-	private @Getter @Setter String		metaData;
-	private @Getter @Setter Room		room;
-	private @Getter @Setter Job			job;
+	private String		metaData;
+	private Room		room;
+	private Job			job;
 	private Timeslot	time;
 
 	public Node(String metaData) {
 		this.metaData = metaData;
 	}
-	
-	public Timeslot getTime(){
+
+    @java.beans.ConstructorProperties({"metaData", "room", "job", "time"})
+    public Node(String metaData, Room room, Job job, Timeslot time) {
+        this.metaData = metaData;
+        this.room = room;
+        this.job = job;
+        this.time = time;
+    }
+
+    public Node() {
+    }
+
+    public Timeslot getTime(){
 		return time;
 	}
 	
@@ -135,4 +139,27 @@ class Node implements Comparable<Node> {
 		return job instanceof IdleJob;
 	}
 
+    public String getMetaData() {
+        return this.metaData;
+    }
+
+    public Room getRoom() {
+        return this.room;
+    }
+
+    public Job getJob() {
+        return this.job;
+    }
+
+    public void setMetaData(String metaData) {
+        this.metaData = metaData;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
+    }
 }

@@ -1,10 +1,10 @@
 package de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal;
 
-import java.util.ArrayList;
-
 import de.tum.ziller.thesis.thrp.common.entities.Node;
 import de.tum.ziller.thesis.thrp.common.entities.Solution;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.ALNSAbstractOperation;
+
+import java.util.ArrayList;
 
 /**
  * Zieht einen zuf�lligen Startknoten und konstruiert von ihm ausgehend eine Route der L�nge q nach dem Greedy Prinzip. Diese Route wird

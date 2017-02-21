@@ -1,20 +1,15 @@
 package de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal;
 
-import java.util.Set;
-import java.util.TreeSet;
-
 import com.google.common.collect.TreeMultimap;
-
-import de.tum.ziller.thesis.thrp.common.entities.Instance;
-import de.tum.ziller.thesis.thrp.common.entities.Node;
-import de.tum.ziller.thesis.thrp.common.entities.Route;
-import de.tum.ziller.thesis.thrp.common.entities.Solution;
-import de.tum.ziller.thesis.thrp.common.entities.Therapist;
+import de.tum.ziller.thesis.thrp.common.entities.*;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.BreakJob;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.TreatmentJob;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.WardJob;
 import de.tum.ziller.thesis.thrp.common.entities.rooms.TherapyCenter;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.ALNSAbstractOperation;
+
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Entfernt die Knoten, deren Existenz die Kosten der Routen am meisten erh�ht. Es werden zuerst alle Knoten ausgew�hlt und dann sukzessive

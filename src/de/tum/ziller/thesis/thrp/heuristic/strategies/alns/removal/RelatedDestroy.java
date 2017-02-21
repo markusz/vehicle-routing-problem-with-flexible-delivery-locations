@@ -1,18 +1,13 @@
 package de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal;
 
+import com.google.common.collect.Sets;
+import de.tum.ziller.thesis.thrp.common.entities.*;
+import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.ALNSAbstractOperation;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
-
-import com.google.common.collect.Sets;
-
-import de.tum.ziller.thesis.thrp.common.entities.Instance;
-import de.tum.ziller.thesis.thrp.common.entities.Job;
-import de.tum.ziller.thesis.thrp.common.entities.Qualification;
-import de.tum.ziller.thesis.thrp.common.entities.Room;
-import de.tum.ziller.thesis.thrp.common.entities.Solution;
-import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.ALNSAbstractOperation;
 
 /**
  * Zielt einen zuf�lligen Knoten. Entfernt anschlie�end q-1 Knoten die ihm am �hnlichsten sind, bzgl Raumeignung, Dauer und ben�tigten

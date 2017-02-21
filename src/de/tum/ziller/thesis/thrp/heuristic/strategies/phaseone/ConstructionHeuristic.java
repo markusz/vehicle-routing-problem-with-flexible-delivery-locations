@@ -1,14 +1,6 @@
 package de.tum.ziller.thesis.thrp.heuristic.strategies.phaseone;
 
-import java.util.concurrent.TimeUnit;
-
-import lombok.extern.java.Log;
-import de.tum.ziller.thesis.thrp.common.entities.Instance;
-import de.tum.ziller.thesis.thrp.common.entities.Node;
-import de.tum.ziller.thesis.thrp.common.entities.Route;
-import de.tum.ziller.thesis.thrp.common.entities.Solution;
-import de.tum.ziller.thesis.thrp.common.entities.Therapist;
-import de.tum.ziller.thesis.thrp.common.entities.Timeslot;
+import de.tum.ziller.thesis.thrp.common.entities.*;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.BreakJob;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.IdleJob;
 import de.tum.ziller.thesis.thrp.common.exceptions.GeneralInfeasibilityException;
@@ -16,9 +8,12 @@ import de.tum.ziller.thesis.thrp.heuristic.SolverConfiguration;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.ConstructionStrategy;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.insertion.NRegretRepair;
 
-@Log
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
+
 public class ConstructionHeuristic implements ConstructionStrategy {
-	private Solution		s_c;
+    private static final Logger log = Logger.getLogger(ConstructionHeuristic.class.getName());
+    private Solution		s_c;
 	private Solution		s_t;
 	private Instance		is;
 	Long					runTime;

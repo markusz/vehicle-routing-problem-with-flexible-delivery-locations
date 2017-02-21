@@ -1,10 +1,5 @@
 package de.tum.ziller.thesis.thrp.heuristic.strategies.phasetwo;
 
-import java.util.Random;
-import java.util.concurrent.Callable;
-
-import lombok.Getter;
-import lombok.SneakyThrows;
 import de.tum.ziller.thesis.thrp.common.abstraction.ALNSObserver;
 import de.tum.ziller.thesis.thrp.common.entities.Instance;
 import de.tum.ziller.thesis.thrp.common.entities.Solution;
@@ -14,19 +9,15 @@ import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.config.IALNSConfig;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.insertion.GreedyRepair;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.insertion.IALNSRepair;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.insertion.NRegretRepair;
-import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal.IALNSDestroy;
-import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal.NodesCountDestroy;
-import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal.ProximityZoneDestroy;
-import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal.RandomDestroy;
-import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal.RandomRouteDestroy;
-import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal.SubrouteDestroy;
-import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal.WorstCostDestroy;
-import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal.ZoneDestroy;
+import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal.*;
 import de.tum.ziller.thesis.thrp.ui.charts.OperationsLinechart;
 import de.tum.ziller.thesis.thrp.ui.charts.SolutionsLinechart;
+import lombok.SneakyThrows;
 
-public @Getter
-class ALNSProcess implements Callable<Solution> {
+import java.util.Random;
+import java.util.concurrent.Callable;
+
+public class ALNSProcess implements Callable<Solution> {
 	private ALNSObserver					o			= new ALNSObserver();
 	private long							id;
 	private ALNSProcessVisualizationManager	apvm		= new ALNSProcessVisualizationManager();
@@ -63,8 +54,7 @@ class ALNSProcess implements Callable<Solution> {
 		initStrategies();
 	}
 
-	@SneakyThrows
-	public ALNSProcess(Solution s_, IALNSConfig c, ControlParameter cp) {
+	public ALNSProcess(Solution s_, IALNSConfig c, ControlParameter cp) throws InterruptedException {
 		cpng = cp.isSolutionImages();
 		is = s_.getInstance();
 		s_.nullifyWrapper();
@@ -287,4 +277,72 @@ class ALNSProcess implements Callable<Solution> {
 			rpr.setP(1 / (double) repair_ops.length);
 		}
 	}
+
+    public ALNSObserver getO() {
+        return this.o;
+    }
+
+    public long getId() {
+        return this.id;
+    }
+
+    public ALNSProcessVisualizationManager getApvm() {
+        return this.apvm;
+    }
+
+    public IALNSConfig getConfig() {
+        return this.config;
+    }
+
+    public IALNSDestroy[] getDestroy_ops() {
+        return this.destroy_ops;
+    }
+
+    public IALNSRepair[] getRepair_ops() {
+        return this.repair_ops;
+    }
+
+    public Solution getS_g() {
+        return this.s_g;
+    }
+
+    public Solution getS_c() {
+        return this.s_c;
+    }
+
+    public boolean isCpng() {
+        return this.cpng;
+    }
+
+    public int getI() {
+        return this.i;
+    }
+
+    public double getT() {
+        return this.T;
+    }
+
+    public double getT_s() {
+        return this.T_s;
+    }
+
+    public long getT_start() {
+        return this.t_start;
+    }
+
+    public Instance getIs() {
+        return this.is;
+    }
+
+    public int getF_log() {
+        return this.F_log;
+    }
+
+    public double getT_end_t() {
+        return this.T_end_t;
+    }
+
+    public double getT_end() {
+        return this.T_end;
+    }
 }

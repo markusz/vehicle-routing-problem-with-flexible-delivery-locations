@@ -1,12 +1,12 @@
 package de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.TreeSet;
-
 import de.tum.ziller.thesis.thrp.common.entities.Node;
 import de.tum.ziller.thesis.thrp.common.entities.Solution;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.ALNSAbstractOperation;
+
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.TreeSet;
 
 /**
  * Zieht einen zuf�lligen Startknoten und entfernt die q am n�chsten gelegenen Knoten

@@ -1,12 +1,12 @@
 package de.tum.ziller.thesis.thrp.instancegenerator.random;
 
+import cern.jet.random.Poisson;
+import cern.jet.random.engine.DRand;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
-
-import cern.jet.random.Poisson;
-import cern.jet.random.engine.DRand;
 
 public class PoissonDistribution implements IProbabilityDistribution {
 

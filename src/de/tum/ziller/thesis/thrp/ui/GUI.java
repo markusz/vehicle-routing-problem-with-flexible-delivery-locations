@@ -1,16 +1,13 @@
 package de.tum.ziller.thesis.thrp.ui;
 
-import java.awt.Frame;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-
 import de.tum.ziller.thesis.thrp.common.entities.Solution;
 import de.tum.ziller.thesis.thrp.common.entities.Therapist;
 import de.tum.ziller.thesis.thrp.common.utils.TimeUtil;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GUI {
 

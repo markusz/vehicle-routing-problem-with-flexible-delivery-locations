@@ -1,14 +1,5 @@
 package de.tum.ziller.thesis.thrp.common.entities;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.NavigableSet;
-import java.util.TreeSet;
-
-import lombok.Getter;
-import lombok.Setter;
 import de.tum.ziller.thesis.thrp.common.controller.Comparators;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.BreakJob;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.IdleJob;
@@ -17,7 +8,10 @@ import de.tum.ziller.thesis.thrp.common.entities.jobs.WardJob;
 import de.tum.ziller.thesis.thrp.common.entities.rooms.TherapyCenter;
 import de.tum.ziller.thesis.thrp.common.exceptions.RouteConstructionException;
 
-public @Getter @Setter class Route implements Comparable<Route>, Serializable {
+import java.io.Serializable;
+import java.util.*;
+
+public class Route implements Comparable<Route>, Serializable {
 	/**
 	 * 
 	 */
@@ -346,4 +340,12 @@ public @Getter @Setter class Route implements Comparable<Route>, Serializable {
 	public boolean contains(Node to_remove) {
 		return N.contains(to_remove);
 	}
+
+    public NavigableSet<Node> getN() {
+        return this.N;
+    }
+
+    public void setN(NavigableSet<Node> N) {
+        this.N = N;
+    }
 }

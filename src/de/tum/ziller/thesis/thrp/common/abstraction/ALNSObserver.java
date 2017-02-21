@@ -1,13 +1,13 @@
 package de.tum.ziller.thesis.thrp.common.abstraction;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import de.tum.ziller.thesis.thrp.common.entities.Solution;
 import de.tum.ziller.thesis.thrp.heuristic.helper.IProcessVisualizer;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.insertion.IALNSRepair;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal.IALNSDestroy;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.phasetwo.ALNSProcess;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ALNSObserver implements IProcessVisualizer{
 	

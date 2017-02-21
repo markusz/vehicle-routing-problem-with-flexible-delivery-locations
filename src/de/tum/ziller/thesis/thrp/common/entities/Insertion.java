@@ -1,19 +1,11 @@
 package de.tum.ziller.thesis.thrp.common.entities;
 
-import java.io.Serializable;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import de.tum.ziller.thesis.thrp.common.entities.jobs.WardJob;
 import de.tum.ziller.thesis.thrp.common.entities.rooms.TherapyCenter;
+import lombok.NonNull;
 
-@AllArgsConstructor
-@RequiredArgsConstructor
-@Getter
-@Setter
+import java.io.Serializable;
+
 /**
  * 
  * Eine hypothetische Einf�gesituation f�r einen zu planenden Job. Job, Raum und Zeit sind im Node gespeichert. Zus�tzlich wird der vorgesehene Therapeut gespeichert.
@@ -41,7 +33,22 @@ public class Insertion implements Comparable<Insertion>, Serializable{
 	@NonNull
 	private Therapist therapist;
 
-	public Integer getStart(){
+    @java.beans.ConstructorProperties({"node", "therapist"})
+    public Insertion(Node node, Therapist therapist) {
+        this.node = node;
+        this.therapist = therapist;
+    }
+
+    @java.beans.ConstructorProperties({"costs", "node", "previousNode", "nextNode", "therapist"})
+    public Insertion(Double costs, Node node, Node previousNode, Node nextNode, Therapist therapist) {
+        this.costs = costs;
+        this.node = node;
+        this.previousNode = previousNode;
+        this.nextNode = nextNode;
+        this.therapist = therapist;
+    }
+
+    public Integer getStart(){
 		return node.getTime().getStart();
 	}
 	
@@ -69,4 +76,46 @@ public class Insertion implements Comparable<Insertion>, Serializable{
 	public boolean isTransfer(){
 		return (node.getJob().getClass() == WardJob.class && node.getRoom().getClass() == TherapyCenter.class);
 	}
+
+    public Double getCosts() {
+        return this.costs;
+    }
+
+    @NonNull
+    public Node getNode() {
+        return this.node;
+    }
+
+    public Node getPreviousNode() {
+        return this.previousNode;
+    }
+
+    public Node getNextNode() {
+        return this.nextNode;
+    }
+
+    @NonNull
+    public Therapist getTherapist() {
+        return this.therapist;
+    }
+
+    public void setCosts(Double costs) {
+        this.costs = costs;
+    }
+
+    public void setNode(@NonNull Node node) {
+        this.node = node;
+    }
+
+    public void setPreviousNode(Node previousNode) {
+        this.previousNode = previousNode;
+    }
+
+    public void setNextNode(Node nextNode) {
+        this.nextNode = nextNode;
+    }
+
+    public void setTherapist(@NonNull Therapist therapist) {
+        this.therapist = therapist;
+    }
 }

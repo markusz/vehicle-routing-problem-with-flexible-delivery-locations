@@ -1,17 +1,28 @@
 package de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import de.tum.ziller.thesis.thrp.common.entities.Node;
 import de.tum.ziller.thesis.thrp.common.entities.Route;
 
-@AllArgsConstructor @Getter
 public class Removal{
 	Node n;
 	Route r;
-	
-	@Override
+
+    @java.beans.ConstructorProperties({"n", "r"})
+    public Removal(Node n, Route r) {
+        this.n = n;
+        this.r = r;
+    }
+
+    @Override
 	public String toString() {
 		return n.toString();
 	}
+
+    public Node getN() {
+        return this.n;
+    }
+
+    public Route getR() {
+        return this.r;
+    }
 }

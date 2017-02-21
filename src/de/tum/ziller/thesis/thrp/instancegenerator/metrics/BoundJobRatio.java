@@ -1,8 +1,8 @@
 package de.tum.ziller.thesis.thrp.instancegenerator.metrics;
 
-import lombok.SneakyThrows;
 import de.tum.ziller.thesis.thrp.common.entities.Instance;
 import de.tum.ziller.thesis.thrp.common.entities.Job;
+import lombok.SneakyThrows;
 
 public class BoundJobRatio implements IMetric {
 

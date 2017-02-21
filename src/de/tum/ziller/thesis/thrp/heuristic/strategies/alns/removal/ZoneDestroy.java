@@ -1,11 +1,11 @@
 package de.tum.ziller.thesis.thrp.heuristic.strategies.alns.removal;
 
-import java.util.ArrayList;
-import java.util.TreeSet;
-
 import de.tum.ziller.thesis.thrp.common.entities.Node;
 import de.tum.ziller.thesis.thrp.common.entities.Solution;
 import de.tum.ziller.thesis.thrp.heuristic.strategies.alns.ALNSAbstractOperation;
+
+import java.util.ArrayList;
+import java.util.TreeSet;
 
 /**
  * Such die zwei Punkte die sich am n�hsten sind, aber auf verschiedenen Routen verlaufen. W�hlt zuf�llig einen aus und entfernt davon

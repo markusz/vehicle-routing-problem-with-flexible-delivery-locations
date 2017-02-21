@@ -1,13 +1,8 @@
 package de.tum.ziller.thesis.thrp.common.controller;
 
-import java.util.Comparator;
+import de.tum.ziller.thesis.thrp.common.entities.*;
 
-import de.tum.ziller.thesis.thrp.common.entities.Job;
-import de.tum.ziller.thesis.thrp.common.entities.Node;
-import de.tum.ziller.thesis.thrp.common.entities.Room;
-import de.tum.ziller.thesis.thrp.common.entities.Route;
-import de.tum.ziller.thesis.thrp.common.entities.Therapist;
-import de.tum.ziller.thesis.thrp.common.entities.Timeslot;
+import java.util.Comparator;
 
 public class Comparators {
 
