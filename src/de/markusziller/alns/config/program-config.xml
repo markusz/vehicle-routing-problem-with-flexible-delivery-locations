@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+    <sqluser>root</sqluser>
+    <sqlpw></sqlpw>
+    <persist>1</persist>
+    <solomon-path>./import/solomon</solomon-path>
+</document>
