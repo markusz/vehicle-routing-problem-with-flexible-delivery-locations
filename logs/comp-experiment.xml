@@ -535,7 +535,29 @@
     </dimensions>  
     <solutions/> 
   </instance>  
-  <instance uuid="f815adc2-1980-4976-9147-ef2eafde399c" created="08.04.2017 22:02:02">
+  <instance uuid="f815adc2-1980-4976-9147-ef2eafde399c" created="08.04.2017 22:02:02"> 
+    <settings> 
+      <name>C101</name>  
+      <gamma>1.0</gamma>  
+      <rho>0.0</rho> 
+    </settings>  
+    <dimensions> 
+      <therapists>25</therapists>  
+      <rooms total="101"> 
+        <ward>0</ward>  
+        <tc>0</tc>  
+        <icu>100</icu> 
+      </rooms>  
+      <jobs total="100"> 
+        <ward>0</ward>  
+        <out>0</out>  
+        <icu>100</icu> 
+      </jobs>  
+      <qualifications>5</qualifications> 
+    </dimensions>  
+    <solutions/> 
+  </instance>  
+  <instance uuid="f2731652-39fd-497b-9dca-2509efd13c4b" created="08.04.2017 22:41:28">
     <settings>
       <name>C101</name>
       <gamma>1.0</gamma>

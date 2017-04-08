@@ -1,6 +1,7 @@
 package de.markusziller.alns.entities;
 
 import com.google.common.collect.TreeMultimap;
+import com.rits.cloning.Cloner;
 import de.markusziller.alns.utils.Comparators;
 import de.markusziller.alns.entities.jobs.*;
 import de.markusziller.alns.entities.rooms.TherapyCenter;

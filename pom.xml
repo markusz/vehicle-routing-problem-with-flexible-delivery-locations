@@ -20,21 +20,11 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>dom4j</groupId>
-                <artifactId>dom4j</artifactId>
-                <version>1.6.1</version>
-            </dependency>
-            <dependency>
                 <groupId>
                     com.googlecode.efficient-java-matrix-library
                 </groupId>
                 <artifactId>ejml</artifactId>
                 <version>0.22</version>
-            </dependency>
-            <dependency>
-                <groupId>uk.com.robust-it</groupId>
-                <artifactId>cloning</artifactId>
-                <version>1.9.0</version>
             </dependency>
             <dependency>
                 <groupId>com.google.guava</groupId>
@@ -149,6 +139,21 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+        <dependency>
+            <groupId>org.objenesis</groupId>
+            <artifactId>objenesis-tck</artifactId>
+            <version>1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>uk.com.robust-it</groupId>
+            <artifactId>cloning</artifactId>
+            <version>1.9.0</version>
+        </dependency>
         <dependency>
             <groupId>
                 com.googlecode.efficient-java-matrix-library
