@@ -44,7 +44,7 @@ class GUI {
 
         JFrame f = new JFrame();
         f.setExtendedState(Frame.MAXIMIZED_BOTH);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         table = new JTable(tableD, rowTitles.toArray());
         table.setDefaultRenderer(Object.class, new CustomRenderer(this.s));
         table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -52,7 +52,7 @@ class GUI {
         table.getColumnModel().getColumn(0).setPreferredWidth(60);
         table.getColumnModel().getColumn(0).setMinWidth(60);
 
-        for (int i = 0; i < tableD.length; i++) {
+        for (String[] aTableD : tableD) {
 
         }
 

@@ -11,7 +11,7 @@ import java.util.*;
 public class HeuristicUtil {
 
     public static <T> List<T> sort(Collection<T> c, Comparator<T> comp) {
-        List<T> list = new ArrayList<T>(c);
+        List<T> list = new ArrayList<>(c);
         java.util.Collections.sort(list, comp);
         return list;
     }
@@ -47,9 +47,9 @@ public class HeuristicUtil {
 
         int max = Integer.MIN_VALUE;
 
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > max) {
-                max = arr[i];
+        for (int anArr : arr) {
+            if (anArr > max) {
+                max = anArr;
             }
         }
 
@@ -63,9 +63,9 @@ public class HeuristicUtil {
 
         int min = Integer.MAX_VALUE;
 
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < min) {
-                min = arr[i];
+        for (int anArr : arr) {
+            if (anArr < min) {
+                min = anArr;
             }
         }
 

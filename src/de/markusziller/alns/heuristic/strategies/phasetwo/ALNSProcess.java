@@ -173,8 +173,7 @@ public class ALNSProcess implements Callable<Solution> {
     private void segmentFinsihed() {
         double w_sum = 0;
         // Update neue Gewichtung der Destroy Operatoren
-        for (int i = 0; i < destroy_ops.length; i++) {
-            IALNSDestroy dstr = destroy_ops[i];
+        for (IALNSDestroy dstr : destroy_ops) {
             double w_old1 = dstr.getW() * (1 - config.getR_p());
             double recentFactor = dstr.getDraws() < 1 ? 0 : (double) dstr.getPi() / (double) dstr.getDraws();
             double w_old2 = config.getR_p() * recentFactor;
@@ -183,24 +182,21 @@ public class ALNSProcess implements Callable<Solution> {
             dstr.setW(w_new);
         }
         // Update neue Wahrs. der Destroy Operatoren
-        for (int i = 0; i < destroy_ops.length; i++) {
-            IALNSDestroy dstr = destroy_ops[i];
+        for (IALNSDestroy dstr : destroy_ops) {
             dstr.setP(dstr.getW() / w_sum);
             dstr.setDraws(0);
             dstr.setPi(0);
         }
         w_sum = 0;
         // Update neue Gewichtung der Repair Operatoren
-        for (int i = 0; i < repair_ops.length; i++) {
-            IALNSRepair rpr = repair_ops[i];
+        for (IALNSRepair rpr : repair_ops) {
             double recentFactor = rpr.getDraws() < 1 ? 0 : (double) rpr.getPi() / (double) rpr.getDraws();
             double w_new = (rpr.getW() * (1 - config.getR_p())) + config.getR_p() * recentFactor;
             w_sum += w_new;
             rpr.setW(w_new);
         }
         // Update neue Wahrs. der Repair Operatoren
-        for (int i = 0; i < repair_ops.length; i++) {
-            IALNSRepair rpr = repair_ops[i];
+        for (IALNSRepair rpr : repair_ops) {
             rpr.setP(rpr.getW() / w_sum);
             rpr.setDraws(0);
             rpr.setPi(0);
@@ -217,8 +213,7 @@ public class ALNSProcess implements Callable<Solution> {
     private IALNSRepair getALNSRepairOperator() {
         double random = Math.random();
         double threshold = 0.;
-        for (int i = 0; i < repair_ops.length; i++) {
-            IALNSRepair rpr = repair_ops[i];
+        for (IALNSRepair rpr : repair_ops) {
             threshold += rpr.getP();
             if (random <= threshold) {
                 rpr.drawn();
@@ -239,8 +234,7 @@ public class ALNSProcess implements Callable<Solution> {
     private IALNSDestroy getALNSDestroyOperator() {
         double random = Math.random();
         double threshold = 0.;
-        for (int i = 0; i < destroy_ops.length; i++) {
-            IALNSDestroy dstr = destroy_ops[i];
+        for (IALNSDestroy dstr : destroy_ops) {
             threshold += dstr.getP();
             if (random <= threshold) {
                 dstr.drawn();
@@ -258,14 +252,12 @@ public class ALNSProcess implements Callable<Solution> {
      * @date 11.12.2013
      */
     private void initStrategies() {
-        for (int i = 0; i < destroy_ops.length; i++) {
-            IALNSDestroy dstr = destroy_ops[i];
+        for (IALNSDestroy dstr : destroy_ops) {
             dstr.setPi(0);
             dstr.setW(1.);
             dstr.setP(1 / (double) destroy_ops.length);
         }
-        for (int i = 0; i < repair_ops.length; i++) {
-            IALNSRepair rpr = repair_ops[i];
+        for (IALNSRepair rpr : repair_ops) {
             rpr.setPi(0);
             rpr.setW(1.);
             rpr.setP(1 / (double) repair_ops.length);

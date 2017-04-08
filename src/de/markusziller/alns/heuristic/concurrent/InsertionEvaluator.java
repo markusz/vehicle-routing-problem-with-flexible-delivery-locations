@@ -4,7 +4,6 @@ import de.markusziller.alns.common.entities.*;
 import de.markusziller.alns.common.entities.jobs.OutpatientJob;
 import de.markusziller.alns.common.entities.jobs.WardJob;
 import de.markusziller.alns.common.entities.rooms.TherapyCenter;
-import de.markusziller.alns.common.exceptions.RouteConstructionException;
 import lombok.NonNull;
 
 import java.util.List;

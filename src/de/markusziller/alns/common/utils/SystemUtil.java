@@ -11,13 +11,13 @@ class SystemUtil {
 
         sb.append("##### Heap utilization statistics [MB] #####\n");
         // Print used memory
-        sb.append("Used Memory:" + (runtime.totalMemory() - runtime.freeMemory()) / mb + "\n");
+        sb.append("Used Memory:").append((runtime.totalMemory() - runtime.freeMemory()) / mb).append("\n");
         // Print free memory
-        sb.append("Free Memory:" + runtime.freeMemory() / mb + "\n");
+        sb.append("Free Memory:").append(runtime.freeMemory() / mb).append("\n");
         // Print total available memory
-        sb.append("Total Memory:" + runtime.totalMemory() / mb + "\n");
+        sb.append("Total Memory:").append(runtime.totalMemory() / mb).append("\n");
         // Print Maximum available memory
-        sb.append("Max Memory:" + runtime.maxMemory() / mb + "\n");
+        sb.append("Max Memory:").append(runtime.maxMemory() / mb).append("\n");
 
         return sb.toString();
 

@@ -36,17 +36,17 @@ public class OperationsLinechart implements IProcessVisualizer {
         IALNSOperation[] o_d = alns.getDestroy_ops();
         IALNSOperation[] o_r = alns.getRepair_ops();
 
-        for (int i = 0; i < o_r.length; i++) {
-            XYSeries xy = new XYSeries(o_r[i].getClass().getSimpleName());
-            map.put(o_r[i], xy);
+        for (IALNSOperation anO_r : o_r) {
+            XYSeries xy = new XYSeries(anO_r.getClass().getSimpleName());
+            map.put(anO_r, xy);
             data.addSeries(xy);
         }
 
-        for (int i = 0; i < o_d.length; i++) {
+        for (IALNSOperation anO_d : o_d) {
 
-            XYSeries xy = new XYSeries(o_d[i].getClass().getSimpleName());
+            XYSeries xy = new XYSeries(anO_d.getClass().getSimpleName());
 
-            map.put(o_d[i], xy);
+            map.put(anO_d, xy);
             data.addSeries(xy);
         }
 

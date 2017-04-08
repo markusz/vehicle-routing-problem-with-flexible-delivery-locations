@@ -249,9 +249,7 @@ public class PersistenceUtil {
                 Class.forName("com.mysql.jdbc.Driver");
                 con = DriverManager.getConnection("jdbc:mysql://localhost/thrp", XMLUtil.getProgramConfigXMLEntry("sqluser"), XMLUtil.getProgramConfigXMLEntry("sqlpw"));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } catch (DocumentException e) {
             e.printStackTrace();
@@ -298,7 +296,7 @@ public class PersistenceUtil {
     }
 
     private void persistToFilesystem(Object i, String subpath, String filename) throws IOException {
-        String p = new StringBuilder().append("./files/").append(subpath).append("/").append(filename + ".thrp").toString();
+        String p = new StringBuilder().append("./files/").append(subpath).append("/").append(filename).append(".thrp").toString();
 
         OutputStream file = new FileOutputStream(p);
         OutputStream buffer = new BufferedOutputStream(file);
@@ -311,8 +309,7 @@ public class PersistenceUtil {
     }
 
     public void persistToFilesystem(Solution[] ims) throws IOException {
-        for (int i = 0; i < ims.length; i++) {
-            Solution solution = ims[i];
+        for (Solution solution : ims) {
             persistToFilesystem(solution);
         }
 

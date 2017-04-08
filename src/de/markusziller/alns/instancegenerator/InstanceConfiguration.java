@@ -201,20 +201,20 @@ public class InstanceConfiguration implements Serializable {
             throw new InstanceConfigurationException("More than 3000 Rooms are not supported");
         }
 
-        for (int i = 0; i < JobMinLengths_MINUTES.length; i++) {
-            if (JobMinLengths_MINUTES[i] < minutesPerTimeslot) {
+        for (Integer JobMinLengths_MINUTE : JobMinLengths_MINUTES) {
+            if (JobMinLengths_MINUTE < minutesPerTimeslot) {
                 throw new InstanceConfigurationException("Min Length of Jobs is smaller than Timeslot size. This causes problems. Please fix");
             }
         }
 
-        for (int i = 0; i < JobAvgLengths_MINUTES.length; i++) {
-            if (JobAvgLengths_MINUTES[i] < minutesPerTimeslot) {
+        for (Integer JobAvgLengths_MINUTE : JobAvgLengths_MINUTES) {
+            if (JobAvgLengths_MINUTE < minutesPerTimeslot) {
                 throw new InstanceConfigurationException("Avg Length of Jobs is smaller than Timeslot size. This causes problems. Please fix");
             }
         }
 
-        for (int i = 0; i < JobMaxLengths_MINUTES.length; i++) {
-            if (JobMaxLengths_MINUTES[i] < minutesPerTimeslot) {
+        for (Integer JobMaxLengths_MINUTE : JobMaxLengths_MINUTES) {
+            if (JobMaxLengths_MINUTE < minutesPerTimeslot) {
                 throw new InstanceConfigurationException("Max Length of Jobs is smaller than Timeslot size. This causes problems. Please fix");
             }
         }

@@ -21,7 +21,7 @@ public class NRegretRepair extends ALNSAbstractRepair implements IALNSRepair {
         for (Job j : jj) {
             try {
                 s = planNextJob(s, j);
-            } catch (GeneralInfeasibilityException | RouteConstructionException e) {
+            } catch (GeneralInfeasibilityException | RouteConstructionException ignored) {
             }
         }
         return s;

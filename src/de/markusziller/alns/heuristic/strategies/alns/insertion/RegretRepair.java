@@ -17,7 +17,7 @@ public class RegretRepair extends ALNSAbstractRepair implements IALNSRepair {
             try {
                 s = planNextJob(s, j);
                 // System.out.println("planned job");
-            } catch (GeneralInfeasibilityException | RouteConstructionException e) {
+            } catch (GeneralInfeasibilityException | RouteConstructionException ignored) {
             }
         }
         return s;

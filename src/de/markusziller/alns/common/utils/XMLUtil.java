@@ -17,8 +17,6 @@ import java.io.*;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 import java.util.TreeSet;
 
 public class XMLUtil {
@@ -442,8 +440,7 @@ public class XMLUtil {
     }
 
     public static void logSolomon(Solution[] ims) throws DocumentException, IOException {
-        for (int i = 0; i < ims.length; i++) {
-            Solution solution = ims[i];
+        for (Solution solution : ims) {
             logSolomon(solution);
         }
         // TODO Auto-generated method stub

@@ -37,10 +37,7 @@ public class Node implements Comparable<Node> {
 
 
     public boolean hasJobTransfer() {
-        if (job instanceof JobWithFixedRoom) {
-            return ((JobWithFixedRoom) job).getRoom() != room;
-        }
-        return true;
+        return !(job instanceof JobWithFixedRoom) || ((JobWithFixedRoom) job).getRoom() != room;
     }
 
     public Integer getStart() {

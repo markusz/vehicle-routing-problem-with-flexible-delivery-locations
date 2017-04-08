@@ -27,7 +27,7 @@ public class ImportUtil {
      */
     public static int[][] importSolomonRawData(int size, String name) throws IOException {
 
-        String dataFileName = new StringBuilder().append("./import").append("/solomon").append("/solomon_").append(size + "/").append(name).append(".txt").toString();
+        String dataFileName = new StringBuilder().append("./import").append("/solomon").append("/solomon_").append(size).append("/").append(name).append(".txt").toString();
 
         BufferedReader bReader = new BufferedReader(new FileReader(dataFileName));
 
@@ -67,7 +67,7 @@ public class ImportUtil {
 
     public static int[] importSolomonMetaData(int size, String name) throws IOException {
 
-        String dataFileName = new StringBuilder().append("./import").append("/solomon").append("/solomon_").append(size + "/").append(name).append(".txt").toString();
+        String dataFileName = new StringBuilder().append("./import").append("/solomon").append("/solomon_").append(size).append("/").append(name).append(".txt").toString();
         BufferedReader bReader = new BufferedReader(new FileReader(dataFileName));
 
         int[] values = new int[2];

@@ -16,7 +16,7 @@ public class Route implements Comparable<Route>, Serializable {
      *
      */
     private static final long serialVersionUID = -3762176626624742034L;
-    private NavigableSet<Node> N = new TreeSet<Node>(Comparators.NODE_START_ASCENDING);
+    private NavigableSet<Node> N = new TreeSet<>(Comparators.NODE_START_ASCENDING);
 
     public Route(Node... p) {
         for (Node pathwayNode : p) {
@@ -254,7 +254,6 @@ public class Route implements Comparable<Route>, Serializable {
      * Entfernt einen Knoten aus der Route
      *
      * @param nn
-     * @param is Die Instanz, wird ben�tigt um die L�cke ggf mit dem Pausenraum o.� wieder zu f�llen
      * @throws RouteConstructionException
      * @author Markus Z.
      * @date 13.12.2013

@@ -18,7 +18,6 @@ public class GaussDistribution implements IProbabilityDistribution {
     /**
      * Lambda of the underlying Poisson distribution
      *
-     * @param lambda
      */
     public GaussDistribution(Double mean, Double deviance) {
 //		this.lambda = lambda;

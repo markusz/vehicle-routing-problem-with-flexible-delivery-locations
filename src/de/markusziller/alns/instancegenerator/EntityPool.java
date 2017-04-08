@@ -70,7 +70,7 @@ public class EntityPool {
         id = 1;
         Integer maxRooms = 3000;
         for (int i = id; i <= maxRooms; i++) {
-            String s = new String("00" + i);
+            String s = "00" + i;
             String rNumber = s.substring(s.length() - 3, s.length());
             if (i <= maxRooms / 3) {
                 ICURoomMaster.add(new ICU(id, "I".concat(rNumber)));
@@ -89,7 +89,7 @@ public class EntityPool {
         id = 1;
         Integer maxJobs = 3000;
         for (int i = id; i <= maxJobs; i++) {
-            String s = new String("000" + i);
+            String s = "000" + i;
             String rNumber = s.substring(s.length() - 4, s.length());
             if (i <= maxJobs / 3) {
                 ICUJobMaster.add(new ICUJob(id, "ICU-Job:".concat(rNumber)));

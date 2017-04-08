@@ -40,7 +40,7 @@ public class OutputUtil {
     public static String routesToString(Solution s) {
         StringBuilder sb = new StringBuilder();
         for (Therapist t : s.getInstance().getTherapists()) {
-            sb.append("Route for " + t.getName() + "\n");
+            sb.append("Route for ").append(t.getName()).append("\n");
             Set<Node> nodes = s.getAllNodes(t);
             for (Node n : nodes) {
                 sb.append(toString(n));
@@ -220,33 +220,33 @@ public class OutputUtil {
 
     public static String graphicalOutput(Solution s) {
         StringBuilder sb = new StringBuilder();
-        /**
-         * F�r alle Therapeuten
+        /*
+          F�r alle Therapeuten
          */
         for (Therapist t : s.getRoutes().keySet()) {
             sb.append("\n").append(t.getName()).append("\n");
-            /**
-             * Schichtzeiten - start und ende sind inclusive
+            /*
+              Schichtzeiten - start und ende sind inclusive
              */
             Integer start = s.getShiftBoundsForTherapist(t).getStart();
             Integer end = s.getShiftBoundsForTherapist(t).getEnd();
-            /**
-             * Zeit vor der Schicht wird ausgegeben
+            /*
+              Zeit vor der Schicht wird ausgegeben
              */
             for (int ii = 0; ii < start; ii++) {
                 sb.append("_");
             }
             sb.append("|");
-            /**
-             * Iteration �ber alle Pathways des Therapeuten
+            /*
+              Iteration �ber alle Pathways des Therapeuten
              */
             Set<Node> nods = s.getAllNodes(t);
-            /**
-             * Betrachtung aller Knoten
+            /*
+              Betrachtung aller Knoten
              */
             for (Node pathwayNode : nods) {
-                /**
-                 * Iteration �ber Zeitr�ume f�r Knoten
+                /*
+                  Iteration �ber Zeitr�ume f�r Knoten
                  */
                 for (int ii = pathwayNode.getTime().getStart(); ii <= pathwayNode.getTime().getEnd(); ii++) {
                     if (pathwayNode.getJob().getClass() == BreakJob.class) {

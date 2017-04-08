@@ -101,7 +101,7 @@ public class Instance implements Serializable {
 
         //Anzahl an R�umen und Jobs wird gesetzt.
         int n_i = s_raw[0].length - 1;
-        int n_r = (int) Math.ceil((double) n_i * (double) gamma);
+        int n_r = (int) Math.ceil((double) n_i * gamma);
 
 
         int n_i_icu = (int) ((double) n_r * (1. - rho));
@@ -329,8 +329,8 @@ public class Instance implements Serializable {
         assignPossibleJobTimes(jjj);
         assignDurations(jjj);
 
-        /**
-         * Qualifikationen werden randomisiert verteilt
+        /*
+          Qualifikationen werden randomisiert verteilt
          */
         distributeQualificationsToTherapists(ic.getQualificationToTherapistAssignment());
         distributeQualificationsToJobs(ic.getQualificationToJobAssignment());
@@ -493,9 +493,9 @@ public class Instance implements Serializable {
 
     private int max(int[] arr) {
         int max = Integer.MIN_VALUE;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > max) {
-                max = arr[i];
+        for (int anArr : arr) {
+            if (anArr > max) {
+                max = anArr;
             }
         }
         return max;
@@ -604,8 +604,7 @@ public class Instance implements Serializable {
 
         Double costPerCell = ic.getCostPerCell();
 
-        for (int i = 0; i < rrr.size(); i++) {
-            Room r1 = rrr.get(i);
+        for (Room r1 : rrr) {
             if (r1.getId() == 0) {
                 // System.out.println();
             }
@@ -671,8 +670,8 @@ public class Instance implements Serializable {
         for (Job j : Preconditions.checkNotNull(jobs)) {
             for (Therapist t : Preconditions.checkNotNull(therapists)) {
 
-                /**
-                 * Nur F�lle relevant in denen job.qhash <= t.qhash
+                /*
+                  Nur F�lle relevant in denen job.qhash <= t.qhash
                  */
                 if (t.getQHash() == j.getQHash()) {
                     eligibleJobsForTherapist.put(t, j);

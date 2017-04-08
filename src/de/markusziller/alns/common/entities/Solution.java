@@ -430,7 +430,6 @@ public class Solution implements Cloneable, Serializable {
     /**
      * clone() methode.
      *
-     * @param b true: detailierter Log, false: kein log
      * @return
      * @author Markus Z.
      * @date 30.06.2013

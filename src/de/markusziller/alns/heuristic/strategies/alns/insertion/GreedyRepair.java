@@ -2,7 +2,6 @@ package de.markusziller.alns.heuristic.strategies.alns.insertion;
 
 import com.google.common.collect.TreeMultimap;
 import de.markusziller.alns.common.entities.*;
-import de.markusziller.alns.common.exceptions.GeneralInfeasibilityException;
 import de.markusziller.alns.common.exceptions.RouteConstructionException;
 import de.markusziller.alns.common.utils.TimeUtil;
 
@@ -21,7 +20,7 @@ public class GreedyRepair extends ALNSAbstractRepair implements IALNSRepair {
         for (Job j : jj) {
             try {
                 s = planNextJob(s, j);
-            } catch (RouteConstructionException e) {
+            } catch (RouteConstructionException ignored) {
             }
         }
         return s;

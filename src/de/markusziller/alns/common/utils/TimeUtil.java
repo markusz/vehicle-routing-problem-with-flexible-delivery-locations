@@ -112,23 +112,23 @@ public class TimeUtil {
         return overlap;
     }
 
-    /**
-     * Die Schnittmenge aus den �bergebenen Listen von Timeslot
-     *
-     * z.B.
-     * <br>
-     * xxxx---xxx-xxxxxx<br>
-     * ---x--xxx-----xxx<br>
-     * xxxxxxxx-----xx--<br><br>
-     *
-     * ---><br><br>
-     *
-     * ---x---x------x--<br><br>
-     * @author Markus Z.
+    /*
+      Die Schnittmenge aus den �bergebenen Listen von Timeslot
+
+      z.B.
+      <br>
+      xxxx---xxx-xxxxxx<br>
+      ---x--xxx-----xxx<br>
+      xxxxxxxx-----xx--<br><br>
+
+      ---><br><br>
+
+      ---x---x------x--<br><br>
+      @author Markus Z.
      * @date 26.08.2013
      * @param slots
      * @return
-     *
+
      */
 //	public static List<Timeslot> getIntersectionOLD(List<Timeslot>... slots) {
 //

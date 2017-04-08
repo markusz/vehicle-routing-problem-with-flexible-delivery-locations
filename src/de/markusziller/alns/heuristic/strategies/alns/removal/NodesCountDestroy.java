@@ -15,7 +15,6 @@ import java.util.TreeSet;
 /**
  * Entfernt die Routen mit den wenigsten/meisten Knoten, jedoch nie mehr als q Knoten. Es werden nur ganzen Routen entfernt
  *
- * @param highestFirst true = l�ngste Routen zuerst, false = k�rzeste zuerst
  */
 public class NodesCountDestroy extends ALNSAbstractOperation implements IALNSDestroy {
     private int c_g = 1;
