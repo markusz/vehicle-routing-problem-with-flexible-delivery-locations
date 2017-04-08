@@ -1,9 +1,9 @@
 package de.markusziller.alns.heuristic;
 
-import de.markusziller.alns.common.Constants;
-import de.markusziller.alns.common.entities.Instance;
-import de.markusziller.alns.common.entities.Solution;
-import de.markusziller.alns.common.exceptions.GeneralInfeasibilityException;
+import de.markusziller.alns.Constants;
+import de.markusziller.alns.entities.Instance;
+import de.markusziller.alns.entities.Solution;
+import de.markusziller.alns.exceptions.GeneralInfeasibilityException;
 import de.markusziller.alns.heuristic.strategies.ConstructionStrategy;
 import de.markusziller.alns.heuristic.strategies.ImprovementStrategy;
 import de.markusziller.alns.heuristic.strategies.alns.config.IALNSConfig;

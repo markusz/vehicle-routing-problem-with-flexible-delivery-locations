@@ -1,6 +1,6 @@
 package de.markusziller.alns.instancegenerator.imports;
 
-import de.markusziller.alns.common.utils.ImportUtil;
+import de.markusziller.alns.utils.ImportUtil;
 
 import java.io.IOException;
 import java.io.Serializable;

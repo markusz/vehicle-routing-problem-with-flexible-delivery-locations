@@ -1,9 +1,9 @@
 package de.markusziller.alns.heuristic.concurrent;
 
-import de.markusziller.alns.common.entities.*;
-import de.markusziller.alns.common.entities.jobs.OutpatientJob;
-import de.markusziller.alns.common.entities.jobs.WardJob;
-import de.markusziller.alns.common.entities.rooms.TherapyCenter;
+import de.markusziller.alns.entities.*;
+import de.markusziller.alns.entities.jobs.OutpatientJob;
+import de.markusziller.alns.entities.jobs.WardJob;
+import de.markusziller.alns.entities.rooms.TherapyCenter;
 import lombok.NonNull;
 
 import java.util.List;

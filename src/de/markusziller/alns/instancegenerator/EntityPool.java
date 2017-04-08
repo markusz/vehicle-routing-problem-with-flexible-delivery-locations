@@ -1,14 +1,14 @@
 package de.markusziller.alns.instancegenerator;
 
-import de.markusziller.alns.common.abstraction.Identifiable;
-import de.markusziller.alns.common.entities.*;
-import de.markusziller.alns.common.entities.jobs.ICUJob;
-import de.markusziller.alns.common.entities.jobs.OutpatientJob;
-import de.markusziller.alns.common.entities.jobs.WardJob;
-import de.markusziller.alns.common.entities.rooms.BreakRoom;
-import de.markusziller.alns.common.entities.rooms.ICU;
-import de.markusziller.alns.common.entities.rooms.TherapyCenter;
-import de.markusziller.alns.common.entities.rooms.Ward;
+import de.markusziller.alns.entities.Identifiable;
+import de.markusziller.alns.entities.*;
+import de.markusziller.alns.entities.jobs.ICUJob;
+import de.markusziller.alns.entities.jobs.OutpatientJob;
+import de.markusziller.alns.entities.jobs.WardJob;
+import de.markusziller.alns.entities.rooms.BreakRoom;
+import de.markusziller.alns.entities.rooms.ICU;
+import de.markusziller.alns.entities.rooms.TherapyCenter;
+import de.markusziller.alns.entities.rooms.Ward;
 import de.markusziller.alns.instancegenerator.random.IProbabilityDistribution;
 import lombok.SneakyThrows;
 

@@ -1,9 +1,8 @@
 package de.markusziller.alns.heuristic.strategies.phasetwo;
 
-import de.markusziller.alns.common.abstraction.ALNSObserver;
-import de.markusziller.alns.common.entities.Instance;
-import de.markusziller.alns.common.entities.Solution;
-import de.markusziller.alns.common.utils.OutputUtil;
+import de.markusziller.alns.entities.Instance;
+import de.markusziller.alns.entities.Solution;
+import de.markusziller.alns.utils.OutputUtil;
 import de.markusziller.alns.heuristic.strategies.alns.config.IALNSConfig;
 import de.markusziller.alns.heuristic.strategies.alns.insertion.GreedyRepair;
 import de.markusziller.alns.heuristic.strategies.alns.insertion.IALNSRepair;

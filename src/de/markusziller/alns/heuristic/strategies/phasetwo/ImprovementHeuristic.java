@@ -4,7 +4,7 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
-import de.markusziller.alns.common.entities.Solution;
+import de.markusziller.alns.entities.Solution;
 import de.markusziller.alns.heuristic.strategies.ImprovementStrategy;
 import de.markusziller.alns.heuristic.strategies.alns.config.ALNSConfiguration;
 import de.markusziller.alns.heuristic.strategies.alns.config.IALNSConfig;

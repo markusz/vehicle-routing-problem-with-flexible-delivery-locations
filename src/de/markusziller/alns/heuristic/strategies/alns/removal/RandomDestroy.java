@@ -1,7 +1,7 @@
 package de.markusziller.alns.heuristic.strategies.alns.removal;
 
-import de.markusziller.alns.common.entities.Solution;
-import de.markusziller.alns.common.exceptions.RouteConstructionException;
+import de.markusziller.alns.entities.Solution;
+import de.markusziller.alns.exceptions.RouteConstructionException;
 import de.markusziller.alns.heuristic.strategies.alns.ALNSAbstractOperation;
 
 import java.util.ArrayList;

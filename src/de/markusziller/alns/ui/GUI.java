@@ -1,8 +1,8 @@
 package de.markusziller.alns.ui;
 
-import de.markusziller.alns.common.entities.Solution;
-import de.markusziller.alns.common.entities.Therapist;
-import de.markusziller.alns.common.utils.TimeUtil;
+import de.markusziller.alns.entities.Solution;
+import de.markusziller.alns.entities.Therapist;
+import de.markusziller.alns.utils.TimeUtil;
 
 import javax.swing.*;
 import java.awt.*;

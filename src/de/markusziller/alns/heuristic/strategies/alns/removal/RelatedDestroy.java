@@ -1,7 +1,7 @@
 package de.markusziller.alns.heuristic.strategies.alns.removal;
 
 import com.google.common.collect.Sets;
-import de.markusziller.alns.common.entities.*;
+import de.markusziller.alns.entities.*;
 import de.markusziller.alns.heuristic.strategies.alns.ALNSAbstractOperation;
 
 import java.util.ArrayList;

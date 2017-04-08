@@ -1,7 +1,7 @@
 package de.markusziller.alns.heuristic.concurrent;
 
 import com.google.common.util.concurrent.FutureCallback;
-import de.markusziller.alns.common.entities.Insertion;
+import de.markusziller.alns.entities.Insertion;
 import lombok.NonNull;
 
 import java.util.Comparator;

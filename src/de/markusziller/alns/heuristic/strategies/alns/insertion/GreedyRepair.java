@@ -1,9 +1,9 @@
 package de.markusziller.alns.heuristic.strategies.alns.insertion;
 
 import com.google.common.collect.TreeMultimap;
-import de.markusziller.alns.common.entities.*;
-import de.markusziller.alns.common.exceptions.RouteConstructionException;
-import de.markusziller.alns.common.utils.TimeUtil;
+import de.markusziller.alns.entities.*;
+import de.markusziller.alns.exceptions.RouteConstructionException;
+import de.markusziller.alns.utils.TimeUtil;
 
 import java.util.*;
 

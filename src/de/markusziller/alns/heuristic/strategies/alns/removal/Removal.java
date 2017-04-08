@@ -1,7 +1,7 @@
 package de.markusziller.alns.heuristic.strategies.alns.removal;
 
-import de.markusziller.alns.common.entities.Node;
-import de.markusziller.alns.common.entities.Route;
+import de.markusziller.alns.entities.Node;
+import de.markusziller.alns.entities.Route;
 
 public class Removal {
     final Node n;

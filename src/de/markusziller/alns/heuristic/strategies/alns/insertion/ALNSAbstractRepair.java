@@ -1,6 +1,6 @@
 package de.markusziller.alns.heuristic.strategies.alns.insertion;
 
-import de.markusziller.alns.common.entities.*;
+import de.markusziller.alns.entities.*;
 import de.markusziller.alns.heuristic.concurrent.InsertionEvaluator;
 import de.markusziller.alns.heuristic.strategies.alns.ALNSAbstractOperation;
 

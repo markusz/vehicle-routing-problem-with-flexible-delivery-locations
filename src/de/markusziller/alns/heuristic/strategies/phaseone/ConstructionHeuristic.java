@@ -1,9 +1,9 @@
 package de.markusziller.alns.heuristic.strategies.phaseone;
 
-import de.markusziller.alns.common.entities.*;
-import de.markusziller.alns.common.entities.jobs.BreakJob;
-import de.markusziller.alns.common.entities.jobs.IdleJob;
-import de.markusziller.alns.common.exceptions.GeneralInfeasibilityException;
+import de.markusziller.alns.entities.*;
+import de.markusziller.alns.entities.jobs.BreakJob;
+import de.markusziller.alns.entities.jobs.IdleJob;
+import de.markusziller.alns.exceptions.GeneralInfeasibilityException;
 import de.markusziller.alns.heuristic.SolverConfiguration;
 import de.markusziller.alns.heuristic.strategies.ConstructionStrategy;
 import de.markusziller.alns.heuristic.strategies.alns.insertion.NRegretRepair;

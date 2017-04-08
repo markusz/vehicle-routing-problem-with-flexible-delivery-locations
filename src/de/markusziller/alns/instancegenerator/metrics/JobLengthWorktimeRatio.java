@@ -1,8 +1,8 @@
 package de.markusziller.alns.instancegenerator.metrics;
 
-import de.markusziller.alns.common.entities.Instance;
-import de.markusziller.alns.common.entities.Job;
-import de.markusziller.alns.common.entities.Therapist;
+import de.markusziller.alns.entities.Instance;
+import de.markusziller.alns.entities.Job;
+import de.markusziller.alns.entities.Therapist;
 
 public class JobLengthWorktimeRatio implements IMetric {
 

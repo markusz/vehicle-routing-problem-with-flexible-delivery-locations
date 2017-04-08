@@ -1,11 +1,11 @@
 package de.markusziller.alns.heuristic.strategies.alns.removal;
 
 import com.google.common.collect.TreeMultimap;
-import de.markusziller.alns.common.entities.*;
-import de.markusziller.alns.common.entities.jobs.BreakJob;
-import de.markusziller.alns.common.entities.jobs.TreatmentJob;
-import de.markusziller.alns.common.entities.jobs.WardJob;
-import de.markusziller.alns.common.entities.rooms.TherapyCenter;
+import de.markusziller.alns.entities.*;
+import de.markusziller.alns.entities.jobs.BreakJob;
+import de.markusziller.alns.entities.jobs.TreatmentJob;
+import de.markusziller.alns.entities.jobs.WardJob;
+import de.markusziller.alns.entities.rooms.TherapyCenter;
 import de.markusziller.alns.heuristic.strategies.alns.ALNSAbstractOperation;
 
 import java.util.Set;

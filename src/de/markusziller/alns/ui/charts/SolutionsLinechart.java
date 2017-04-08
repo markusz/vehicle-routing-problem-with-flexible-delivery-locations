@@ -1,6 +1,6 @@
 package de.markusziller.alns.ui.charts;
 
-import de.markusziller.alns.common.entities.Solution;
+import de.markusziller.alns.entities.Solution;
 import de.markusziller.alns.heuristic.strategies.alns.config.IALNSConfig;
 import de.markusziller.alns.heuristic.strategies.alns.insertion.IALNSRepair;
 import de.markusziller.alns.heuristic.strategies.alns.removal.IALNSDestroy;

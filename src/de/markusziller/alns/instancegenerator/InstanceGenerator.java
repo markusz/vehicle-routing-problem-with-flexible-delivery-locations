@@ -1,7 +1,7 @@
 package de.markusziller.alns.instancegenerator;
 
-import de.markusziller.alns.common.entities.Instance;
-import de.markusziller.alns.common.exceptions.GeneralInfeasibilityException;
+import de.markusziller.alns.entities.Instance;
+import de.markusziller.alns.exceptions.GeneralInfeasibilityException;
 import de.markusziller.alns.instancegenerator.imports.SolomonInstance;
 
 public class InstanceGenerator {

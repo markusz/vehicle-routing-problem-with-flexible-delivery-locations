@@ -1,10 +1,10 @@
 package de.markusziller.alns.heuristic.strategies.alns.removal.unused;
 
 import com.google.common.collect.TreeMultimap;
-import de.markusziller.alns.common.entities.Node;
-import de.markusziller.alns.common.entities.Route;
-import de.markusziller.alns.common.entities.Solution;
-import de.markusziller.alns.common.entities.Therapist;
+import de.markusziller.alns.entities.Node;
+import de.markusziller.alns.entities.Route;
+import de.markusziller.alns.entities.Solution;
+import de.markusziller.alns.entities.Therapist;
 import de.markusziller.alns.heuristic.strategies.alns.ALNSAbstractOperation;
 import de.markusziller.alns.heuristic.strategies.alns.removal.IALNSDestroy;
 import de.markusziller.alns.heuristic.strategies.alns.removal.Removal;

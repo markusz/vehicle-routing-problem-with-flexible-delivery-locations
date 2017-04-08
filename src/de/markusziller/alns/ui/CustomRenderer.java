@@ -1,9 +1,9 @@
 package de.markusziller.alns.ui;
 
-import de.markusziller.alns.common.entities.Node;
-import de.markusziller.alns.common.entities.Solution;
-import de.markusziller.alns.common.entities.Therapist;
-import de.markusziller.alns.common.entities.jobs.*;
+import de.markusziller.alns.entities.Node;
+import de.markusziller.alns.entities.Solution;
+import de.markusziller.alns.entities.Therapist;
+import de.markusziller.alns.entities.jobs.*;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
@@ -58,7 +58,6 @@ public class CustomRenderer extends JLabel implements TableCellRenderer {
             }
             for (Node node : nodes) {
                 // Spalten sind 1 nach rechts verschoben, d.h. t=0 -> col = 1
-                //
                 int adjCol = column - 1;
                 if (node.getStart() <= adjCol && node.getEnd() >= adjCol) {
                     if (node.getJob().getClass() == IdleJob.class) {

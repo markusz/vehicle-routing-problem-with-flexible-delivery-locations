@@ -1,7 +1,7 @@
 package de.markusziller.alns.heuristic.strategies.phasetwo;
 
 import com.google.common.util.concurrent.FutureCallback;
-import de.markusziller.alns.common.entities.Solution;
+import de.markusziller.alns.entities.Solution;
 
 import java.util.Comparator;
 import java.util.TreeSet;

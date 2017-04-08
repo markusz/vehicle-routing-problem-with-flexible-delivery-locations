@@ -1,6 +1,6 @@
 package de.markusziller.alns.instancegenerator.metrics;
 
-import de.markusziller.alns.common.entities.Instance;
+import de.markusziller.alns.entities.Instance;
 
 public class NetworkComplexity implements IMetric {
 

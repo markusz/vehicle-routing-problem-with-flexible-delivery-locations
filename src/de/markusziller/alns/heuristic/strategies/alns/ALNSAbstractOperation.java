@@ -1,8 +1,8 @@
 package de.markusziller.alns.heuristic.strategies.alns;
 
 import com.google.common.base.Objects;
-import de.markusziller.alns.common.entities.*;
-import de.markusziller.alns.common.entities.jobs.TreatmentJob;
+import de.markusziller.alns.entities.*;
+import de.markusziller.alns.entities.jobs.TreatmentJob;
 import de.markusziller.alns.heuristic.strategies.alns.removal.Removal;
 import de.markusziller.alns.heuristic.visualization.ALNSStrategieVisualizationManager;
 

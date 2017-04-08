@@ -1,10 +1,9 @@
 package de.markusziller.alns;
 
-import de.markusziller.alns.common.entities.Instance;
-import de.markusziller.alns.common.entities.Solution;
-import de.markusziller.alns.common.exceptions.GeneralInfeasibilityException;
-import de.markusziller.alns.common.utils.PersistenceUtil;
-import de.markusziller.alns.common.utils.XMLUtil;
+import de.markusziller.alns.entities.Instance;
+import de.markusziller.alns.entities.Solution;
+import de.markusziller.alns.utils.PersistenceUtil;
+import de.markusziller.alns.utils.XMLUtil;
 import de.markusziller.alns.heuristic.Solver;
 import de.markusziller.alns.heuristic.strategies.alns.config.ALNSConfiguration;
 import de.markusziller.alns.heuristic.strategies.alns.config.IALNSConfig;
@@ -32,7 +31,6 @@ public class Main {
     static String[] VRPFD_INSTANCES = new String[]{"C108", "C206", "C203", "R202", "R207", "R104", "RC202", "RC205", "RC208"};
     static double[][] params = new double[][]{new double[]{1.0, 0.3}, new double[]{1.0, 0.8}, new double[]{0.8, 0.3}, new double[]{0.8, 0.8}, new double[]{0.5, 0.3}, new double[]{0.5, 0.8}};
 
-    @SneakyThrows
     public static void main(String args[]) {
         String[] instances = SOLOMON_ALL;
         for (int j = 0; j < instances.length; j = j + 1) {
