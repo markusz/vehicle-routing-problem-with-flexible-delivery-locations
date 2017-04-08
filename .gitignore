@@ -6,5 +6,5 @@ files/solutions/*.thrp
 target/
 src/de/tum/ziller/thesis/thrp/log/*.xml
 /de/markusziller/alns/log/comp-experiment.xml
-!output/solutions/.gitkeep
 output/solutions/*
+!output/solutions/.gitkeep
