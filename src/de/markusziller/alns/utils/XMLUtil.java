@@ -23,24 +23,8 @@ import java.util.TreeSet;
 public class XMLUtil {
 
     private static final Logger log = org.apache.logging.log4j.LogManager.getLogger(XMLUtil.class);
-    private static final String BASE_PATH = "src" +
-            File.separator +
-            "de" + File.separator +
-            "markusziller" + File.separator +
-            "alns";
-
-    private static final String SYSTEM_CONFIG_PATH = BASE_PATH.concat(
-            File.separator +
-                    "config" + File.separator +
-                    "system-config.xml"
-    );
-
-    private static final String PROGRAM_CONFIG_PATH = BASE_PATH.concat(
-            File.separator +
-                    "config" + File.separator +
-                    "program-config.xml"
-    );
-
+    private static final String SYSTEM_CONFIG_PATH = "config" + File.separator + "system-config.xml";
+    private static final String PROGRAM_CONFIG_PATH = "config" + File.separator + "program-config.xml";
     private static final String INSTANCE_LOG_PATH = "logs" + File.separator + "instancelog.xml";
     private static final String COMPEXP_LOG_PATH = "logs" + File.separator + "comp-experiment.xml";
 

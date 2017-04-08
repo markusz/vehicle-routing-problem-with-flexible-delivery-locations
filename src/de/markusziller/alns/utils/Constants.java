@@ -1,4 +1,4 @@
-package de.markusziller.alns;
+package de.markusziller.alns.utils;
 
 import de.markusziller.alns.heuristic.strategies.ConstructionStrategy;
 import de.markusziller.alns.heuristic.strategies.ImprovementStrategy;

@@ -8,3 +8,5 @@ src/de/tum/ziller/thesis/thrp/log/*.xml
 /de/markusziller/alns/log/comp-experiment.xml
 output/solutions/*
 !output/solutions/.gitkeep
+output/instances/*
+!output/instances/.gitkeep

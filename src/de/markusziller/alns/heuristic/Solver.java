@@ -1,6 +1,6 @@
 package de.markusziller.alns.heuristic;
 
-import de.markusziller.alns.Constants;
+import de.markusziller.alns.utils.Constants;
 import de.markusziller.alns.entities.Instance;
 import de.markusziller.alns.entities.Solution;
 import de.markusziller.alns.exceptions.GeneralInfeasibilityException;

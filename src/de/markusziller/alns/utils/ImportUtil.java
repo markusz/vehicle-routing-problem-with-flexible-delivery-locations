@@ -9,7 +9,7 @@ public class ImportUtil {
 
     public static int[][] importSolomonRawData(int size, String name) throws IOException {
 
-        String dataFileName = "./import" + "/solomon" + "/solomon_" + size + "/" + name + ".txt";
+        String dataFileName = "./instances" + "/solomon" + "/solomon_" + size + "/" + name + ".txt";
 
         BufferedReader bReader = new BufferedReader(new FileReader(dataFileName));
 
@@ -49,7 +49,7 @@ public class ImportUtil {
 
     public static int[] importSolomonMetaData(int size, String name) throws IOException {
 
-        String dataFileName = "./import" + "/solomon" + "/solomon_" + size + "/" + name + ".txt";
+        String dataFileName = "./instances" + "/solomon" + "/solomon_" + size + "/" + name + ".txt";
         BufferedReader bReader = new BufferedReader(new FileReader(dataFileName));
 
         int[] values = new int[2];

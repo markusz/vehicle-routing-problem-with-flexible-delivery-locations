@@ -469,7 +469,73 @@
     </dimensions>  
     <solutions/> 
   </instance>  
-  <instance uuid="a1d4fd3e-b07c-455a-b927-0c3fff090809" created="08.04.2017 21:47:33">
+  <instance uuid="a1d4fd3e-b07c-455a-b927-0c3fff090809" created="08.04.2017 21:47:33"> 
+    <settings> 
+      <name>C101</name>  
+      <gamma>1.0</gamma>  
+      <rho>0.0</rho> 
+    </settings>  
+    <dimensions> 
+      <therapists>25</therapists>  
+      <rooms total="101"> 
+        <ward>0</ward>  
+        <tc>0</tc>  
+        <icu>100</icu> 
+      </rooms>  
+      <jobs total="100"> 
+        <ward>0</ward>  
+        <out>0</out>  
+        <icu>100</icu> 
+      </jobs>  
+      <qualifications>5</qualifications> 
+    </dimensions>  
+    <solutions/> 
+  </instance>  
+  <instance uuid="2daf9fb7-579c-4ae2-b0c5-5fcef4bd6698" created="08.04.2017 21:58:57"> 
+    <settings> 
+      <name>C101</name>  
+      <gamma>1.0</gamma>  
+      <rho>0.0</rho> 
+    </settings>  
+    <dimensions> 
+      <therapists>25</therapists>  
+      <rooms total="101"> 
+        <ward>0</ward>  
+        <tc>0</tc>  
+        <icu>100</icu> 
+      </rooms>  
+      <jobs total="100"> 
+        <ward>0</ward>  
+        <out>0</out>  
+        <icu>100</icu> 
+      </jobs>  
+      <qualifications>5</qualifications> 
+    </dimensions>  
+    <solutions/> 
+  </instance>  
+  <instance uuid="e5f03bed-ad5e-49f5-8f5d-2399cd1c2969" created="08.04.2017 22:00:47"> 
+    <settings> 
+      <name>C101</name>  
+      <gamma>1.0</gamma>  
+      <rho>0.0</rho> 
+    </settings>  
+    <dimensions> 
+      <therapists>25</therapists>  
+      <rooms total="101"> 
+        <ward>0</ward>  
+        <tc>0</tc>  
+        <icu>100</icu> 
+      </rooms>  
+      <jobs total="100"> 
+        <ward>0</ward>  
+        <out>0</out>  
+        <icu>100</icu> 
+      </jobs>  
+      <qualifications>5</qualifications> 
+    </dimensions>  
+    <solutions/> 
+  </instance>  
+  <instance uuid="f815adc2-1980-4976-9147-ef2eafde399c" created="08.04.2017 22:02:02">
     <settings>
       <name>C101</name>
       <gamma>1.0</gamma>
