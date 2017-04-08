@@ -13,6 +13,7 @@ import de.markusziller.alns.heuristic.visualization.ALNSProcessVisualizationMana
 import de.markusziller.alns.ui.charts.OperationsLinechart;
 import de.markusziller.alns.ui.charts.SolutionsLinechart;
 
+import java.io.IOException;
 import java.util.Random;
 import java.util.concurrent.Callable;
 
@@ -20,18 +21,30 @@ public class ALNSProcess implements Callable<Solution> {
     private final ALNSObserver o = new ALNSObserver();
     private final ALNSProcessVisualizationManager apvm = new ALNSProcessVisualizationManager();
     private final IALNSConfig config;
-    private final IALNSDestroy[] destroy_ops = new IALNSDestroy[]{new ProximityZoneDestroy(), new ZoneDestroy(), new NodesCountDestroy(false), new SubrouteDestroy(),
-            // new RelatedDestroy(),
-            new RandomDestroy(), new RandomRouteDestroy(), new WorstCostDestroy()};
-    private final IALNSRepair[] repair_ops = new IALNSRepair[]{new NRegretRepair(2), new NRegretRepair(3), new GreedyRepair()};
+    private final IALNSDestroy[] destroy_ops = new IALNSDestroy[]{
+            new ProximityZoneDestroy(),
+            new ZoneDestroy(),
+            new NodesCountDestroy(false),
+            new SubrouteDestroy(),
+            new RelatedDestroy(),
+            new RandomDestroy(),
+            new RandomRouteDestroy(),
+            new WorstCostDestroy()
+    };
+    private final IALNSRepair[] repair_ops = new IALNSRepair[]{
+            new NRegretRepair(2),
+            new NRegretRepair(3),
+            new GreedyRepair()
+    };
+
     private final Instance is;
     // private double c_uns;
     private final int F_log = 100;
     private final double T_end_t = 0.01;
     private long id;
-    // Globale beste L�sung
+    // Globale beste Lösung
     private Solution s_g = null;
-    // Aktuelle L�sung
+    // Aktuelle Lösung
     private Solution s_c = null;
     private boolean cpng = false;
     private int i = 0;
@@ -90,34 +103,22 @@ public class ALNSProcess implements Callable<Solution> {
         while (i <= config.getOmega()) {
             Solution s_c_new = s_c.clone();
             int q = getQ(s_c_new);
-            IALNSDestroy _destroy = getALNSDestroyOperator();
-            IALNSRepair _repair = getALNSRepairOperator();
-            o.onDestroyRepairOperationsObtained(this, _destroy, _repair, s_c_new, q);
-            Solution s_destroy = _destroy.destroy(s_c_new, q);
+            IALNSDestroy destroyOperator = getALNSDestroyOperator();
+            IALNSRepair repairOperator = getALNSRepairOperator();
+            o.onDestroyRepairOperationsObtained(this, destroyOperator, repairOperator, s_c_new, q);
+            Solution s_destroy = destroyOperator.destroy(s_c_new, q);
             o.onSolutionDestroy(this, s_destroy);
-            Solution s_t = _repair.repair(s_destroy);
+            Solution s_t = repairOperator.repair(s_destroy);
             o.onSolutionRepaired(this, s_t);
             if (fitness(s_t) < fitness(s_c)) {
                 s_c = s_t;
                 if (fitness(s_t) < fitness(s_g)) {
-                    System.out.println(String.format("[%d]: Found new global minimum: %.2f, Required Vehicles: %d, I_uns: %d", i, s_t.getCostFitness(), s_t.activeVehicles(), s_g.getUnscheduledJobs().size()));
-                    if (this.cpng) {
-                        OutputUtil.createPNG(s_t, i);
-                    }
-                    s_g = s_t;
-                    _destroy.addToPi(config.getSigma_1());
-                    _repair.addToPi(config.getSigma_1());
+                    handleNewGlobalMinimum(destroyOperator, repairOperator, s_t);
                 } else {
-                    _destroy.addToPi(config.getSigma_2());
-                    _repair.addToPi(config.getSigma_2());
+                    handleNewLocalMinimum(destroyOperator, repairOperator);
                 }
             } else {
-                double val = Math.exp(-((fitness(s_t) - fitness(s_c)) / T));
-                if (Math.random() < val) {
-                    s_c = s_t;
-                }
-                _destroy.addToPi(config.getSigma_3());
-                _repair.addToPi(config.getSigma_3());
+                handleWorseSolution(destroyOperator, repairOperator, s_t);
             }
             o.onAcceptancePhaseFinsihed(this, s_t);
             if (i % config.getTau() == 0 && i > 0) {
@@ -128,11 +129,40 @@ public class ALNSProcess implements Callable<Solution> {
             o.onIterationFinished(this, s_t);
             i++;
         }
+
         s_g.complete();
         long s = (System.currentTimeMillis() - t_start) / 1000;
         System.out.println(String.format("%02d:%02d", (s % 3600) / 60, (s % 60)));
         System.out.printf("FINAL RESULT [T%d][I%d]\t f(s_g): %-10.1f  \n", id, i, s_g.getCosts());
         return s_g;
+    }
+
+    private void handleWorseSolution(IALNSDestroy destroyOperator, IALNSRepair repairOperator, Solution s_t) {
+        double p_accept = calculateProbabilityToAcceptTempSolutionAsNewCurrent(s_t);
+        if (Math.random() < p_accept) {
+            s_c = s_t;
+        }
+        destroyOperator.addToPi(config.getSigma_3());
+        repairOperator.addToPi(config.getSigma_3());
+    }
+
+    private void handleNewLocalMinimum(IALNSDestroy destroyOperator, IALNSRepair repairOperator) {
+        destroyOperator.addToPi(config.getSigma_2());
+        repairOperator.addToPi(config.getSigma_2());
+    }
+
+    private void handleNewGlobalMinimum(IALNSDestroy destroyOperator, IALNSRepair repairOperator, Solution s_t) throws IOException {
+        System.out.println(String.format("[%d]: Found new global minimum: %.2f, Required Vehicles: %d, I_uns: %d", i, s_t.getCostFitness(), s_t.activeVehicles(), s_g.getUnscheduledJobs().size()));
+        if (this.cpng) {
+            OutputUtil.createPNG(s_t, i);
+        }
+        s_g = s_t;
+        destroyOperator.addToPi(config.getSigma_1());
+        repairOperator.addToPi(config.getSigma_1());
+    }
+
+    private double calculateProbabilityToAcceptTempSolutionAsNewCurrent(Solution s_t) {
+        return Math.exp(-((fitness(s_t) - fitness(s_c)) / T));
     }
 
     private void setLogStrategy() {
@@ -151,8 +181,7 @@ public class ALNSProcess implements Callable<Solution> {
         int q_u = Math.min((int) Math.ceil(0.20 * s_c2.getNoOfScheduledJobs()), 30);
 
         Random r = new Random();
-        int rr = r.nextInt(q_u - q_l + 1) + q_l;
-        return rr;
+        return r.nextInt(q_u - q_l + 1) + q_l;
     }
 
 

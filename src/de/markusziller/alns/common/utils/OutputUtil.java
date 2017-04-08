@@ -19,11 +19,7 @@ import java.util.Random;
 import java.util.Set;
 
 public class OutputUtil {
-    private static final String IMAGE_PATH = "src" +
-            File.separator + "de" +
-            File.separator + "markusziller" +
-            File.separator + "alns" +
-            File.separator + "image_output";
+    private static final String IMAGE_PATH = "output" + File.separator + "solutions";
 
     public static String formatMillis(long millis) {
         long t = millis / 1000;

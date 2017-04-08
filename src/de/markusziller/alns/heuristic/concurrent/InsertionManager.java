@@ -45,7 +45,6 @@ public class InsertionManager implements FutureCallback<Insertion> {
                     list.remove(list.last());
                     if (list.first().getCosts() < best) {
                         best = list.first().getCosts();
-//						log.info("Set new best solution with Costs of "+list.first().getCosts()+": "+list.first().getNode());
                     }
                 }
             }
@@ -56,7 +55,6 @@ public class InsertionManager implements FutureCallback<Insertion> {
     private synchronized void insertNodeSingle(Insertion result) {
         if (bestVal == null || result.getCosts() < bestVal.getCosts()) {
             bestVal = result;
-//					log.info("Set new best solution with Costs of "+bestVal.getCosts()+": "+bestVal.getNode());
         }
     }
 

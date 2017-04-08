@@ -42,18 +42,8 @@ public class XMLUtil {
                     "program-config.xml"
     );
 
-    private static final String INSTANCE_LOG_PATH = BASE_PATH.concat(
-            File.separator +
-                    "log" + File.separator +
-                    "instancelog.xml"
-    );
-
-    private static final String COMPEXP_LOG_PATH =
-            BASE_PATH.concat(
-                    File.separator +
-                            "log" + File.separator +
-                            "comp-experiment.xml"
-            );
+    private static final String INSTANCE_LOG_PATH = "logs" + File.separator + "instancelog.xml";
+    private static final String COMPEXP_LOG_PATH = "logs" + File.separator + "comp-experiment.xml";
 
 
     public static void logSolomon(Instance i) throws DocumentException, IOException {

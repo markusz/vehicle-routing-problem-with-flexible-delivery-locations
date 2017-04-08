@@ -99,23 +99,4 @@ public class Main {
             XMLUtil.logSolomon(i);
         }
     }
-
-    @SuppressWarnings("unused")
-    private static Solution[] solveRandomInstance(int cores, IALNSConfig c) throws GeneralInfeasibilityException, IOException, InterruptedException {
-        // Initialisiere Entit�tenpool
-        EntityPool.initPool();
-        // Lade Instanzkonfiguration
-        InstanceConfiguration ic = new InstanceConfiguration();
-        // Lade Instanzgenerator
-        InstanceGenerator ig = InstanceGenerator.getInstanceGenerator();
-        Instance i = ig.generateInstance(ic);
-        pu.persistToFilesystem(i);
-
-        Solver s = Solver.getSolver();
-
-        Solution is = s.getInitialSolution(i);
-        Solution[] ims = s.improveSolution(is, cores, c, new ControlParameter(true, true, true));
-
-        return ims;
-    }
 }

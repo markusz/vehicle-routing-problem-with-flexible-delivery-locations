@@ -42,10 +42,9 @@ public class ImprovementHeuristic implements ImprovementStrategy {
 
     @Override
     public Solution[] improveSolution(Solution s, int threads, IALNSConfig ac, ControlParameter cp) throws InterruptedException {
-        Integer cores = threads;
-        ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(cores));
+        ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(threads));
         ALNSProcessManager apm = new ALNSProcessManager();
-        for (int i = 0; i < cores; i++) {
+        for (int i = 0; i < threads; i++) {
             ListenableFuture<Solution> thread = service.submit(new ALNSProcess(s, ac, cp));
             Futures.addCallback(thread, apm);
         }
