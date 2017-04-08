@@ -13,7 +13,9 @@ import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,35 +24,35 @@ import java.util.TreeSet;
 public class XMLUtil {
 
     private static final Logger log = org.apache.logging.log4j.LogManager.getLogger(XMLUtil.class);
-    private static final String BASE_PATH = new StringBuilder("src")
-            .append(File.separator)
-            .append("de").append(File.separator)
-            .append("markusziller").append(File.separator)
-            .append("alns").toString();
+    private static final String BASE_PATH = "src" +
+            File.separator +
+            "de" + File.separator +
+            "markusziller" + File.separator +
+            "alns";
 
     private static final String SYSTEM_CONFIG_PATH = BASE_PATH.concat(
-            new StringBuilder(File.separator)
-                    .append("config").append(File.separator)
-                    .append("system-config.xml").toString()
+            File.separator +
+                    "config" + File.separator +
+                    "system-config.xml"
     );
 
     private static final String PROGRAM_CONFIG_PATH = BASE_PATH.concat(
-            new StringBuilder(File.separator)
-                    .append("config").append(File.separator)
-                    .append("program-config.xml").toString()
+            File.separator +
+                    "config" + File.separator +
+                    "program-config.xml"
     );
 
     private static final String INSTANCE_LOG_PATH = BASE_PATH.concat(
-            new StringBuilder(File.separator)
-                    .append("log").append(File.separator)
-                    .append("instancelog.xml").toString()
+            File.separator +
+                    "log" + File.separator +
+                    "instancelog.xml"
     );
 
     private static final String COMPEXP_LOG_PATH =
             BASE_PATH.concat(
-                    new StringBuilder(File.separator)
-                            .append("log").append(File.separator)
-                            .append("comp-experiment.xml").toString()
+                    File.separator +
+                            "log" + File.separator +
+                            "comp-experiment.xml"
             );
 
 
@@ -142,7 +144,6 @@ public class XMLUtil {
             }
         }
 
-        // TODO Auto-generated method stub
         return routes;
     }
 
@@ -443,7 +444,5 @@ public class XMLUtil {
         for (Solution solution : ims) {
             logSolomon(solution);
         }
-        // TODO Auto-generated method stub
-
     }
 }

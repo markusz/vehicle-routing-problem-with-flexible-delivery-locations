@@ -6,8 +6,8 @@ import de.markusziller.alns.heuristic.strategies.alns.ALNSAbstractOperation;
 
 public class ALNSStrategieVisualizationManager implements IStrategyVisualizer {
 
-    private final IStrategyVisualizer CONSOLE = new ConsolePrintVisualizer();
     public final IStrategyVisualizer GUI = new GUIVisualizer();
+    private final IStrategyVisualizer CONSOLE = new ConsolePrintVisualizer();
     private final IStrategyVisualizer NONE = new DoNothingVisualizer();
 
     private IStrategyVisualizer ON_JOB_PLANNED = CONSOLE;

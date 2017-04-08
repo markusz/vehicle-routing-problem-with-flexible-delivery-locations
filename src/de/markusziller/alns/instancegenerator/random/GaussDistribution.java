@@ -10,15 +10,12 @@ import java.util.Random;
 
 public class GaussDistribution implements IProbabilityDistribution {
 
-    private Normal gaussian;
     //	Normal normal;
 //	Double lambda;
     private final Random randomGenerator;
+    private Normal gaussian;
 
-    /**
-     * Lambda of the underlying Poisson distribution
-     *
-     */
+
     public GaussDistribution(Double mean, Double deviance) {
 //		this.lambda = lambda;
         this.gaussian = new Normal(mean, deviance, new DRand(new Date()));

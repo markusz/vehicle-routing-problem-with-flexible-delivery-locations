@@ -6,12 +6,7 @@ import de.markusziller.alns.heuristic.strategies.alns.ALNSAbstractOperation;
 
 import java.util.ArrayList;
 
-/**
- * Zieht einen zuf�lligen Startknoten und konstruiert von ihm ausgehend eine Route der L�nge q nach dem Greedy Prinzip. Diese Route wird
- * anschlie�end entfernt
- *
- * @author Markus
- */
+
 public class SubrouteDestroy extends ALNSAbstractOperation implements IALNSDestroy {
     @Override
     public Solution destroy(Solution from, int q) throws Exception {

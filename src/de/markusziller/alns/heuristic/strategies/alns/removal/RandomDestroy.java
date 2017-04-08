@@ -7,11 +7,7 @@ import de.markusziller.alns.heuristic.strategies.alns.ALNSAbstractOperation;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- * Entfernt q zuf�llige Knoten
- *
- * @author Markus
- */
+
 public class RandomDestroy extends ALNSAbstractOperation implements IALNSDestroy {
     @Override
     public Solution destroy(Solution from, int q) {

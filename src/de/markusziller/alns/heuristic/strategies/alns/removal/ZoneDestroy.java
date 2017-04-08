@@ -7,12 +7,7 @@ import de.markusziller.alns.heuristic.strategies.alns.ALNSAbstractOperation;
 import java.util.ArrayList;
 import java.util.TreeSet;
 
-/**
- * Such die zwei Punkte die sich am n�hsten sind, aber auf verschiedenen Routen verlaufen. W�hlt zuf�llig einen aus und entfernt davon
- * ausgehend die q-1 n�hesten Knoten.
- *
- * @author Markus
- */
+
 public class ZoneDestroy extends ALNSAbstractOperation implements IALNSDestroy {
     @Override
     public Solution destroy(Solution s, int q) throws Exception {

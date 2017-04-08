@@ -181,15 +181,7 @@ public class Solution implements Cloneable, Serializable {
         ssw = null;
     }
 
-    /**
-     * F�gt einen Job-Raum Kombination in den Graph ein. Gibt die Route auf der die Aktion eingef�gt wurde zur�ck
-     *
-     * @param i
-     * @return
-     * @throws RouteConstructionException
-     * @author Markus Z.
-     * @date 21.12.2013
-     */
+
     public Route apply(Insertion i) throws RouteConstructionException {
 
         Set<Route> R = routes.get(i.getTherapist());
@@ -207,12 +199,7 @@ public class Solution implements Cloneable, Serializable {
         throw new RouteConstructionException("No fitting Pathway of Therapist " + i.getTherapist().getName() + " has been found for the PNI");
     }
 
-    /**
-     * @param n
-     * @throws RouteConstructionException
-     * @author Markus Z.
-     * @date 27.12.2013
-     */
+
     public void remove(Node n) throws RouteConstructionException {
         for (Therapist t : routes.keySet()) {
             Set<Route> R = routes.get(t);
@@ -230,12 +217,7 @@ public class Solution implements Cloneable, Serializable {
 
     }
 
-    /**
-     * @param n
-     * @throws RouteConstructionException
-     * @author Markus Z.
-     * @date 27.12.2013
-     */
+
     public void remove(Node n, Route r) throws RouteConstructionException {
 
         if (!r.contains(n)) {
@@ -247,7 +229,6 @@ public class Solution implements Cloneable, Serializable {
             unscheduledJobs.add(n.getJob());
             update();
             costs = getSolutionCosts();
-            return;
         }
 
     }
@@ -272,10 +253,7 @@ public class Solution implements Cloneable, Serializable {
         return ssw.R_availabilities;
     }
 
-    /**
-     * @author Markus Z.
-     * @date 27.12.2013
-     */
+
     public void update() {
 
         updateAllNodes();
@@ -424,16 +402,10 @@ public class Solution implements Cloneable, Serializable {
             sum += j.getDurationSlots();
         }
 
-        return new Double(sum) / new Double(unscheduledJobs.size());
+        return new Double(sum) / (double) unscheduledJobs.size();
     }
 
-    /**
-     * clone() methode.
-     *
-     * @return
-     * @author Markus Z.
-     * @date 30.06.2013
-     */
+
     @Override
     public Solution clone() {
         if (cloner == null) {
@@ -477,11 +449,7 @@ public class Solution implements Cloneable, Serializable {
         return false;
     }
 
-    /**
-     * @return
-     * @author Markus Z.
-     * @date 27.12.2013
-     */
+
     public int getNoOfScheduledJobs() {
         int cnt = 0;
 
@@ -496,11 +464,7 @@ public class Solution implements Cloneable, Serializable {
         return cnt;
     }
 
-    /**
-     * @return
-     * @author Markus Z.
-     * @date 27.12.2013
-     */
+
     private Double getSolutionCosts() {
         double c = 0.;
         for (Therapist t : instance.getTherapists()) {
@@ -587,11 +551,7 @@ public class Solution implements Cloneable, Serializable {
         return i;
     }
 
-    /**
-     * @return
-     * @author Markus Z.
-     * @date 27.12.2013
-     */
+
     public String getGraphicalOutput() {
         return OutputUtil.graphicalOutput(this);
     }
@@ -654,13 +614,12 @@ public class Solution implements Cloneable, Serializable {
 
     static class SolutionStatusWrapper implements Serializable {
 
-        /**
-         *
-         */
+
         private static final long serialVersionUID = 2973784589420087042L;
         private transient TreeMultimap<Therapist, Timeslot> P_availabilities = TreeMultimap.create(Comparators.THERAPIST_ID_ASCENDING, Comparators.TIMESLOTS_ASCENDING_BY_START);
         private transient TreeMap<Therapist, Room[]> P_locations = new TreeMap<>(Comparators.THERAPIST_ID_ASCENDING);
         private transient TreeMultimap<Room, Timeslot> R_availabilities = TreeMultimap.create(Comparators.ROOM_ID_ASCENDING, Comparators.TIMESLOTS_ASCENDING_BY_START);
+
         @java.beans.ConstructorProperties({"P_availabilities", "P_locations", "R_availabilities"})
         public SolutionStatusWrapper(TreeMultimap<Therapist, Timeslot> P_availabilities, TreeMap<Therapist, Room[]> P_locations, TreeMultimap<Room, Timeslot> R_availabilities) {
             this.P_availabilities = P_availabilities;

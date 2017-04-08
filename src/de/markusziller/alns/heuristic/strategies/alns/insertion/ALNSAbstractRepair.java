@@ -18,15 +18,6 @@ abstract class ALNSAbstractRepair extends ALNSAbstractOperation {
 
     }
 
-    protected boolean isTabu(Job j, Therapist t, Room r, Integer start) {
-        for (Insertion pni : getTabus()) {
-            if (pni.getTherapist() == t && pni.getNode().getJob() == j && pni.getNode().getRoom() == r && start == pni.getStart()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     boolean containsTabu(Job j, Therapist t) {
         for (Insertion pni : getTabus()) {
             if (pni.getTherapist() == t && pni.getNode().getJob() == j) {

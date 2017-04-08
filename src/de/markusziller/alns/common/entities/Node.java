@@ -58,18 +58,16 @@ public class Node implements Comparable<Node> {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+        String sb = "[" +
+                getStart() +
+                "," +
+                getEnd() +
+                "]: " +
+                job.getName() +
+                ", " +
+                room.getName();
 
-        sb.append("[")
-                .append(getStart())
-                .append(",")
-                .append(getEnd())
-                .append("]: ")
-                .append(job.getName())
-                .append(", ")
-                .append(room.getName());
-
-        return sb.toString();
+        return sb;
     }
 
     //	@Override

@@ -19,12 +19,11 @@ import java.util.Random;
 import java.util.Set;
 
 public class OutputUtil {
-    private static final String IMAGE_PATH = new StringBuilder("src")
-            .append(File.separator).append("de")
-            .append(File.separator).append("markusziller")
-            .append(File.separator).append("alns")
-            .append(File.separator).append("image_output")
-            .toString();
+    private static final String IMAGE_PATH = "src" +
+            File.separator + "de" +
+            File.separator + "markusziller" +
+            File.separator + "alns" +
+            File.separator + "image_output";
 
     public static String formatMillis(long millis) {
         long t = millis / 1000;
@@ -220,34 +219,22 @@ public class OutputUtil {
 
     public static String graphicalOutput(Solution s) {
         StringBuilder sb = new StringBuilder();
-        /*
-          F�r alle Therapeuten
-         */
+
         for (Therapist t : s.getRoutes().keySet()) {
             sb.append("\n").append(t.getName()).append("\n");
-            /*
-              Schichtzeiten - start und ende sind inclusive
-             */
+
             Integer start = s.getShiftBoundsForTherapist(t).getStart();
             Integer end = s.getShiftBoundsForTherapist(t).getEnd();
-            /*
-              Zeit vor der Schicht wird ausgegeben
-             */
+
             for (int ii = 0; ii < start; ii++) {
                 sb.append("_");
             }
             sb.append("|");
-            /*
-              Iteration �ber alle Pathways des Therapeuten
-             */
+
             Set<Node> nods = s.getAllNodes(t);
-            /*
-              Betrachtung aller Knoten
-             */
+
             for (Node pathwayNode : nods) {
-                /*
-                  Iteration �ber Zeitr�ume f�r Knoten
-                 */
+
                 for (int ii = pathwayNode.getTime().getStart(); ii <= pathwayNode.getTime().getEnd(); ii++) {
                     if (pathwayNode.getJob().getClass() == BreakJob.class) {
                         sb.append("o");

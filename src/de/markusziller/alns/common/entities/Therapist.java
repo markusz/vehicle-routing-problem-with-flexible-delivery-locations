@@ -9,27 +9,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Ein Therapeut
- *
- * @author Markus
- */
+
 public class Therapist extends Identifiable implements Comparable<Therapist>, Serializable {
 
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 8951314154337865392L;
 
-    /**
-     * List of Attributes
-     * **********************
-     */
+    private static final long serialVersionUID = 8951314154337865392L;
+    private final Set<Qualification> qualifications = new HashSet<>();
+
 
     private String name = "";
-
-    private final Set<Qualification> qualifications = new HashSet<>();
     private List<Timeslot> available;
     private Timeslot firstPauseRange;
     private Timeslot secondPauseRange;

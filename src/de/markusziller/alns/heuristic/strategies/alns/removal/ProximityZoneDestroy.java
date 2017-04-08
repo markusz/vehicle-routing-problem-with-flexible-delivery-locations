@@ -6,14 +6,7 @@ import de.markusziller.alns.heuristic.strategies.alns.ALNSAbstractOperation;
 
 import java.util.ArrayList;
 
-/**
- * W�hlt einen zuf�lligen Knoten. Entfernt alle Knoten die sich in einem Gebiet der X*Y / n um den Knoten befinden. X entspricht dem
- * maximalen x Abstand aller Knoten, y analog n entspricht der nummer an Jobs
- * <p>
- * Sind weniger als q Knoten in diesem gebiet wird die Fl�che dieses Solange vervierfacht, bis q knoten gefunden wurden
- * <p>
- * * @author Markus
- */
+
 public class ProximityZoneDestroy extends ALNSAbstractOperation implements IALNSDestroy {
     @Override
     public Solution destroy(Solution from, int q) throws Exception {

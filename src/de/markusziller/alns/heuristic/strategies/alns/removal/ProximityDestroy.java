@@ -8,11 +8,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.TreeSet;
 
-/**
- * Zieht einen zuf�lligen Startknoten und entfernt die q am n�chsten gelegenen Knoten
- *
- * @author Markus
- */
+
 public class ProximityDestroy extends ALNSAbstractOperation implements IALNSDestroy {
     @Override
     public Solution destroy(Solution from, int q) throws Exception {

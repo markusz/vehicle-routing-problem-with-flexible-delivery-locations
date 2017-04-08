@@ -238,9 +238,7 @@ public class PersistenceUtil {
         return s;
     }
 
-    /**
-     * HELPER --->
-     */
+
 
 
     private void connectToDB() {
@@ -249,9 +247,7 @@ public class PersistenceUtil {
                 Class.forName("com.mysql.jdbc.Driver");
                 con = DriverManager.getConnection("jdbc:mysql://localhost/thrp", XMLUtil.getProgramConfigXMLEntry("sqluser"), XMLUtil.getProgramConfigXMLEntry("sqlpw"));
             }
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (DocumentException e) {
+        } catch (SQLException | ClassNotFoundException | DocumentException e) {
             e.printStackTrace();
         }
     }
@@ -267,7 +263,7 @@ public class PersistenceUtil {
     @SuppressWarnings("unchecked")
     private Object getEntityFromFilesystem(String subpath, String id) throws IOException, ClassNotFoundException {
 
-        Iterator<File> it = FileUtils.iterateFiles(new File(new StringBuilder().append("./files/").append(subpath).append("/").toString()), new String[]{"thrp"}, false);
+        Iterator<File> it = FileUtils.iterateFiles(new File("./files/" + subpath + "/"), new String[]{"thrp"}, false);
 
         File f = null;
 
@@ -296,7 +292,7 @@ public class PersistenceUtil {
     }
 
     private void persistToFilesystem(Object i, String subpath, String filename) throws IOException {
-        String p = new StringBuilder().append("./files/").append(subpath).append("/").append(filename).append(".thrp").toString();
+        String p = "./files/" + subpath + "/" + filename + ".thrp";
 
         OutputStream file = new FileOutputStream(p);
         OutputStream buffer = new BufferedOutputStream(file);

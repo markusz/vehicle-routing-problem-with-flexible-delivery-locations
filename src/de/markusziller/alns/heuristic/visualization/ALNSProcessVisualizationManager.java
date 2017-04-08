@@ -7,17 +7,16 @@ import de.markusziller.alns.heuristic.strategies.phasetwo.ALNSProcess;
 
 public class ALNSProcessVisualizationManager implements IProcessVisualizer {
 
-    private final IProcessVisualizer CONSOLE = new ConsolePrintVisualizer();
     public final IProcessVisualizer GUI = new GUIVisualizer();
     public final IProcessVisualizer NONE = new DoNothingVisualizer();
-
+    private final IProcessVisualizer CONSOLE = new ConsolePrintVisualizer();
+    private final IProcessVisualizer ON_ITERATION_FINISHED = CONSOLE;
     private IProcessVisualizer ON_THREAD_START = CONSOLE;
     private IProcessVisualizer ON_START_CONFIG_OBTAINED = CONSOLE;
     private IProcessVisualizer AFTER_DESTROY = NONE;
     private IProcessVisualizer AFTER_REPAIR = NONE;
     private IProcessVisualizer PERIODIC_SOLUTION_STATUS = CONSOLE;
     private IProcessVisualizer PERIODIC_ROULETTE_WHEEL_STATUS = CONSOLE;
-    private final IProcessVisualizer ON_ITERATION_FINISHED = CONSOLE;
 
     @Override
     public void onThreadStart(ALNSProcess a) {
@@ -89,7 +88,6 @@ public class ALNSProcessVisualizationManager implements IProcessVisualizer {
 
     @Override
     public void onSegmentFinsihed(ALNSProcess a, Solution s_t) {
-        // TODO Auto-generated method stub
 
     }
 

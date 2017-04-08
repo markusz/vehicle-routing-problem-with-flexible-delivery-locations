@@ -48,7 +48,6 @@ public class CustomRenderer extends JLabel implements TableCellRenderer {
         if (column == 0) {
             setText(t.getName());
             setBackground(Color.ORANGE);
-            return;
         } else {
 
             Set<Node> nodes = new HashSet<>();

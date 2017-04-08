@@ -19,9 +19,7 @@ import java.util.logging.Logger;
 
 public class InstanceConfiguration implements Serializable {
 
-    /**
-     *
-     */
+
     private static final long serialVersionUID = -7862267106160181806L;
 
 
@@ -53,9 +51,7 @@ public class InstanceConfiguration implements Serializable {
     private Double avgJobsPerWard = (WardJobsRatio * totalJobsQuantity) / (WardRoomsRatio * totalRoomsQuantity);
     private Double avgJobsPerICU = (ICUJobsRatio * totalJobsQuantity) / (ICURoomsRatio * totalRoomsQuantity);
     private Double avgJobsPerTC = (OutpatientJobsRatio * totalJobsQuantity) / (TCRoomsRatio * totalRoomsQuantity);
-    /**
-     * in minutes
-     */
+
     private Integer minutesPerTimeslot = 15;
     private Integer minutesPerPlanningHorizon = 24 * 60;
     private Integer numberOfTimeSlots = minutesPerPlanningHorizon / minutesPerTimeslot;
@@ -63,10 +59,7 @@ public class InstanceConfiguration implements Serializable {
     private Integer firstBreakFlexibility_MINUTES = 30;
     private Integer secondBreakLength_MINUTES = 15;
     private Integer secondBreakFlexibility_MINUTES = 30;
-    /**
-     * Min, Avg. Max Jobl�ngen in Minuten pro Job
-     * [0] = ICU, [1] = Ward, [2] = Outpatient
-     */
+
     private Integer[] JobMinLengths_MINUTES = new Integer[]{Math.max(10, minutesPerTimeslot), Math.max(10, minutesPerTimeslot), Math.max(10, minutesPerTimeslot)};
     private Integer[] JobAvgLengths_MINUTES = new Integer[]{20, 20, 20};
     private Integer[] JobMaxLengths_MINUTES = new Integer[]{45, 45, 45};
@@ -74,10 +67,7 @@ public class InstanceConfiguration implements Serializable {
     private Integer firstBreakFlexibility = (int) Math.floor(firstBreakFlexibility_MINUTES.doubleValue() / minutesPerTimeslot.doubleValue());
     private Integer secondBreakLength = (int) Math.floor(secondBreakLength_MINUTES.doubleValue() / minutesPerTimeslot.doubleValue());
     private Integer secondBreakFlexibility = (int) Math.floor(secondBreakFlexibility_MINUTES.doubleValue() / minutesPerTimeslot.doubleValue());
-    /**
-     * Min, Avg. Max Jobl�ngen in Timeslots pro Job
-     * [0] = ICU, [1] = Ward, [2] = Outpatient
-     */
+
     private Integer[] JobMinLengths_TS = new Integer[]{
             (int) Math.floor(JobMinLengths_MINUTES[0].doubleValue() / minutesPerTimeslot.doubleValue()),
             (int) Math.floor(JobMinLengths_MINUTES[1].doubleValue() / minutesPerTimeslot.doubleValue()),
@@ -94,7 +84,7 @@ public class InstanceConfiguration implements Serializable {
     private Integer[] possibleShiftLengths = new Integer[]{4 * 60 / minutesPerTimeslot, 8 * 60 / minutesPerTimeslot};
 
 
-//	private Integer ICUJobMinLength_MINUTES = 10;
+    //	private Integer ICUJobMinLength_MINUTES = 10;
 //	private Integer ICUJobMaxLength_MINUTES = 45;
 //	private Integer WardJobMinLength_MINUTES = 10;
 //	private Integer WardJobMaxLength_MINUTES = 45;
@@ -111,16 +101,11 @@ public class InstanceConfiguration implements Serializable {
     private transient IProbabilityDistribution timeslotToJobAssignment = new PoissonDistribution(2. + Math.random() * 2.);
     private transient IProbabilityDistribution shiftStartAssignment = new EqualDistribution();
     private transient IProbabilityDistribution shiftDurationAssignment = new GaussDistribution(0.0, 1.3);
-    /**
-     * *********************************
-     * <p>
-     * IMPORT SETTINGS
-     * <p>
-     * *********************************
-     */
+
 
 //	private double gamma = 1.0;
     private boolean useQ = false;
+
     @java.beans.ConstructorProperties({"qualificationsQuantity", "therapistsQuantity", "totalRoomsQuantity", "totalJobsQuantity", "ICURoomsQuantity", "WardRoomsQuantity", "TCRoomsQuantity", "ICURoomsRatio", "WardRoomsRatio", "TCRoomsRatio", "costPerCell", "routingCostFactor", "patientTransportCostFactor", "ICUJobsQuantity", "WardJobsQuantity", "OutpatientJobsQuantity", "ICUJobsRatio", "WardJobsRatio", "OutpatientJobsRatio", "avgJobsPerWard", "avgJobsPerICU", "avgJobsPerTC", "minutesPerTimeslot", "minutesPerPlanningHorizon", "numberOfTimeSlots", "firstBreakLength_MINUTES", "firstBreakFlexibility_MINUTES", "secondBreakLength_MINUTES", "secondBreakFlexibility_MINUTES", "JobMinLengths_MINUTES", "JobAvgLengths_MINUTES", "JobMaxLengths_MINUTES", "firstBreakLength", "firstBreakFlexibility", "secondBreakLength", "secondBreakFlexibility", "JobMinLengths_TS", "JobAvgLengths_TS", "JobMaxLengths_TS", "possibleShiftStartingSlots", "possibleShiftLengths", "qualificationToTherapistAssignment", "qualificationToJobAssignment", "timeslotToJobAssignment", "shiftStartAssignment", "shiftDurationAssignment", "roomToJobAssignment", "useQ"})
     private InstanceConfiguration(Integer qualificationsQuantity, Integer therapistsQuantity, Integer totalRoomsQuantity, Integer totalJobsQuantity, Integer ICURoomsQuantity, Integer WardRoomsQuantity, Integer TCRoomsQuantity, Double ICURoomsRatio, Double WardRoomsRatio, Double TCRoomsRatio, Double costPerCell, Double routingCostFactor, Double patientTransportCostFactor, Integer ICUJobsQuantity, Integer WardJobsQuantity, Integer OutpatientJobsQuantity, Double ICUJobsRatio, Double WardJobsRatio, Double OutpatientJobsRatio, Double avgJobsPerWard, Double avgJobsPerICU, Double avgJobsPerTC, Integer minutesPerTimeslot, Integer minutesPerPlanningHorizon, Integer numberOfTimeSlots, Integer firstBreakLength_MINUTES, Integer firstBreakFlexibility_MINUTES, Integer secondBreakLength_MINUTES, Integer secondBreakFlexibility_MINUTES, Integer[] JobMinLengths_MINUTES, Integer[] JobAvgLengths_MINUTES, Integer[] JobMaxLengths_MINUTES, Integer firstBreakLength, Integer firstBreakFlexibility, Integer secondBreakLength, Integer secondBreakFlexibility, Integer[] JobMinLengths_TS, Integer[] JobAvgLengths_TS, Integer[] JobMaxLengths_TS, Integer[] possibleShiftStartingSlots, Integer[] possibleShiftLengths, IProbabilityDistribution qualificationToTherapistAssignment, IProbabilityDistribution qualificationToJobAssignment, IProbabilityDistribution timeslotToJobAssignment, IProbabilityDistribution shiftStartAssignment, IProbabilityDistribution shiftDurationAssignment, Multimap<Class, Class> roomToJobAssignment, boolean useQ) {
         this.qualificationsQuantity = qualificationsQuantity;

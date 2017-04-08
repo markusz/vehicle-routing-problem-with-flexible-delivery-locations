@@ -12,10 +12,7 @@ import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
 
-/**
- * Entfernt die Routen mit den wenigsten/meisten Knoten, jedoch nie mehr als q Knoten. Es werden nur ganzen Routen entfernt
- *
- */
+
 public class NodesCountDestroy extends ALNSAbstractOperation implements IALNSDestroy {
     private int c_g = 1;
     private int c_l = -1;

@@ -1,11 +1,11 @@
 package de.markusziller.alns.ui.charts;
 
 import de.markusziller.alns.common.entities.Solution;
-import de.markusziller.alns.heuristic.visualization.IProcessVisualizer;
 import de.markusziller.alns.heuristic.strategies.alns.IALNSOperation;
 import de.markusziller.alns.heuristic.strategies.alns.insertion.IALNSRepair;
 import de.markusziller.alns.heuristic.strategies.alns.removal.IALNSDestroy;
 import de.markusziller.alns.heuristic.strategies.phasetwo.ALNSProcess;
+import de.markusziller.alns.heuristic.visualization.IProcessVisualizer;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;

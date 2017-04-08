@@ -3,18 +3,18 @@ package de.markusziller.alns.heuristic.strategies.alns;
 import com.google.common.base.Objects;
 import de.markusziller.alns.common.entities.*;
 import de.markusziller.alns.common.entities.jobs.TreatmentJob;
-import de.markusziller.alns.heuristic.visualization.ALNSStrategieVisualizationManager;
 import de.markusziller.alns.heuristic.strategies.alns.removal.Removal;
+import de.markusziller.alns.heuristic.visualization.ALNSStrategieVisualizationManager;
 
 import java.util.*;
 
 public abstract class ALNSAbstractOperation implements IALNSOperation {
     protected final ALNSStrategieVisualizationManager asvm = new ALNSStrategieVisualizationManager();
+    private final Random r = new Random();
     private int pi;
     private double p;
     private int draws;
     private double w;
-    private final Random r = new Random();
 
     @Override
     public ALNSStrategieVisualizationManager getVisualizationManager() {
@@ -32,7 +32,7 @@ public abstract class ALNSAbstractOperation implements IALNSOperation {
     }
 
     public ArrayList<Node> treatmentNodesToArrayList(Solution s) {
-        ArrayList<Node> N = new ArrayList<Node>();
+        ArrayList<Node> N = new ArrayList<>();
         Set<Node> N_all = s.getAllNodes();
         for (Node n : N_all) {
             if (n.getJob() instanceof TreatmentJob) {
@@ -43,7 +43,7 @@ public abstract class ALNSAbstractOperation implements IALNSOperation {
     }
 
     protected ArrayList<Removal> getRemovals(Solution s) {
-        ArrayList<Removal> n = new ArrayList<Removal>();
+        ArrayList<Removal> n = new ArrayList<>();
         for (Therapist t : s.getRoutes().keySet()) {
             for (Route r : s.getRoutes().get(t)) {
                 for (Node node : r.getN()) {

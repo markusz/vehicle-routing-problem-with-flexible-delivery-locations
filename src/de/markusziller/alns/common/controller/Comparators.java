@@ -76,32 +76,4 @@ public class Comparators {
         }
     };
 
-    public static Comparator<Integer> INTEGER_DESCENDING = new Comparator<Integer>() {
-
-        @Override
-        public int compare(Integer t1, Integer t2) {
-            if (t1 > t2) {
-                return -1;
-            }
-            if (t1 < t2) {
-                return 1;
-            } else
-                return 0;
-        }
-    };
-
-    public static Comparator<Node> NODE_START_ASCENDING_ONLY_TIME_CONSIDERED = new Comparator<Node>() {
-        @Override
-
-        public int compare(Node i, Node j) {
-            if (i.getTime().getStart() > j.getTime().getStart()) {
-                return 1;
-            }
-            if (i.getTime().getStart() < j.getTime().getStart()) {
-                return -1;
-            } else {
-                return 0;
-            }
-        }
-    };
 }

@@ -24,7 +24,7 @@ public class BoundJobRatio implements IMetric {
             }
         }
         // TODO Auto-generated method stub
-        return cnt / new Double(i.getJobs().size());
+        return cnt / (double) i.getJobs().size();
     }
 
 }

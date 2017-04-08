@@ -1,11 +1,11 @@
 package de.markusziller.alns.ui.charts;
 
 import de.markusziller.alns.common.entities.Solution;
-import de.markusziller.alns.heuristic.visualization.IProcessVisualizer;
 import de.markusziller.alns.heuristic.strategies.alns.config.IALNSConfig;
 import de.markusziller.alns.heuristic.strategies.alns.insertion.IALNSRepair;
 import de.markusziller.alns.heuristic.strategies.alns.removal.IALNSDestroy;
 import de.markusziller.alns.heuristic.strategies.phasetwo.ALNSProcess;
+import de.markusziller.alns.heuristic.visualization.IProcessVisualizer;
 import lombok.SneakyThrows;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
@@ -24,18 +24,17 @@ public class SolutionsLinechart implements IProcessVisualizer {
 
     private final NumberAxis yAxis = new NumberAxis("c");
     private final NumberAxis xAxis = new NumberAxis("i");
-    private double c_start;
     private final XYSeries xy_s_c = new XYSeries("s_c");
     private final XYSeries xy_s_g = new XYSeries("s_g");
     private final XYSeries xy_s_t = new XYSeries("s_t");
-    private IALNSConfig c;
-    private JFreeChart chart;
+    private final ALNSProcess alns;
     XYTextAnnotation annotation;
-    private long time;
     //	private SolutionsLinechart sl;
     double best_complete_solved = 0;
-
-    private final ALNSProcess alns;
+    private double c_start;
+    private IALNSConfig c;
+    private JFreeChart chart;
+    private long time;
 
     public SolutionsLinechart(ALNSProcess a) {
         this.alns = a;

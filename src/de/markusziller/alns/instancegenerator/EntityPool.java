@@ -16,19 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Der EntityPool is ein reiner Entit�tenspeicher, welcher eine gro�e Menge an nutzerfreundlichen Entit�ten bereit h�lt aus denen Instanzen
- * erzeugt werden k�nnen. Er liefert lediglich Objekte welche <b><i>KEINE BEZIEHUNGEN UNTEREINANDER BESITZEN</b></i>, d.h. Therapeuten sind
- * skilllos, Jobs brauchen keine Skills, etc.
- *
- * @author Markus
- */
+
 public class EntityPool {
     private static final String[] therapistFirstNames = new String[]{"Andreas", "Bernd", "Christian", "Daniela", "Elke", "Friedrich", "Gerda", "Hubert", "Inge", "Johannes", "Karl",
             "Lukas", "Markus", "Nadine", "Olaf", "Peter", "Quentin", "Rosa", "Stefanie", "Thomas", "Udo", "Verena", "Walter", "Xaver", "Yvonne", "Zenta"};
     private static final String[] therapistSecondNames = new String[]{"A.", "B.", "C.", "D.", "E.", "F.", "G.", "H.", "I.", "J.", "K.", "L.", "M.", "N.", "O.", "P.", "Q.", "R.", "S.",
             "T.", "U.", "V.", "W.", "X.", "Y.", "Z."};
     private static final String[] qualifications = new String[]{"Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7"};
+    private static final Room breakroom = new BreakRoom(0, "BreakRoom");
     private static List<Therapist> therapistsMaster = null;
     private static List<Qualification> qualificationMaster = null;
     private static List<ICU> ICURoomMaster = null;
@@ -39,11 +34,8 @@ public class EntityPool {
     private static List<WardJob> WARDJobMaster = null;
     private static List<OutpatientJob> OutpatientJobMaster = null;
     private static List<Job> genericJobMaster = null;
-    private static final Room breakroom = new BreakRoom(0, "BreakRoom");
 
-    /**
-     * F�llt den Entit�tenpool aus dem bei der Instanzerzeugung die verwendeten Entit�ten (Jobs, Therapeuten, ..) gezogen werden.
-     */
+
     public static void initPool() {
         therapistsMaster = new ArrayList<>();
         qualificationMaster = new ArrayList<>();
@@ -107,17 +99,7 @@ public class EntityPool {
         genericJobMaster.addAll(OutpatientJobMaster);
     }
 
-    /**
-     * Gibt eine Liste mit n (oder allen, wenn n > anzahl(T) ist) Therapeuten zur�ck.<br>
-     * <br>
-     * <p>
-     * Es wird die default Instanzkonfiguration verwendet
-     *
-     * @param n
-     * @return Liste mit n (oder allen, wenn n > anzahl(T) ist) Therapeuten
-     * @author Markus Z.
-     * @date 15.06.2013
-     */
+
     public static List<Therapist> getNTherapists(Integer n) {
         return getNTherapists(n, new InstanceConfiguration());
     }
@@ -135,18 +117,7 @@ public class EntityPool {
         }
     }
 
-    /**
-     * Gibt eine Liste mit n (oder allen, wenn n > anzahl(T) ist) Therapeuten zur�ck.<br>
-     * <br>
-     * <p>
-     * Es wird die �bergebene Instanzkonfiguration verwendet
-     *
-     * @param n
-     * @param ic
-     * @return Liste mit n (oder allen, wenn n > anzahl(T) ist) Therapeuten
-     * @author Markus Z.
-     * @date 15.06.2013
-     */
+
     private static List<Therapist> getNTherapists(Integer n, InstanceConfiguration ic) {
         List<Therapist> temp = getNorAll(n, therapistsMaster);
         assignShiftStartsAndDurations(temp, ic);
@@ -166,95 +137,40 @@ public class EntityPool {
         }
     }
 
-    /**
-     * Gibt eine Liste mit n (oder allen, wenn n > anzahl(Q) ist) Qualifikationen zur�ck
-     *
-     * @param n
-     * @return Liste mit n (oder allen, wenn n > anzahl(Q) ist) Qualifikationen
-     * @author Markus Z.
-     * @date 15.06.2013
-     */
+
     public static List<Qualification> getNQualifications(int n) {
         return getNorAll(n, qualificationMaster);
     }
 
-    /**
-     * Gibt eine Liste mit n (oder allen, wenn n > anzahl(Q) ist) Wards zur�ck
-     *
-     * @param n
-     * @return Liste mit n (oder allen, wenn n > anzahl(Q) ist) Wards
-     * @author Markus Z.
-     * @date 15.06.2013
-     */
+
     public static List<Ward> getNWardRooms(int n) {
         return getNorAll(n, WARDRoomMaster);
     }
 
-    /**
-     * Gibt eine Liste mit n (oder allen, wenn n > anzahl(Q) ist) ICUs zur�ck
-     *
-     * @param n
-     * @return Liste mit n (oder allen, wenn n > anzahl(Q) ist) ICUs
-     * @author Markus Z.
-     * @date 15.06.2013
-     */
+
     public static List<ICU> getNICURooms(int n) {
         return getNorAll(n, ICURoomMaster);
     }
 
-    /**
-     * Gibt eine Liste mit n (oder allen, wenn n > anzahl(Q) ist) TCs zur�ck
-     *
-     * @param n
-     * @return Liste mit n (oder allen, wenn n > anzahl(Q) ist) TCs
-     * @author Markus Z.
-     * @date 15.06.2013
-     */
+
     public static List<TherapyCenter> getNTCRooms(int n) {
         return getNorAll(n, TCRoomMaster);
     }
 
-    /**
-     * Gibt eine Liste mit n (oder allen, wenn n > anzahl(Q) ist) R�umen zur�ck
-     *
-     * @param n
-     * @return Liste mit n (oder allen, wenn n > anzahl(Q) ist) R�umen
-     * @author Markus Z.
-     * @date 15.06.2013
-     */
+
     public static List<Room> getNAllRooms(int n) {
         List<Room> rooms = getNorAll(n, genericRoomMaster);
         rooms.add(breakroom);
         return rooms;
     }
 
-    /**
-     * Gibt eine Liste mit n (oder allen, wenn n > anzahl(Q) ist) R�umen ohne den Pausenraum zur�ck
-     *
-     * @param n
-     * @return Liste mit n (oder allen, wenn n > anzahl(Q) ist) R�umen
-     * @author Markus Z.
-     * @date 15.06.2013
-     */
+
     public static List<Room> getNAllRoomsWithoutBreakroom(int n) {
         List<Room> rooms = getNorAll(n, genericRoomMaster);
         return rooms;
     }
 
-    /**
-     * Gibt eine Liste mit n (oder allen, wenn n > anzahl(R) ist) R�umen zur�ck welche sich im angegebenen Verh�ltnis auf ICU,Ward, TC
-     * aufteilen. Es werden gerantiert n R�ume zur�ckgegeben. Ungenauigkeiten aufgrund von Rundungen gehen zugunsten/zulasten von Wards
-     *
-     * @param n
-     * @param ratioWARD
-     * @param ratioICU
-     * @param ratioTC
-     * @return eine Liste mit n (oder allen, wenn n > anzahl(R) ist) R�umen zur�ck welche sich im angegebenen Verh�ltnis auf ICU,Ward, TC
-     * aufteilen
-     * @throws Exception Wenn die Verh�ltnisse sich nicht zu genau 1 aufsummieren
-     * @author Markus Z.
-     * @date 15.06.2013
-     */
+
     @SneakyThrows
     public static List<Room> getNAllRooms(int n, Double ratioWARD, Double ratioICU, Double ratioTC) {
         int nWard = new Double(n * ratioWARD).intValue();
@@ -278,72 +194,30 @@ public class EntityPool {
         return all;
     }
 
-    /**
-     * Gibt eine Liste mit n (oder allen, wenn n > anzahl(I) ist) Ward Jobs zur�ck
-     *
-     * @param n
-     * @return Liste mit n (oder allen, wenn n > anzahl(I) ist) Ward Jobs
-     * @author Markus Z.
-     * @date 15.06.2013
-     */
+
     public static List<WardJob> getNWardJobs(int n) {
         List<WardJob> I_ward = getNorAll(n, WARDJobMaster);
         return I_ward;
     }
 
-    /**
-     * Gibt eine Liste mit n (oder allen, wenn n > anzahl(I) ist) ICU Jobs zur�ck
-     *
-     * @param n
-     * @return Liste mit n (oder allen, wenn n > anzahl(I) ist) ICU Jobs
-     * @author Markus Z.
-     * @date 15.06.2013
-     */
+
     public static List<ICUJob> getNICUJobs(int n) {
         List<ICUJob> I_icu = getNorAll(n, ICUJobMaster);
         return I_icu;
     }
 
-    /**
-     * Gibt eine Liste mit n (oder allen, wenn n > anzahl(I) ist) Outpatient Jobs zur�ck
-     *
-     * @param n
-     * @return Liste mit n (oder allen, wenn n > anzahl(I) ist) Outpatient Jobs
-     * @author Markus Z.
-     * @date 15.06.2013
-     */
+
     public static List<OutpatientJob> getNOutpatientJobs(int n) {
         List<OutpatientJob> I_out = getNorAll(n, OutpatientJobMaster);
         return I_out;
     }
 
-    /**
-     * Gibt eine Liste mit n (oder allen, wenn n > anzahl(I) ist) I zur�ck
-     *
-     * @param n
-     * @return Liste mit n (oder allen, wenn n > anzahl(I) ist) I
-     * @author Markus Z.
-     * @date 15.06.2013
-     */
+
     public static List<Job> getNAllJobs(int n) {
         return getNorAll(n, genericJobMaster);
     }
 
-    /**
-     * Gibt eine Liste mit n (oder allen, wenn n > anzahl(I) ist) Jobs zur�ck welche sich im angegebenen Verh�ltnis auf ICU, Ward,
-     * Outpatient aufteilen. Es werden gerantiert n R�ume zur�ckgegeben. Ungenauigkeiten aufgrund von Rundungen gehen zugunsten/zulasten von
-     * Wards
-     *
-     * @param n
-     * @param ratioWARD
-     * @param ratioICU
-     * @param ratioOutpatient
-     * @return eine Liste mit n (oder allen, wenn n > anzahl(R) ist) Jobs zur�ck welche sich im angegebenen Verh�ltnis auf ICU,Ward,
-     * Outpatient aufteilen
-     * @throws Exception Wenn die Verh�ltnisse sich nicht zu genau 1 aufsummieren
-     * @author Markus Z.
-     * @date 15.06.2013
-     */
+
     @SneakyThrows
     public static List<Job> getNAllJobs(int n, Double ratioWARD, Double ratioICU, Double ratioOutpatient) {
         int nWard = new Double(n * ratioWARD).intValue();

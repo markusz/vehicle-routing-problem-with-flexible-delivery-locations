@@ -11,12 +11,7 @@ import de.markusziller.alns.heuristic.strategies.alns.ALNSAbstractOperation;
 import java.util.Set;
 import java.util.TreeSet;
 
-/**
- * Entfernt die Knoten, deren Existenz die Kosten der Routen am meisten erh�ht. Es werden zuerst alle Knoten ausgew�hlt und dann sukzessive
- * entfernt
- *
- * @author Markus
- */
+
 public class WorstCostDestroy extends ALNSAbstractOperation implements IALNSDestroy {
     @Override
     public Solution destroy(Solution s, int q) throws Exception {

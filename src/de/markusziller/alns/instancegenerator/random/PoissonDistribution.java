@@ -14,11 +14,7 @@ public class PoissonDistribution implements IProbabilityDistribution {
     private final Double lambda;
     private final Random randomGenerator;
 
-    /**
-     * Lambda of the underlying Poisson distribution
-     *
-     * @param lambda
-     */
+
     public PoissonDistribution(Double lambda) {
         this.lambda = lambda;
 //		this.poisson = new Poisson(lambda, new DRand(new Double(Math.random() * Integer.MAX_VALUE).intValue()));

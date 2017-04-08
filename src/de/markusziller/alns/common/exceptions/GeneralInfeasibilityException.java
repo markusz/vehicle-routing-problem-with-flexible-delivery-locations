@@ -2,9 +2,7 @@ package de.markusziller.alns.common.exceptions;
 
 public class GeneralInfeasibilityException extends Exception {
 
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     private final String uuid;
 

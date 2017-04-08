@@ -4,12 +4,12 @@ import de.markusziller.alns.common.abstraction.ALNSObserver;
 import de.markusziller.alns.common.entities.Instance;
 import de.markusziller.alns.common.entities.Solution;
 import de.markusziller.alns.common.utils.OutputUtil;
-import de.markusziller.alns.heuristic.visualization.ALNSProcessVisualizationManager;
 import de.markusziller.alns.heuristic.strategies.alns.config.IALNSConfig;
 import de.markusziller.alns.heuristic.strategies.alns.insertion.GreedyRepair;
 import de.markusziller.alns.heuristic.strategies.alns.insertion.IALNSRepair;
 import de.markusziller.alns.heuristic.strategies.alns.insertion.NRegretRepair;
 import de.markusziller.alns.heuristic.strategies.alns.removal.*;
+import de.markusziller.alns.heuristic.visualization.ALNSProcessVisualizationManager;
 import de.markusziller.alns.ui.charts.OperationsLinechart;
 import de.markusziller.alns.ui.charts.SolutionsLinechart;
 
@@ -18,13 +18,17 @@ import java.util.concurrent.Callable;
 
 public class ALNSProcess implements Callable<Solution> {
     private final ALNSObserver o = new ALNSObserver();
-    private long id;
     private final ALNSProcessVisualizationManager apvm = new ALNSProcessVisualizationManager();
     private final IALNSConfig config;
     private final IALNSDestroy[] destroy_ops = new IALNSDestroy[]{new ProximityZoneDestroy(), new ZoneDestroy(), new NodesCountDestroy(false), new SubrouteDestroy(),
             // new RelatedDestroy(),
             new RandomDestroy(), new RandomRouteDestroy(), new WorstCostDestroy()};
     private final IALNSRepair[] repair_ops = new IALNSRepair[]{new NRegretRepair(2), new NRegretRepair(3), new GreedyRepair()};
+    private final Instance is;
+    // private double c_uns;
+    private final int F_log = 100;
+    private final double T_end_t = 0.01;
+    private long id;
     // Globale beste L�sung
     private Solution s_g = null;
     // Aktuelle L�sung
@@ -34,10 +38,6 @@ public class ALNSProcess implements Callable<Solution> {
     private double T;
     private double T_s;
     private long t_start;
-    private final Instance is;
-    // private double c_uns;
-    private final int F_log = 100;
-    private final double T_end_t = 0.01;
     private double T_end;
 
     public ALNSProcess(Solution s_, IALNSConfig c) {
@@ -145,14 +145,7 @@ public class ALNSProcess implements Callable<Solution> {
         }
     }
 
-    /**
-     * Berechnet die Gr��e der destroy operation
-     *
-     * @param s_c2
-     * @return
-     * @author Markus Z.
-     * @date 11.12.2013
-     */
+
     private int getQ(Solution s_c2) {
         int q_l = Math.min((int) Math.ceil(0.05 * s_c2.getNoOfScheduledJobs()), 10);
         int q_u = Math.min((int) Math.ceil(0.20 * s_c2.getNoOfScheduledJobs()), 30);
@@ -162,14 +155,7 @@ public class ALNSProcess implements Callable<Solution> {
         return rr;
     }
 
-    /**
-     * F�hrt die Operationen aus, die nach Anschluss eines Segments notwendig sind.<br>
-     * - Berechnet die Wahrscheinlichkeiten neu<br>
-     * - Setzt Pi_x zur�ck
-     *
-     * @author Markus Z.
-     * @date 11.12.2013
-     */
+
     private void segmentFinsihed() {
         double w_sum = 0;
         // Update neue Gewichtung der Destroy Operatoren
@@ -203,13 +189,7 @@ public class ALNSProcess implements Callable<Solution> {
         }
     }
 
-    /**
-     * Liefert eine ALNS-Repair durch Roulette-Ziehung
-     *
-     * @return
-     * @author Markus Z.
-     * @date 11.12.2013
-     */
+
     private IALNSRepair getALNSRepairOperator() {
         double random = Math.random();
         double threshold = 0.;
@@ -224,13 +204,7 @@ public class ALNSProcess implements Callable<Solution> {
         return repair_ops[repair_ops.length - 1];
     }
 
-    /**
-     * Liefert einen ALNS-Destroy Operator durch Roulette-Ziehung
-     *
-     * @return
-     * @author Markus Z.
-     * @date 11.12.2013
-     */
+
     private IALNSDestroy getALNSDestroyOperator() {
         double random = Math.random();
         double threshold = 0.;
@@ -245,12 +219,7 @@ public class ALNSProcess implements Callable<Solution> {
         return destroy_ops[destroy_ops.length - 1];
     }
 
-    /**
-     * Initialisiert die Strategien
-     *
-     * @author Markus Z.
-     * @date 11.12.2013
-     */
+
     private void initStrategies() {
         for (IALNSDestroy dstr : destroy_ops) {
             dstr.setPi(0);

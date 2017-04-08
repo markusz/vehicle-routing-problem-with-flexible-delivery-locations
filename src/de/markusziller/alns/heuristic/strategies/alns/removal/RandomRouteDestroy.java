@@ -11,11 +11,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Set;
 
-/**
- * Entfernt eine zuf�llige Route
- *
- * @author Markus
- */
+
 public class RandomRouteDestroy extends ALNSAbstractOperation implements IALNSDestroy {
     @Override
     public Solution destroy(Solution s, int q) throws Exception {

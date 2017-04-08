@@ -6,11 +6,7 @@ import lombok.NonNull;
 
 import java.io.Serializable;
 
-/**
- * Eine hypothetische Einf�gesituation f�r einen zu planenden Job. Job, Raum und Zeit sind im Node gespeichert. Zus�tzlich wird der vorgesehene Therapeut gespeichert.
- *
- * @author Markus
- */
+
 public class Insertion implements Comparable<Insertion>, Serializable {
     private static final long serialVersionUID = -6687473937777930786L;
 

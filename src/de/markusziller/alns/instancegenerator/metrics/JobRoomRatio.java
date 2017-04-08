@@ -6,7 +6,7 @@ public class JobRoomRatio implements IMetric {
 
     @Override
     public Double compute(Instance i) {
-        return new Double(i.getJobs().size()) / new Double(i.getRooms().size());
+        return (double) i.getJobs().size() / (double) i.getRooms().size();
     }
 
     @Override

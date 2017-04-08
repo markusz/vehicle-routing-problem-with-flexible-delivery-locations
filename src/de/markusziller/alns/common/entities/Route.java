@@ -12,9 +12,7 @@ import java.io.Serializable;
 import java.util.*;
 
 public class Route implements Comparable<Route>, Serializable {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = -3762176626624742034L;
     private NavigableSet<Node> N = new TreeSet<>(Comparators.NODE_START_ASCENDING);
 
@@ -191,13 +189,7 @@ public class Route implements Comparable<Route>, Serializable {
         }
     }
 
-    /**
-     * F�gt einen Knoten auf die bestehende Route ein
-     *
-     * @param n_i
-     * @author Markus Z.
-     * @date 13.12.2013
-     */
+
     public void insert(Node n_i) {
         Node n_r = null;
         Node n_a = null;
@@ -205,15 +197,11 @@ public class Route implements Comparable<Route>, Serializable {
         for (Node n : N) {
             if (n.getStart() <= n_i.getStart() && n.getEnd() >= n_i.getEnd()) {
                 if (n_i.getEnd() < n.getEnd()) {
-                    /*
-					 * Fall 1 neuer Knoten ganz am Anfang, aber nicht bis zum Ende: [--------------] -> {-----}-------]
-					 */
+
                     if (n_i.getStart().intValue() == n.getStart().intValue()) {
                         // do nothing
                     }
-					/*
-					 * Fall 2 neuer Knoten mittig, aber nicht bis zum Ende: [--------------] -> [--{-----}-------]
-					 */
+
                     if (n_i.getStart() > n.getStart()) {
                         Node pn_before = new Node("", n.getRoom(), n.getJob(), new Timeslot(n.getStart(), n_i.getStart() - 1));
                         n_a = pn_before;
@@ -221,17 +209,11 @@ public class Route implements Comparable<Route>, Serializable {
                     n.setStart(n_i.getEnd() + 1);
                 }
                 if (n_i.getEnd().intValue() == n.getEnd().intValue()) {
-					/*
-					 * Fall 3 neuer Knoten nicht am Anfang, aber bis zum Ende: [--------------] -> [---------{-----}
-					 */
+
                     if (n_i.getStart() > n.getStart()) {
                         n.setEnd(n_i.getStart() - 1);
                     }
-					/*
-					 * Fall 4 neuer Knoten ganz am Anfang und bis zum Ende:
-					 * 
-					 * [--------------] -> {--------------}
-					 */
+
                     if (n_i.getStart().intValue() == n.getStart().intValue()) {
                         n_r = n;
                     }
@@ -250,14 +232,7 @@ public class Route implements Comparable<Route>, Serializable {
         }
     }
 
-    /**
-     * Entfernt einen Knoten aus der Route
-     *
-     * @param nn
-     * @throws RouteConstructionException
-     * @author Markus Z.
-     * @date 13.12.2013
-     */
+
     public Route remove(Node nn) throws RouteConstructionException {
         if (!N.contains(nn)) {
             throw new RouteConstructionException("Node not in route");

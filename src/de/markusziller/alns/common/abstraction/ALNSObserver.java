@@ -1,10 +1,10 @@
 package de.markusziller.alns.common.abstraction;
 
 import de.markusziller.alns.common.entities.Solution;
-import de.markusziller.alns.heuristic.visualization.IProcessVisualizer;
 import de.markusziller.alns.heuristic.strategies.alns.insertion.IALNSRepair;
 import de.markusziller.alns.heuristic.strategies.alns.removal.IALNSDestroy;
 import de.markusziller.alns.heuristic.strategies.phasetwo.ALNSProcess;
+import de.markusziller.alns.heuristic.visualization.IProcessVisualizer;
 
 import java.util.ArrayList;
 import java.util.List;

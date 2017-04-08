@@ -32,9 +32,7 @@ public class ForecastRepair extends ALNSAbstractRepair implements IALNSRepair {
     private final Double therapistWeight = 0.2;
     private final Double jobLengthWeight = 0.6;
 
-    /**
-     * @param multith multithreaded repair?
-     */
+
     public ForecastRepair(boolean multith) {
         multithreaded = multith;
     }
@@ -63,7 +61,7 @@ public class ForecastRepair extends ALNSAbstractRepair implements IALNSRepair {
         Insertion a_best = null;
         List<Insertion> tempList = new LinkedList<>();
         // Listenelemente pro kern
-        Float elemPerCore = new Float(a_i.size() / cores);
+        Float elemPerCore = (float) (a_i.size() / cores);
         // Anzahl an Listenelementen pro Thread
         Float elemPerThread = Math.min(Math.max(elemPerCore * modifier, minElements), a_i.size());
         // ThreadPool
@@ -107,16 +105,7 @@ public class ForecastRepair extends ALNSAbstractRepair implements IALNSRepair {
         return s;
     }
 
-    /**
-     * Findet f�r einen Job alle m�glichen Stellen auf allen Routen aller Therapeuten auf denen diese g�ltig eingef�gt werden k�nnen.
-     *
-     * @param j der Job
-     * @param s die bestehende L�sung
-     * @return Eine Map mit Therapeuten zugeordneten Einf�gepositionen
-     * @throws GeneralInfeasibilityException
-     * @author Markus Z.
-     * @date 27.08.2013
-     */
+
     private LinkedListMultimap<Therapist, Node> calculatePossibleJobInsertions(Job j, Solution s) {
         // geeignete Therapeuten und R�ume
         Collection<Therapist> th = s.getInstance().getProficientTherapists(j);
@@ -159,15 +148,7 @@ public class ForecastRepair extends ALNSAbstractRepair implements IALNSRepair {
         return map;
     }
 
-    /**
-     * Gibt den Job mit der h�chsten Planungspriorit�t aus der Liste der ungeplanten Jobs zur�ck
-     *
-     * @param s
-     * @return
-     * @throws GeneralInfeasibilityException
-     * @author Markus Z.
-     * @date 11.08.2013
-     */
+
     private Job nextJob(Solution s) {
         Integer thpFactor = 0;
         Integer rmFactor = 0;

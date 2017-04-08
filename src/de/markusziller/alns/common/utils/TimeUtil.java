@@ -36,12 +36,7 @@ public class TimeUtil {
         return time - 1;
     }
 
-    /**
-     * @param timeslots
-     * @return
-     * @author Markus Z.
-     * @date 01.07.2013
-     */
+
     private static boolean noGapBetween(Timeslot... timeslots) {
 
         timeslots = orderedCopy(timeslots);
@@ -90,12 +85,7 @@ public class TimeUtil {
         return timeslots;
     }
 
-    /**
-     * @param timeslots
-     * @return
-     * @author Markus Z.
-     * @date 01.07.2013
-     */
+
     public static boolean overlappingSlots(Timeslot... timeslots) {
 
         timeslots = orderedCopy(timeslots);
@@ -112,24 +102,7 @@ public class TimeUtil {
         return overlap;
     }
 
-    /*
-      Die Schnittmenge aus den �bergebenen Listen von Timeslot
 
-      z.B.
-      <br>
-      xxxx---xxx-xxxxxx<br>
-      ---x--xxx-----xxx<br>
-      xxxxxxxx-----xx--<br><br>
-
-      ---><br><br>
-
-      ---x---x------x--<br><br>
-      @author Markus Z.
-     * @date 26.08.2013
-     * @param slots
-     * @return
-
-     */
 //	public static List<Timeslot> getIntersectionOLD(List<Timeslot>... slots) {
 //
 //		Integer max = Integer.MIN_VALUE;
@@ -148,14 +121,7 @@ public class TimeUtil {
 //		return getIntersection(max, slots);
 //	}
 
-    /**
-     * @param lowerBound
-     * @param upperBound
-     * @param slots      Eine Liste sich nicht �berschneidender Timeslots
-     * @return
-     * @author Markus Z.
-     * @date 01.07.2013
-     */
+
     public static List<Timeslot> invert(Integer lowerBound, Integer upperBound, List<Timeslot> slots) {
         List<Timeslot> orderedslots = Ordering.from(Comparators.TIMESLOTS_ASCENDING_BY_START).sortedCopy(slots);
         List<Timeslot> inverseList = new LinkedList<>();
@@ -272,15 +238,7 @@ public class TimeUtil {
         return ts;
     }
 
-    /**
-     * Erzeugt eine Liste aus Timeslots aus einer beliebig gro�en Anzahl an Integer. Es wird immer paarweise gezogen. Z.b. [1,5,8,12]
-     * erzeugt timeslots [1,5] und [8,12]
-     *
-     * @param bounds die Grenzen der Timeslots. <b>Anzahl muss gerade</b> sein und Zahlenpaare m�ssen <b> mit dem niedrigeren beginnen</b>
-     * @return
-     * @author Markus Z.
-     * @date 01.07.2013
-     */
+
 
     public static List<Timeslot> makeTimeslotList(Integer... bounds) throws TimeException {
 

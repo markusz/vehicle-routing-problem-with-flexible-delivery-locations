@@ -2,11 +2,7 @@ package de.markusziller.alns.common.entities;
 
 import java.io.Serializable;
 
-/**
- * Repr�sentiert einen Zeitraum von [start, end]. Start und Ende sind inkl.
- *
- * @author Markus
- */
+
 public class Timeslot implements Comparable<Timeslot>, Serializable {
 
     private static final long serialVersionUID = 1872586515941837298L;

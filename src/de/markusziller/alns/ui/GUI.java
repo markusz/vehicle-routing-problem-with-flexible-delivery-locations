@@ -12,9 +12,8 @@ import java.util.List;
 class GUI {
 
     private static final List<String> rowTitles = new ArrayList<>();
-
-    private Solution s;
     private final JTable table;
+    private Solution s;
 
     public GUI(Solution s) {
 

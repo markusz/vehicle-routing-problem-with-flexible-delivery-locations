@@ -7,11 +7,7 @@ import de.markusziller.alns.common.utils.TimeUtil;
 
 import java.util.*;
 
-/**
- * Klassischer Greedy Algorithmus
- *
- * @author Markus
- */
+
 public class GreedyRepair extends ALNSAbstractRepair implements IALNSRepair {
     @Override
     public Solution repair(Solution s) {

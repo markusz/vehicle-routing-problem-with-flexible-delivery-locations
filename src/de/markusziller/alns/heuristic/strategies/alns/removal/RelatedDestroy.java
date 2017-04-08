@@ -9,12 +9,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 
-/**
- * Zielt einen zuf�lligen Knoten. Entfernt anschlie�end q-1 Knoten die ihm am �hnlichsten sind, bzgl Raumeignung, Dauer und ben�tigten
- * Qualifikationen
- *
- * @author Markus
- */
+
 public class RelatedDestroy extends ALNSAbstractOperation implements IALNSDestroy {
     @Override
     public Solution destroy(Solution from, int q) throws Exception {

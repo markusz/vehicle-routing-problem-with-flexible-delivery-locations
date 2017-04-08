@@ -30,11 +30,11 @@ public class Instance implements Serializable {
     private static final long serialVersionUID = -28317760558644109L;
     private final static Logger log = Logger.getLogger(Instance.class.getName());
     private final boolean isInstanceModifiable = true;
+    private final long timestamp = System.currentTimeMillis();
     private transient Long DBPrimaryKey = null;
     private transient String uid = UUID.randomUUID().toString();
     private SolomonInstance solomonInstance;
     private Integer numberOfTimeSlots;
-    private final long timestamp = System.currentTimeMillis();
     private double c_max;
     private Set<Job> jobs;
     private Set<Room> rooms;
@@ -329,15 +329,11 @@ public class Instance implements Serializable {
         assignPossibleJobTimes(jjj);
         assignDurations(jjj);
 
-        /*
-          Qualifikationen werden randomisiert verteilt
-         */
+
         distributeQualificationsToTherapists(ic.getQualificationToTherapistAssignment());
         distributeQualificationsToJobs(ic.getQualificationToJobAssignment());
 
-        /**
-         * Verkn�pfungen zwischen den Entit�ten werden erzeugt
-         */
+
         // List<Room> all = new LinkedList<>(rrr);
         // all.add(breakroom);
         generateRoomDistancesAndHospitalLayout(rrr, ic);
@@ -549,27 +545,14 @@ public class Instance implements Serializable {
 
     }
 
-    /**
-     * Ressourceneffektive Distanzberechnung zwischen random-verteilten R�umen. Mit 50.000 R�umen effizient getestet. Nutzt Matrizen und
-     * Hashmaps.
-     *
-     * @param rrr
-     * @param ic
-     * @return
-     * @author Markus Z.
-     * @date 16.06.2013
-     */
-    private void generateRoomDistancesAndHospitalLayout(List<Room> rrr, InstanceConfiguration ic) {
 
-        // TODO Matrix evtl doch ganz bef�llen
+    private void generateRoomDistancesAndHospitalLayout(List<Room> rrr, InstanceConfiguration ic) {
         SimpleMatrix sm = new SimpleMatrix(rrr.size(), rrr.size());
         Collections.sort(rrr, new Comparator<Room>() {
 
             @Override
             public int compare(Room r1, Room r2) {
                 if (r1.getId() < r2.getId()) {
-
-                    // if (i.getId() < j.getId()) {
                     return -1;
                 } else {
                     return 1;
@@ -670,14 +653,11 @@ public class Instance implements Serializable {
         for (Job j : Preconditions.checkNotNull(jobs)) {
             for (Therapist t : Preconditions.checkNotNull(therapists)) {
 
-                /*
-                  Nur F�lle relevant in denen job.qhash <= t.qhash
-                 */
+
                 if (t.getQHash() == j.getQHash()) {
                     eligibleJobsForTherapist.put(t, j);
                     proficientTherapistsForJob.put(j, t);
                 }
-                // TODO falsch
                 if (t.getQHash() > j.getQHash()) {
                     if (t.getBinary().endsWith(j.getBinary())) {
                         eligibleJobsForTherapist.put(t, j);
@@ -707,14 +687,7 @@ public class Instance implements Serializable {
 
     }
 
-    /**
-     * Verkn�ft R�ume und Jobs miteinander
-     * <p>
-     * TODO ordentlich dokumentieren TODO methode aufr�umen, legacy code raushauen
-     *
-     * @author Markus Z.
-     * @date 02.07.2013
-     */
+
     private void linkRoomsAndJobs() {
 
         Double avgWard = i_conf.getAvgJobsPerWard();

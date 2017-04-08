@@ -13,17 +13,17 @@ import java.util.logging.Logger;
 
 public class ConstructionHeuristic implements ConstructionStrategy {
     private static final Logger log = Logger.getLogger(ConstructionHeuristic.class.getName());
-    private Long runTime;
     private final Integer it = 0;
     private final Integer sb = 0;
-    int transfers = 0;
-    private Solution s_c;
-    private Solution s_t;
-    private Instance is;
     //	private ForecastRepair	fr			= new ForecastRepair(true);
 //	private GreedyRepair	gr			= new GreedyRepair();
 //	private RegretRepair	rr			= new RegretRepair();
     private final NRegretRepair nr = new NRegretRepair(2);
+    int transfers = 0;
+    private Long runTime;
+    private Solution s_c;
+    private Solution s_t;
+    private Instance is;
 
     @Override
     public Solution getInitialSolution(Instance i) throws GeneralInfeasibilityException {
@@ -37,8 +37,8 @@ public class ConstructionHeuristic implements ConstructionStrategy {
 
     @Override
     public Solution getInitialSolution(Instance i, SolverConfiguration sc, boolean multithreaded) {
-        log.info(new StringBuilder("Starting to solve Instance with ").append(i.getJobs().size()).append(" Jobs,").append(i.getRooms().size()).append(" Rooms,").append(i.getTherapists().size())
-                .append(" Therapists").toString());
+        log.info("Starting to solve Instance with " + i.getJobs().size() + " Jobs," + i.getRooms().size() + " Rooms," + i.getTherapists().size() +
+                " Therapists");
         is = i;
         runTime = System.currentTimeMillis();
         // Minmale als Wurzelknoten setzen

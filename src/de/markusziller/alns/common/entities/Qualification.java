@@ -7,14 +7,10 @@ import java.io.Serializable;
 
 public class Qualification extends Identifiable implements Serializable {
 
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 3376111591547911476L;
 
-    /**
-     * Bin�res Z�hlen identifiziert jede Qualifikationskombi eindeutig -> Kein Iterieren n�tig -> bis zu 32 Q bei Integern m�glich
-     */
+
     private final Integer qHash;
 
     private String name;
@@ -30,11 +26,7 @@ public class Qualification extends Identifiable implements Serializable {
         qHash = new Double(Math.pow(2, getId() - 1)).intValue();
     }
 
-    /**
-     * @return
-     * @author Markus Z.
-     * @date 10.06.2013
-     */
+
     public Integer getQHash() {
         return qHash;
     }

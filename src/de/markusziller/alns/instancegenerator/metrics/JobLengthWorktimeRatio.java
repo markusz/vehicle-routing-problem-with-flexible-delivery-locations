@@ -25,8 +25,8 @@ public class JobLengthWorktimeRatio implements IMetric {
             totalJL += j.getDurationSlots();
         }
 
-        Double avgWT = totalWT / new Double(i.getTherapists().size());
-        Double avgJL = totalJL / new Double(i.getJobs().size());
+        Double avgWT = totalWT / (double) i.getTherapists().size();
+        Double avgJL = totalJL / (double) i.getJobs().size();
 
 
         return avgJL / avgWT;
