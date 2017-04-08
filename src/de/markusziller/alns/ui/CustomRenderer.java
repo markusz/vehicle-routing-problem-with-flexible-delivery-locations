@@ -18,14 +18,14 @@ public class CustomRenderer extends JLabel implements TableCellRenderer {
 
     private static final long serialVersionUID = -8529474756299749781L;
 
-    Solution s;
+    private final Solution s;
 
-    Color WARD_COLOR = new Color(255, 211, 155);
-    Color BREAK_JOB = new Color(161, 161, 161);
-    Color ICU_COLOR = new Color(205, 170, 125);
-    Color OUT_COLOR = new Color(238, 180, 180);
-    Color JOB_TRANSFER = new Color(139, 35, 35);
-    Color NO_JOB_TRANSFER = Color.BLACK;
+    private final Color WARD_COLOR = new Color(255, 211, 155);
+    private final Color BREAK_JOB = new Color(161, 161, 161);
+    private final Color ICU_COLOR = new Color(205, 170, 125);
+    private final Color OUT_COLOR = new Color(238, 180, 180);
+    private final Color JOB_TRANSFER = new Color(139, 35, 35);
+    private final Color NO_JOB_TRANSFER = Color.BLACK;
 
 
     public CustomRenderer(Solution s) {
@@ -33,7 +33,7 @@ public class CustomRenderer extends JLabel implements TableCellRenderer {
         setOpaque(true); // MUST do this for background to show up.
     }
 
-    public void setCellAttributes(int row, int column) {
+    private void setCellAttributes(int row, int column) {
 
         List<Therapist> thp = new ArrayList<>(s.getRoutes().keySet());
 

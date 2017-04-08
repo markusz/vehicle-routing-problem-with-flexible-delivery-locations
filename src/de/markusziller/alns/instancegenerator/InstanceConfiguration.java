@@ -27,6 +27,7 @@ public class InstanceConfiguration implements Serializable {
 
     private final static Logger log = Logger.getLogger(InstanceConfiguration.class.getName());
     @SuppressWarnings("rawtypes")
+    private
     Multimap<Class, Class> roomToJobAssignment = initRoomToJobAssignment();
     private Integer qualificationsQuantity = 4;
     private Integer therapistsQuantity = 22;
@@ -121,7 +122,7 @@ public class InstanceConfiguration implements Serializable {
 //	private double gamma = 1.0;
     private boolean useQ = false;
     @java.beans.ConstructorProperties({"qualificationsQuantity", "therapistsQuantity", "totalRoomsQuantity", "totalJobsQuantity", "ICURoomsQuantity", "WardRoomsQuantity", "TCRoomsQuantity", "ICURoomsRatio", "WardRoomsRatio", "TCRoomsRatio", "costPerCell", "routingCostFactor", "patientTransportCostFactor", "ICUJobsQuantity", "WardJobsQuantity", "OutpatientJobsQuantity", "ICUJobsRatio", "WardJobsRatio", "OutpatientJobsRatio", "avgJobsPerWard", "avgJobsPerICU", "avgJobsPerTC", "minutesPerTimeslot", "minutesPerPlanningHorizon", "numberOfTimeSlots", "firstBreakLength_MINUTES", "firstBreakFlexibility_MINUTES", "secondBreakLength_MINUTES", "secondBreakFlexibility_MINUTES", "JobMinLengths_MINUTES", "JobAvgLengths_MINUTES", "JobMaxLengths_MINUTES", "firstBreakLength", "firstBreakFlexibility", "secondBreakLength", "secondBreakFlexibility", "JobMinLengths_TS", "JobAvgLengths_TS", "JobMaxLengths_TS", "possibleShiftStartingSlots", "possibleShiftLengths", "qualificationToTherapistAssignment", "qualificationToJobAssignment", "timeslotToJobAssignment", "shiftStartAssignment", "shiftDurationAssignment", "roomToJobAssignment", "useQ"})
-    public InstanceConfiguration(Integer qualificationsQuantity, Integer therapistsQuantity, Integer totalRoomsQuantity, Integer totalJobsQuantity, Integer ICURoomsQuantity, Integer WardRoomsQuantity, Integer TCRoomsQuantity, Double ICURoomsRatio, Double WardRoomsRatio, Double TCRoomsRatio, Double costPerCell, Double routingCostFactor, Double patientTransportCostFactor, Integer ICUJobsQuantity, Integer WardJobsQuantity, Integer OutpatientJobsQuantity, Double ICUJobsRatio, Double WardJobsRatio, Double OutpatientJobsRatio, Double avgJobsPerWard, Double avgJobsPerICU, Double avgJobsPerTC, Integer minutesPerTimeslot, Integer minutesPerPlanningHorizon, Integer numberOfTimeSlots, Integer firstBreakLength_MINUTES, Integer firstBreakFlexibility_MINUTES, Integer secondBreakLength_MINUTES, Integer secondBreakFlexibility_MINUTES, Integer[] JobMinLengths_MINUTES, Integer[] JobAvgLengths_MINUTES, Integer[] JobMaxLengths_MINUTES, Integer firstBreakLength, Integer firstBreakFlexibility, Integer secondBreakLength, Integer secondBreakFlexibility, Integer[] JobMinLengths_TS, Integer[] JobAvgLengths_TS, Integer[] JobMaxLengths_TS, Integer[] possibleShiftStartingSlots, Integer[] possibleShiftLengths, IProbabilityDistribution qualificationToTherapistAssignment, IProbabilityDistribution qualificationToJobAssignment, IProbabilityDistribution timeslotToJobAssignment, IProbabilityDistribution shiftStartAssignment, IProbabilityDistribution shiftDurationAssignment, Multimap<Class, Class> roomToJobAssignment, boolean useQ) {
+    private InstanceConfiguration(Integer qualificationsQuantity, Integer therapistsQuantity, Integer totalRoomsQuantity, Integer totalJobsQuantity, Integer ICURoomsQuantity, Integer WardRoomsQuantity, Integer TCRoomsQuantity, Double ICURoomsRatio, Double WardRoomsRatio, Double TCRoomsRatio, Double costPerCell, Double routingCostFactor, Double patientTransportCostFactor, Integer ICUJobsQuantity, Integer WardJobsQuantity, Integer OutpatientJobsQuantity, Double ICUJobsRatio, Double WardJobsRatio, Double OutpatientJobsRatio, Double avgJobsPerWard, Double avgJobsPerICU, Double avgJobsPerTC, Integer minutesPerTimeslot, Integer minutesPerPlanningHorizon, Integer numberOfTimeSlots, Integer firstBreakLength_MINUTES, Integer firstBreakFlexibility_MINUTES, Integer secondBreakLength_MINUTES, Integer secondBreakFlexibility_MINUTES, Integer[] JobMinLengths_MINUTES, Integer[] JobAvgLengths_MINUTES, Integer[] JobMaxLengths_MINUTES, Integer firstBreakLength, Integer firstBreakFlexibility, Integer secondBreakLength, Integer secondBreakFlexibility, Integer[] JobMinLengths_TS, Integer[] JobAvgLengths_TS, Integer[] JobMaxLengths_TS, Integer[] possibleShiftStartingSlots, Integer[] possibleShiftLengths, IProbabilityDistribution qualificationToTherapistAssignment, IProbabilityDistribution qualificationToJobAssignment, IProbabilityDistribution timeslotToJobAssignment, IProbabilityDistribution shiftStartAssignment, IProbabilityDistribution shiftDurationAssignment, Multimap<Class, Class> roomToJobAssignment, boolean useQ) {
         this.qualificationsQuantity = qualificationsQuantity;
         this.therapistsQuantity = therapistsQuantity;
         this.totalRoomsQuantity = totalRoomsQuantity;
@@ -280,7 +281,7 @@ public class InstanceConfiguration implements Serializable {
         this.totalJobsQuantity = totalJobsQuantity;
     }
 
-    public Integer getICURoomsQuantity() {
+    private Integer getICURoomsQuantity() {
         return this.ICURoomsQuantity;
     }
 
@@ -288,7 +289,7 @@ public class InstanceConfiguration implements Serializable {
         this.ICURoomsQuantity = ICURoomsQuantity;
     }
 
-    public Integer getWardRoomsQuantity() {
+    private Integer getWardRoomsQuantity() {
         return this.WardRoomsQuantity;
     }
 
@@ -296,7 +297,7 @@ public class InstanceConfiguration implements Serializable {
         this.WardRoomsQuantity = WardRoomsQuantity;
     }
 
-    public Integer getTCRoomsQuantity() {
+    private Integer getTCRoomsQuantity() {
         return this.TCRoomsQuantity;
     }
 
@@ -352,7 +353,7 @@ public class InstanceConfiguration implements Serializable {
         this.patientTransportCostFactor = patientTransportCostFactor;
     }
 
-    public Integer getICUJobsQuantity() {
+    private Integer getICUJobsQuantity() {
         return this.ICUJobsQuantity;
     }
 
@@ -360,7 +361,7 @@ public class InstanceConfiguration implements Serializable {
         this.ICUJobsQuantity = ICUJobsQuantity;
     }
 
-    public Integer getWardJobsQuantity() {
+    private Integer getWardJobsQuantity() {
         return this.WardJobsQuantity;
     }
 
@@ -368,7 +369,7 @@ public class InstanceConfiguration implements Serializable {
         this.WardJobsQuantity = WardJobsQuantity;
     }
 
-    public Integer getOutpatientJobsQuantity() {
+    private Integer getOutpatientJobsQuantity() {
         return this.OutpatientJobsQuantity;
     }
 
@@ -416,7 +417,7 @@ public class InstanceConfiguration implements Serializable {
         this.avgJobsPerICU = avgJobsPerICU;
     }
 
-    public Double getAvgJobsPerTC() {
+    private Double getAvgJobsPerTC() {
         return this.avgJobsPerTC;
     }
 
@@ -432,7 +433,7 @@ public class InstanceConfiguration implements Serializable {
         this.minutesPerTimeslot = minutesPerTimeslot;
     }
 
-    public Integer getMinutesPerPlanningHorizon() {
+    private Integer getMinutesPerPlanningHorizon() {
         return this.minutesPerPlanningHorizon;
     }
 
@@ -448,7 +449,7 @@ public class InstanceConfiguration implements Serializable {
         this.numberOfTimeSlots = numberOfTimeSlots;
     }
 
-    public Integer getFirstBreakLength_MINUTES() {
+    private Integer getFirstBreakLength_MINUTES() {
         return this.firstBreakLength_MINUTES;
     }
 
@@ -456,7 +457,7 @@ public class InstanceConfiguration implements Serializable {
         this.firstBreakLength_MINUTES = firstBreakLength_MINUTES;
     }
 
-    public Integer getFirstBreakFlexibility_MINUTES() {
+    private Integer getFirstBreakFlexibility_MINUTES() {
         return this.firstBreakFlexibility_MINUTES;
     }
 
@@ -464,7 +465,7 @@ public class InstanceConfiguration implements Serializable {
         this.firstBreakFlexibility_MINUTES = firstBreakFlexibility_MINUTES;
     }
 
-    public Integer getSecondBreakLength_MINUTES() {
+    private Integer getSecondBreakLength_MINUTES() {
         return this.secondBreakLength_MINUTES;
     }
 
@@ -472,7 +473,7 @@ public class InstanceConfiguration implements Serializable {
         this.secondBreakLength_MINUTES = secondBreakLength_MINUTES;
     }
 
-    public Integer getSecondBreakFlexibility_MINUTES() {
+    private Integer getSecondBreakFlexibility_MINUTES() {
         return this.secondBreakFlexibility_MINUTES;
     }
 
@@ -480,7 +481,7 @@ public class InstanceConfiguration implements Serializable {
         this.secondBreakFlexibility_MINUTES = secondBreakFlexibility_MINUTES;
     }
 
-    public Integer[] getJobMinLengths_MINUTES() {
+    private Integer[] getJobMinLengths_MINUTES() {
         return this.JobMinLengths_MINUTES;
     }
 
@@ -488,7 +489,7 @@ public class InstanceConfiguration implements Serializable {
         this.JobMinLengths_MINUTES = JobMinLengths_MINUTES;
     }
 
-    public Integer[] getJobAvgLengths_MINUTES() {
+    private Integer[] getJobAvgLengths_MINUTES() {
         return this.JobAvgLengths_MINUTES;
     }
 
@@ -496,7 +497,7 @@ public class InstanceConfiguration implements Serializable {
         this.JobAvgLengths_MINUTES = JobAvgLengths_MINUTES;
     }
 
-    public Integer[] getJobMaxLengths_MINUTES() {
+    private Integer[] getJobMaxLengths_MINUTES() {
         return this.JobMaxLengths_MINUTES;
     }
 
@@ -520,7 +521,7 @@ public class InstanceConfiguration implements Serializable {
         this.firstBreakFlexibility = firstBreakFlexibility;
     }
 
-    public Integer getSecondBreakLength() {
+    private Integer getSecondBreakLength() {
         return this.secondBreakLength;
     }
 
@@ -528,7 +529,7 @@ public class InstanceConfiguration implements Serializable {
         this.secondBreakLength = secondBreakLength;
     }
 
-    public Integer getSecondBreakFlexibility() {
+    private Integer getSecondBreakFlexibility() {
         return this.secondBreakFlexibility;
     }
 
@@ -592,7 +593,7 @@ public class InstanceConfiguration implements Serializable {
         this.qualificationToJobAssignment = qualificationToJobAssignment;
     }
 
-    public IProbabilityDistribution getTimeslotToJobAssignment() {
+    private IProbabilityDistribution getTimeslotToJobAssignment() {
         return this.timeslotToJobAssignment;
     }
 
@@ -608,7 +609,7 @@ public class InstanceConfiguration implements Serializable {
         this.shiftStartAssignment = shiftStartAssignment;
     }
 
-    public IProbabilityDistribution getShiftDurationAssignment() {
+    private IProbabilityDistribution getShiftDurationAssignment() {
         return this.shiftDurationAssignment;
     }
 

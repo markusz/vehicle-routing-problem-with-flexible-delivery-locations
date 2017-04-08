@@ -8,9 +8,9 @@ import java.io.Serializable;
 public abstract class Room extends Identifiable implements Serializable {
 
     private static final long serialVersionUID = 144471639227785745L;
-    int x;
-    int y;
-    int k;
+    private int x;
+    private int y;
+    private int k;
     private String name;
 
     public String getName() {

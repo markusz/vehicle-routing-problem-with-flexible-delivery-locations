@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ALNSObserver implements IProcessVisualizer {
 
-    private List<IProcessVisualizer> o = new ArrayList<>();
+    private final List<IProcessVisualizer> o = new ArrayList<>();
 
     public void add(IProcessVisualizer ob) {
         o.add(ob);

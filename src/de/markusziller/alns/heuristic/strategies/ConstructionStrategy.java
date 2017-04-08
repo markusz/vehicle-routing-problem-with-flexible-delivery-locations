@@ -7,9 +7,9 @@ import de.markusziller.alns.heuristic.SolverConfiguration;
 
 public interface ConstructionStrategy {
 
-    public Solution getInitialSolution(Instance i) throws GeneralInfeasibilityException;
+    Solution getInitialSolution(Instance i) throws GeneralInfeasibilityException;
 
-    public Solution getInitialSolution(Instance i, SolverConfiguration sc) throws GeneralInfeasibilityException;
+    Solution getInitialSolution(Instance i, SolverConfiguration sc) throws GeneralInfeasibilityException;
 
-    public Solution getInitialSolution(Instance i, SolverConfiguration sc, boolean multithreaded) throws GeneralInfeasibilityException;
+    Solution getInitialSolution(Instance i, SolverConfiguration sc, boolean multithreaded);
 }

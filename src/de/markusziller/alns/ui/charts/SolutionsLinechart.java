@@ -22,26 +22,26 @@ import java.awt.*;
 
 public class SolutionsLinechart implements IProcessVisualizer {
 
-    final NumberAxis yAxis = new NumberAxis("c");
-    final NumberAxis xAxis = new NumberAxis("i");
-    double c_start;
-    XYSeries xy_s_c = new XYSeries("s_c");
-    XYSeries xy_s_g = new XYSeries("s_g");
-    XYSeries xy_s_t = new XYSeries("s_t");
-    IALNSConfig c;
-    JFreeChart chart;
+    private final NumberAxis yAxis = new NumberAxis("c");
+    private final NumberAxis xAxis = new NumberAxis("i");
+    private double c_start;
+    private final XYSeries xy_s_c = new XYSeries("s_c");
+    private final XYSeries xy_s_g = new XYSeries("s_g");
+    private final XYSeries xy_s_t = new XYSeries("s_t");
+    private IALNSConfig c;
+    private JFreeChart chart;
     XYTextAnnotation annotation;
-    long time;
+    private long time;
     //	private SolutionsLinechart sl;
     double best_complete_solved = 0;
 
-    ALNSProcess alns;
+    private final ALNSProcess alns;
 
-    public SolutionsLinechart(ALNSProcess a) throws InterruptedException {
+    public SolutionsLinechart(ALNSProcess a) {
         this.alns = a;
     }
 
-    public void render() {
+    private void render() {
         Solution s_c = alns.getS_c();
         IALNSConfig conf = alns.getConfig();
 

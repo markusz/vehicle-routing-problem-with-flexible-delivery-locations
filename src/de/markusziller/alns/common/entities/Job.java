@@ -9,13 +9,13 @@ import java.util.*;
 public abstract class Job extends Identifiable implements Serializable {
 
     private static final long serialVersionUID = 7414188193795448780L;
-    List<Timeslot> availabilty = new ArrayList<>();
-    Integer durationSlots;
-    Integer totalDuration;
-    Double schedulingPriority;
-    Integer pauseBefore;
-    Integer pauseAfter;
-    String name;
+    private List<Timeslot> availabilty = new ArrayList<>();
+    private Integer durationSlots;
+    private Integer totalDuration;
+    private Double schedulingPriority;
+    private Integer pauseBefore;
+    private Integer pauseAfter;
+    private String name;
     private Set<Qualification> qualifications = new HashSet<>();
     private Integer qHash = 0;
     private String binary = "";
@@ -27,7 +27,7 @@ public abstract class Job extends Identifiable implements Serializable {
         }
     }
 
-    public void addQualification(Qualification q) {
+    private void addQualification(Qualification q) {
         qHash = qHash + q.getQHash();
         qualifications.add(q);
         binary = Integer.toBinaryString(qHash);

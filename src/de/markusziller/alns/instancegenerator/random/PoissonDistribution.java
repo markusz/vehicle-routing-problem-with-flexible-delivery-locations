@@ -10,9 +10,9 @@ import java.util.Random;
 
 public class PoissonDistribution implements IProbabilityDistribution {
 
-    Poisson poisson;
-    Double lambda;
-    Random randomGenerator;
+    private final Poisson poisson;
+    private final Double lambda;
+    private final Random randomGenerator;
 
     /**
      * Lambda of the underlying Poisson distribution

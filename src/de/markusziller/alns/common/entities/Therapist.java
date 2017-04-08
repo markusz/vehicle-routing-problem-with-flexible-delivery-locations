@@ -29,7 +29,7 @@ public class Therapist extends Identifiable implements Comparable<Therapist>, Se
 
     private String name = "";
 
-    private Set<Qualification> qualifications = new HashSet<>();
+    private final Set<Qualification> qualifications = new HashSet<>();
     private List<Timeslot> available;
     private Timeslot firstPauseRange;
     private Timeslot secondPauseRange;
@@ -52,7 +52,7 @@ public class Therapist extends Identifiable implements Comparable<Therapist>, Se
         this.name = name;
     }
 
-    public void addQualification(Qualification q) {
+    private void addQualification(Qualification q) {
         qualifications.add(q);
         qHash = qHash + q.getQHash();
         binary = Integer.toBinaryString(qHash);

@@ -4,8 +4,8 @@ import de.markusziller.alns.common.entities.Node;
 import de.markusziller.alns.common.entities.Route;
 
 public class Removal {
-    Node n;
-    Route r;
+    final Node n;
+    final Route r;
 
     @java.beans.ConstructorProperties({"n", "r"})
     public Removal(Node n, Route r) {

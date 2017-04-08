@@ -6,9 +6,9 @@ import de.markusziller.alns.common.entities.Solution;
 import java.util.Comparator;
 import java.util.TreeSet;
 
-public class ALNSProcessManager implements FutureCallback<Solution> {
+class ALNSProcessManager implements FutureCallback<Solution> {
 
-    private TreeSet<Solution> solutions = new TreeSet<>(new Comparator<Solution>() {
+    private final TreeSet<Solution> solutions = new TreeSet<>(new Comparator<Solution>() {
 
         @Override
         public int compare(Solution s1, Solution s2) {

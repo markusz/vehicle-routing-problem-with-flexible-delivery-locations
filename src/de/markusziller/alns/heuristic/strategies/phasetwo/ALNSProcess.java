@@ -17,14 +17,14 @@ import java.util.Random;
 import java.util.concurrent.Callable;
 
 public class ALNSProcess implements Callable<Solution> {
-    private ALNSObserver o = new ALNSObserver();
+    private final ALNSObserver o = new ALNSObserver();
     private long id;
-    private ALNSProcessVisualizationManager apvm = new ALNSProcessVisualizationManager();
-    private IALNSConfig config;
-    private IALNSDestroy[] destroy_ops = new IALNSDestroy[]{new ProximityZoneDestroy(), new ZoneDestroy(), new NodesCountDestroy(false), new SubrouteDestroy(),
+    private final ALNSProcessVisualizationManager apvm = new ALNSProcessVisualizationManager();
+    private final IALNSConfig config;
+    private final IALNSDestroy[] destroy_ops = new IALNSDestroy[]{new ProximityZoneDestroy(), new ZoneDestroy(), new NodesCountDestroy(false), new SubrouteDestroy(),
             // new RelatedDestroy(),
             new RandomDestroy(), new RandomRouteDestroy(), new WorstCostDestroy()};
-    private IALNSRepair[] repair_ops = new IALNSRepair[]{new NRegretRepair(2), new NRegretRepair(3), new GreedyRepair()};
+    private final IALNSRepair[] repair_ops = new IALNSRepair[]{new NRegretRepair(2), new NRegretRepair(3), new GreedyRepair()};
     // Globale beste L�sung
     private Solution s_g = null;
     // Aktuelle L�sung
@@ -34,10 +34,10 @@ public class ALNSProcess implements Callable<Solution> {
     private double T;
     private double T_s;
     private long t_start;
-    private Instance is;
+    private final Instance is;
     // private double c_uns;
-    private int F_log = 100;
-    private double T_end_t = 0.01;
+    private final int F_log = 100;
+    private final double T_end_t = 0.01;
     private double T_end;
 
     public ALNSProcess(Solution s_, IALNSConfig c) {
@@ -73,7 +73,7 @@ public class ALNSProcess implements Callable<Solution> {
         }
     }
 
-    public double fitness(Solution s) {
+    private double fitness(Solution s) {
         return s.getCostFitness();
     }
 

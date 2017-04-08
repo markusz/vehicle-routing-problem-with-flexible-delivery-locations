@@ -2,9 +2,9 @@ package de.markusziller.alns.heuristic.strategies.phasetwo;
 
 public class ControlParameter {
 
-    private boolean solutionsLinechart;
-    private boolean operationsLinechart;
-    private boolean solutionImages;
+    private final boolean solutionsLinechart;
+    private final boolean operationsLinechart;
+    private final boolean solutionImages;
 
     public ControlParameter(boolean showSolutionsLinechart, boolean showOperationsLinechart, boolean createSolutionImages) {
         solutionsLinechart = showSolutionsLinechart;

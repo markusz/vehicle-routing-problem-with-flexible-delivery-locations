@@ -10,10 +10,10 @@ import java.util.Random;
 
 public class GaussDistribution implements IProbabilityDistribution {
 
-    Normal gaussian;
+    private Normal gaussian;
     //	Normal normal;
 //	Double lambda;
-    Random randomGenerator;
+    private final Random randomGenerator;
 
     /**
      * Lambda of the underlying Poisson distribution

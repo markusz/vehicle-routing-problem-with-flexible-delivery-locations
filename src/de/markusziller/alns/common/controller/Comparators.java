@@ -6,7 +6,7 @@ import java.util.Comparator;
 
 public class Comparators {
 
-    public static Comparator<Therapist> THERAPIST_ID_ASCENDING = new Comparator<Therapist>() {
+    public static final Comparator<Therapist> THERAPIST_ID_ASCENDING = new Comparator<Therapist>() {
 
         @Override
         public int compare(Therapist t1, Therapist t2) {
@@ -21,7 +21,7 @@ public class Comparators {
     };
 
 
-    public static Comparator<Job> JOB_PRIORITY_SCORE_DESCENDING = new Comparator<Job>() {
+    public static final Comparator<Job> JOB_PRIORITY_SCORE_DESCENDING = new Comparator<Job>() {
 
         @Override
         public int compare(Job i, Job j) {
@@ -35,7 +35,7 @@ public class Comparators {
         }
     };
 
-    public static Comparator<Room> ROOM_ID_ASCENDING = new Comparator<Room>() {
+    public static final Comparator<Room> ROOM_ID_ASCENDING = new Comparator<Room>() {
 
         @Override
         public int compare(Room i, Room j) {
@@ -49,7 +49,7 @@ public class Comparators {
         }
     };
 
-    public static Comparator<Node> NODE_START_ASCENDING = new Comparator<Node>() {
+    public static final Comparator<Node> NODE_START_ASCENDING = new Comparator<Node>() {
 
         @Override
         public int compare(Node t1, Node t2) {
@@ -57,7 +57,7 @@ public class Comparators {
         }
     };
 
-    public static Comparator<Route> ROUTE_START_ASCENDING = new Comparator<Route>() {
+    public static final Comparator<Route> ROUTE_START_ASCENDING = new Comparator<Route>() {
 
         @Override
         public int compare(Route t1, Route t2) {
@@ -65,7 +65,7 @@ public class Comparators {
         }
     };
 
-    public static Comparator<Timeslot> TIMESLOTS_ASCENDING_BY_START = new Comparator<Timeslot>() {
+    public static final Comparator<Timeslot> TIMESLOTS_ASCENDING_BY_START = new Comparator<Timeslot>() {
 
         @Override
         public int compare(Timeslot t1, Timeslot t2) {

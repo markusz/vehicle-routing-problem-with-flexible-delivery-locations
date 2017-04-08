@@ -1,7 +1,7 @@
 package de.markusziller.alns.instancegenerator.imports;
 
 
-public interface ImportableInstance {
+interface ImportableInstance {
 
     int[] getMeta();
 

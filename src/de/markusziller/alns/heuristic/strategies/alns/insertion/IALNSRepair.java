@@ -5,5 +5,5 @@ import de.markusziller.alns.heuristic.strategies.alns.IALNSOperation;
 
 public interface IALNSRepair extends IALNSOperation {
 
-    public Solution repair(Solution from);
+    Solution repair(Solution from);
 }

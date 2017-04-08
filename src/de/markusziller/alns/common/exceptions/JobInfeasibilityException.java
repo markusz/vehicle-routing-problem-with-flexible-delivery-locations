@@ -8,8 +8,8 @@ public class JobInfeasibilityException extends Exception {
      *
      */
     private static final long serialVersionUID = 1L;
-    private String uuid;
-    private Job job;
+    private final String uuid;
+    private final Job job;
 
 
     public JobInfeasibilityException(String string, String uuid, Job j) {

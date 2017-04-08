@@ -9,14 +9,12 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GUI {
+class GUI {
 
-    private static List<String> rowTitles = new ArrayList<>();
+    private static final List<String> rowTitles = new ArrayList<>();
 
     private Solution s;
-    private JFrame f;
-    private JTable table;
-    private JScrollPane sp;
+    private final JTable table;
 
     public GUI(Solution s) {
 
@@ -44,7 +42,7 @@ public class GUI {
             }
         }
 
-        f = new JFrame();
+        JFrame f = new JFrame();
         f.setExtendedState(Frame.MAXIMIZED_BOTH);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         table = new JTable(tableD, rowTitles.toArray());
@@ -58,7 +56,7 @@ public class GUI {
 
         }
 
-        sp = new JScrollPane(table);
+        JScrollPane sp = new JScrollPane(table);
         f.add(sp);
         f.pack();
         f.setVisible(true);

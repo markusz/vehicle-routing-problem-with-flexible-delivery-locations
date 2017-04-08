@@ -45,7 +45,7 @@ public class RelatedDestroy extends ALNSAbstractOperation implements IALNSDestro
         return from;
     }
 
-    public double computeQRelatedness(Job i, Job j) {
+    private double computeQRelatedness(Job i, Job j) {
         Set<Qualification> q_i = i.getQualifications();
         Set<Qualification> q_j = j.getQualifications();
         Set<Qualification> q_ij_un = Sets.union(q_i, q_j);
@@ -56,11 +56,11 @@ public class RelatedDestroy extends ALNSAbstractOperation implements IALNSDestro
         return (double) q_ij_isec.size() / (double) q_ij_un.size();
     }
 
-    public double computeTRelatedness(Job i, Job j) {
+    private double computeTRelatedness(Job i, Job j) {
         return 1. - (double) Math.abs(i.getDurationSlots() - j.getDurationSlots()) / (double) Math.max(i.getDurationSlots(), j.getDurationSlots());
     }
 
-    public double computeRIRelatedness(Job i, Job j, Instance is) {
+    private double computeRIRelatedness(Job i, Job j, Instance is) {
         Set<Room> r_i = is.getEligibleRooms(i);
         Set<Room> r_j = is.getEligibleRooms(j);
         Set<Room> r_ij_un = Sets.union(r_i, r_j);
@@ -72,9 +72,9 @@ public class RelatedDestroy extends ALNSAbstractOperation implements IALNSDestro
     }
 
     class RelatedNode implements Comparable<RelatedNode> {
-        double relatedess;
+        final double relatedess;
         // Node n;
-        Removal r;
+        final Removal r;
 
         RelatedNode(double r, Removal rem) {
             relatedess = r;

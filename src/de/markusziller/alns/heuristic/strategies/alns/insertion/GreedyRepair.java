@@ -21,14 +21,13 @@ public class GreedyRepair extends ALNSAbstractRepair implements IALNSRepair {
         for (Job j : jj) {
             try {
                 s = planNextJob(s, j);
-            } catch (GeneralInfeasibilityException | RouteConstructionException e) {
-                continue;
+            } catch (RouteConstructionException e) {
             }
         }
         return s;
     }
 
-    public Solution planNextJob(Solution s, Job j) throws GeneralInfeasibilityException, RouteConstructionException {
+    private Solution planNextJob(Solution s, Job j) throws RouteConstructionException {
         Insertion i_best = null;
         Collection<Therapist> p_j = s.getInstance().getProficientTherapists(j);
         Collection<Room> r_j = s.getInstance().getEligibleRooms(j);
@@ -81,7 +80,7 @@ public class GreedyRepair extends ALNSAbstractRepair implements IALNSRepair {
         return s;
     }
 
-    public Solution planNextJobOLD(Solution s, Job j) throws GeneralInfeasibilityException, RouteConstructionException {
+    public Solution planNextJobOLD(Solution s, Job j) throws RouteConstructionException {
         TreeMultimap<Room, Timeslot> T = s.getVacanciesForAllRooms();
         Insertion i_best = null;
         Collection<Therapist> p_j = s.getInstance().getProficientTherapists(j);

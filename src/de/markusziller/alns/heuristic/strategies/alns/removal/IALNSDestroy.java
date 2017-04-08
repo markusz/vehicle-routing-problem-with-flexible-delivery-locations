@@ -5,6 +5,6 @@ import de.markusziller.alns.heuristic.strategies.alns.IALNSOperation;
 
 public interface IALNSDestroy extends IALNSOperation {
 
-    public Solution destroy(Solution s, int nodes) throws Exception;
+    Solution destroy(Solution s, int nodes) throws Exception;
 
 }

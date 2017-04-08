@@ -12,6 +12,7 @@ public class InsertionManager implements FutureCallback<Insertion> {
     private final int THRESHOLD = 20;
 
     @NonNull
+    private final
     TreeSet<Insertion> list = new TreeSet<>(new Comparator<Insertion>() {
 
         @Override
@@ -52,7 +53,7 @@ public class InsertionManager implements FutureCallback<Insertion> {
     }
 
 
-    public synchronized void insertNodeSingle(Insertion result) {
+    private synchronized void insertNodeSingle(Insertion result) {
         if (bestVal == null || result.getCosts() < bestVal.getCosts()) {
             bestVal = result;
 //					log.info("Set new best solution with Costs of "+bestVal.getCosts()+": "+bestVal.getNode());

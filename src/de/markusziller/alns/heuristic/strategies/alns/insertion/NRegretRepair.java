@@ -8,7 +8,7 @@ import de.markusziller.alns.common.utils.TimeUtil;
 import java.util.*;
 
 public class NRegretRepair extends ALNSAbstractRepair implements IALNSRepair {
-    int n;
+    private final int n;
 
     public NRegretRepair(int n) {
         this.n = n;
@@ -22,13 +22,12 @@ public class NRegretRepair extends ALNSAbstractRepair implements IALNSRepair {
             try {
                 s = planNextJob(s, j);
             } catch (GeneralInfeasibilityException | RouteConstructionException e) {
-                continue;
             }
         }
         return s;
     }
 
-    public Solution planNextJob(Solution s, Job j) throws GeneralInfeasibilityException, RouteConstructionException {
+    private Solution planNextJob(Solution s, Job j) throws GeneralInfeasibilityException, RouteConstructionException {
         NavigableSet<NRegret> regr = new TreeSet<>();
         Set<Job> I_uns = s.getUnscheduledJobs();
         NRegret n_r = new NRegret(n);
@@ -89,8 +88,8 @@ public class NRegretRepair extends ALNSAbstractRepair implements IALNSRepair {
     }
 
     class NRegret implements Comparable<NRegret> {
-        private NavigableSet<Insertion> s = new TreeSet<>();
-        private int n;
+        private final NavigableSet<Insertion> s = new TreeSet<>();
+        private final int n;
 
         public NRegret(int n) {
             this.n = n;

@@ -19,7 +19,7 @@ import java.util.Random;
 import java.util.Set;
 
 public class OutputUtil {
-    private static String IMAGE_PATH = new StringBuilder("src")
+    private static final String IMAGE_PATH = new StringBuilder("src")
             .append(File.separator).append("de")
             .append(File.separator).append("markusziller")
             .append(File.separator).append("alns")
@@ -210,7 +210,7 @@ public class OutputUtil {
         return sb.toString();
     }
 
-    public static String toString(Node pwn) {
+    private static String toString(Node pwn) {
         StringBuilder sb = new StringBuilder();
         String s = "" + pwn.getStart();
         String e = "" + pwn.getEnd();

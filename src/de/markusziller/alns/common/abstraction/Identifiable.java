@@ -3,9 +3,6 @@ package de.markusziller.alns.common.abstraction;
 import java.io.Serializable;
 
 public abstract class Identifiable implements Serializable {
-    /**
-     *
-     */
     private static final long serialVersionUID = 3841102840793186996L;
     private Integer id;
 

@@ -7,12 +7,12 @@ import de.markusziller.alns.heuristic.strategies.alns.ALNSAbstractOperation;
 import java.util.LinkedList;
 import java.util.List;
 
-public abstract class ALNSAbstractRepair extends ALNSAbstractOperation {
+abstract class ALNSAbstractRepair extends ALNSAbstractOperation {
 
-    private InsertionEvaluator ie = new InsertionEvaluator();
+    private final InsertionEvaluator ie = new InsertionEvaluator();
     private List<Insertion> tabus = new LinkedList<>();
 
-    public double getNodeCosts(Solution s, Insertion is) {
+    double getNodeCosts(Solution s, Insertion is) {
         ie.setSolution(s);
         return ie.getInsertionCosts(is);
 
@@ -27,7 +27,7 @@ public abstract class ALNSAbstractRepair extends ALNSAbstractOperation {
         return false;
     }
 
-    protected boolean containsTabu(Job j, Therapist t) {
+    boolean containsTabu(Job j, Therapist t) {
         for (Insertion pni : getTabus()) {
             if (pni.getTherapist() == t && pni.getNode().getJob() == j) {
                 return true;
@@ -54,11 +54,11 @@ public abstract class ALNSAbstractRepair extends ALNSAbstractOperation {
         return false;
     }
 
-    public List<Insertion> getTabus() {
+    private List<Insertion> getTabus() {
         return this.tabus;
     }
 
-    public void setTabus(List<Insertion> tabus) {
+    void setTabus(List<Insertion> tabus) {
         this.tabus = tabus;
     }
 }

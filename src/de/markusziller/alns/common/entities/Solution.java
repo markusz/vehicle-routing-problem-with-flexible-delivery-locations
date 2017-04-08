@@ -264,7 +264,7 @@ public class Solution implements Cloneable, Serializable {
         return new ArrayList<>(ssw.P_availabilities.get(t));
     }
 
-    public Room getLocation(Integer t, Therapist tp) throws RouteConstructionException {
+    public Room getLocation(Integer t, Therapist tp) {
         return ssw.P_locations.get(tp)[t];
     }
 
@@ -462,11 +462,6 @@ public class Solution implements Cloneable, Serializable {
         return clone;
     }
 
-    /**
-     * @return
-     * @author Markus Z.
-     * @date 27.12.2013
-     */
     public boolean isComplete() {
         return unscheduledJobs.size() == 0;
     }

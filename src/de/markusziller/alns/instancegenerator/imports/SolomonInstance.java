@@ -7,10 +7,6 @@ import java.io.Serializable;
 
 public class SolomonInstance implements ImportableInstance, Serializable {
 
-
-    /**
-     *
-     */
     private static final long serialVersionUID = 1709219164230810470L;
     private int[] meta;
     private int[][] raw;
@@ -24,12 +20,6 @@ public class SolomonInstance implements ImportableInstance, Serializable {
         this.name = name;
         this.gamma = gamma;
         this.rho = rho;
-    }
-
-    public boolean isPathValid(Integer... rooms) {
-
-
-        return true;
     }
 
     @Override

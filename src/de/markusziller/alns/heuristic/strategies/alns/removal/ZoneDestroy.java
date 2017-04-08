@@ -41,8 +41,8 @@ public class ZoneDestroy extends ALNSAbstractOperation implements IALNSDestroy {
     }
 
     class RelatedNode implements Comparable<RelatedNode> {
-        int d;
-        Removal r;
+        final int d;
+        final Removal r;
 
         RelatedNode(int r, Removal rem) {
             d = r;

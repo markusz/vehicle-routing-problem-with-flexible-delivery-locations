@@ -18,13 +18,12 @@ public class RegretRepair extends ALNSAbstractRepair implements IALNSRepair {
                 s = planNextJob(s, j);
                 // System.out.println("planned job");
             } catch (GeneralInfeasibilityException | RouteConstructionException e) {
-                continue;
             }
         }
         return s;
     }
 
-    public Solution planNextJob(Solution s, Job j) throws GeneralInfeasibilityException, RouteConstructionException {
+    private Solution planNextJob(Solution s, Job j) throws GeneralInfeasibilityException, RouteConstructionException {
         TreeMultimap<Room, Timeslot> T = s.getVacanciesForAllRooms();
         Set<Job> I_uns = s.getUnscheduledJobs();
         Insertion i_s = null;

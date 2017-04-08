@@ -9,12 +9,12 @@ import de.markusziller.alns.heuristic.strategies.alns.removal.Removal;
 import java.util.*;
 
 public abstract class ALNSAbstractOperation implements IALNSOperation {
-    protected ALNSStrategieVisualizationManager asvm = new ALNSStrategieVisualizationManager();
+    protected final ALNSStrategieVisualizationManager asvm = new ALNSStrategieVisualizationManager();
     private int pi;
     private double p;
     private int draws;
     private double w;
-    private Random r = new Random();
+    private final Random r = new Random();
 
     @Override
     public ALNSStrategieVisualizationManager getVisualizationManager() {
@@ -42,7 +42,7 @@ public abstract class ALNSAbstractOperation implements IALNSOperation {
         return N;
     }
 
-    public ArrayList<Removal> getRemovals(Solution s) {
+    protected ArrayList<Removal> getRemovals(Solution s) {
         ArrayList<Removal> n = new ArrayList<Removal>();
         for (Therapist t : s.getRoutes().keySet()) {
             for (Route r : s.getRoutes().get(t)) {
@@ -56,7 +56,7 @@ public abstract class ALNSAbstractOperation implements IALNSOperation {
         return n;
     }
 
-    public Removal random(ArrayList<Removal> list) {
+    protected Removal random(ArrayList<Removal> list) {
         return list.get(r.nextInt(list.size()));
     }
 
@@ -80,7 +80,7 @@ public abstract class ALNSAbstractOperation implements IALNSOperation {
         return l;
     }
 
-    public Removal[] closestPairRandomSelected(ArrayList<Removal> R, final Instance i, int top_n) {
+    protected Removal[] closestPairRandomSelected(ArrayList<Removal> R, final Instance i, int top_n) {
         NavigableSet<Removal[]> set = new TreeSet<>(new Comparator<Removal[]>() {
             @Override
             public int compare(Removal[] o1, Removal[] o2) {

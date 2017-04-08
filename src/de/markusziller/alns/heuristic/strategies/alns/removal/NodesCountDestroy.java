@@ -18,8 +18,8 @@ import java.util.TreeSet;
  * @param highestFirst true = l�ngste Routen zuerst, false = k�rzeste zuerst
  */
 public class NodesCountDestroy extends ALNSAbstractOperation implements IALNSDestroy {
-    int c_g = 1;
-    int c_l = -1;
+    private int c_g = 1;
+    private int c_l = -1;
 
     public NodesCountDestroy(boolean highestFirst) {
         int modifier = highestFirst ? -1 : 1;

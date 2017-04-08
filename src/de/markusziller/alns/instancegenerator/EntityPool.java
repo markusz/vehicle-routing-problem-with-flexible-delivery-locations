@@ -24,11 +24,11 @@ import java.util.Random;
  * @author Markus
  */
 public class EntityPool {
-    public static String[] therapistFirstNames = new String[]{"Andreas", "Bernd", "Christian", "Daniela", "Elke", "Friedrich", "Gerda", "Hubert", "Inge", "Johannes", "Karl",
+    private static final String[] therapistFirstNames = new String[]{"Andreas", "Bernd", "Christian", "Daniela", "Elke", "Friedrich", "Gerda", "Hubert", "Inge", "Johannes", "Karl",
             "Lukas", "Markus", "Nadine", "Olaf", "Peter", "Quentin", "Rosa", "Stefanie", "Thomas", "Udo", "Verena", "Walter", "Xaver", "Yvonne", "Zenta"};
-    public static String[] therapistSecondNames = new String[]{"A.", "B.", "C.", "D.", "E.", "F.", "G.", "H.", "I.", "J.", "K.", "L.", "M.", "N.", "O.", "P.", "Q.", "R.", "S.",
+    private static final String[] therapistSecondNames = new String[]{"A.", "B.", "C.", "D.", "E.", "F.", "G.", "H.", "I.", "J.", "K.", "L.", "M.", "N.", "O.", "P.", "Q.", "R.", "S.",
             "T.", "U.", "V.", "W.", "X.", "Y.", "Z."};
-    public static String[] qualifications = new String[]{"Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7"};
+    private static final String[] qualifications = new String[]{"Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7"};
     private static List<Therapist> therapistsMaster = null;
     private static List<Qualification> qualificationMaster = null;
     private static List<ICU> ICURoomMaster = null;
@@ -39,7 +39,7 @@ public class EntityPool {
     private static List<WardJob> WARDJobMaster = null;
     private static List<OutpatientJob> OutpatientJobMaster = null;
     private static List<Job> genericJobMaster = null;
-    private static Room breakroom = new BreakRoom(0, "BreakRoom");
+    private static final Room breakroom = new BreakRoom(0, "BreakRoom");
 
     /**
      * F�llt den Entit�tenpool aus dem bei der Instanzerzeugung die verwendeten Entit�ten (Jobs, Therapeuten, ..) gezogen werden.
@@ -147,7 +147,7 @@ public class EntityPool {
      * @author Markus Z.
      * @date 15.06.2013
      */
-    public static List<Therapist> getNTherapists(Integer n, InstanceConfiguration ic) {
+    private static List<Therapist> getNTherapists(Integer n, InstanceConfiguration ic) {
         List<Therapist> temp = getNorAll(n, therapistsMaster);
         assignShiftStartsAndDurations(temp, ic);
         assignPauseTimeslots(temp, ic);
@@ -375,7 +375,7 @@ public class EntityPool {
         return getNAllJobs(n, ratioWARD, ratioICU, ratioOutpatient);
     }
 
-    public static <T extends Identifiable> List<T> getNorAll(int n, List<T> source) {
+    private static <T extends Identifiable> List<T> getNorAll(int n, List<T> source) {
         if (source == null || source.size() < 1) {
             initPool();
         }

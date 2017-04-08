@@ -6,7 +6,7 @@ public class GeneralInfeasibilityException extends Exception {
      *
      */
     private static final long serialVersionUID = 1L;
-    private String uuid;
+    private final String uuid;
 
 
     public GeneralInfeasibilityException(String string, String uuid) {

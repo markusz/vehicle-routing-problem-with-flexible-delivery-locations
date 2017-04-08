@@ -2,22 +2,22 @@ package de.markusziller.alns.heuristic.strategies.alns.config;
 
 public interface IALNSConfig {
 
-    public abstract int getOmega();
+    int getOmega();
 
-    public abstract int getTau();
+    int getTau();
 
-    public abstract double getR_p();
+    double getR_p();
 
-    public abstract int getSigma_1();
+    int getSigma_1();
 
-    public abstract int getSigma_2();
+    int getSigma_2();
 
-    public abstract int getSigma_3();
+    int getSigma_3();
 
-    public abstract double getC();
+    double getC();
 
-    public abstract double getDelta();
+    double getDelta();
 
-    public abstract double getBig_omega();
+    double getBig_omega();
 
 }

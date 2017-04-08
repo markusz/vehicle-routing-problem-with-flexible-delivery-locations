@@ -42,8 +42,8 @@ public class ProximityDestroy extends ALNSAbstractOperation implements IALNSDest
     }
 
     class RelatedNode implements Comparable<RelatedNode> {
-        int distance;
-        Removal r;
+        final int distance;
+        final Removal r;
 
         RelatedNode(int r, Removal rem) {
             distance = r;

@@ -7,7 +7,7 @@ import de.markusziller.alns.heuristic.strategies.phasetwo.ALNSProcess;
 
 public class ALNSProcessVisualizationManager implements IProcessVisualizer {
 
-    public final IProcessVisualizer CONSOLE = new ConsolePrintVisualizer();
+    private final IProcessVisualizer CONSOLE = new ConsolePrintVisualizer();
     public final IProcessVisualizer GUI = new GUIVisualizer();
     public final IProcessVisualizer NONE = new DoNothingVisualizer();
 
@@ -17,7 +17,7 @@ public class ALNSProcessVisualizationManager implements IProcessVisualizer {
     private IProcessVisualizer AFTER_REPAIR = NONE;
     private IProcessVisualizer PERIODIC_SOLUTION_STATUS = CONSOLE;
     private IProcessVisualizer PERIODIC_ROULETTE_WHEEL_STATUS = CONSOLE;
-    private IProcessVisualizer ON_ITERATION_FINISHED = CONSOLE;
+    private final IProcessVisualizer ON_ITERATION_FINISHED = CONSOLE;
 
     @Override
     public void onThreadStart(ALNSProcess a) {
@@ -44,7 +44,6 @@ public class ALNSProcessVisualizationManager implements IProcessVisualizer {
 
     public void setAfterDestroy(IProcessVisualizer iv) {
         AFTER_DESTROY = iv;
-        ;
     }
 
     @Override

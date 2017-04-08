@@ -22,15 +22,15 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class ForecastRepair extends ALNSAbstractRepair implements IALNSRepair {
-    Integer minElements = 100;
+    private final Integer minElements = 100;
     // alternativ: Runtime.getRuntime().availableProcessors())
-    Integer cores = XMLUtil.getMaxNumberOfCPUCores();
+    private final Integer cores = XMLUtil.getMaxNumberOfCPUCores();
     // Balance zwischen Oberhead und Performance finden
-    Float modifier = 0.01F;
-    private boolean multithreaded;
-    private Double roomWeight = 0.2;
-    private Double therapistWeight = 0.2;
-    private Double jobLengthWeight = 0.6;
+    private final Float modifier = 0.01F;
+    private final boolean multithreaded;
+    private final Double roomWeight = 0.2;
+    private final Double therapistWeight = 0.2;
+    private final Double jobLengthWeight = 0.6;
 
     /**
      * @param multith multithreaded repair?
@@ -51,7 +51,7 @@ public class ForecastRepair extends ALNSAbstractRepair implements IALNSRepair {
         return s;
     }
 
-    public Solution planNextJob(Solution s, List<Insertion> tabus) throws JobInfeasibilityException, GeneralInfeasibilityException, RouteConstructionException {
+    private Solution planNextJob(Solution s, List<Insertion> tabus) throws JobInfeasibilityException, GeneralInfeasibilityException, RouteConstructionException {
         setTabus(tabus);
         Job j = nextJob(s);
         LinkedListMultimap<Therapist, Node> a_i = calculatePossibleJobInsertions(j, s);
@@ -168,7 +168,7 @@ public class ForecastRepair extends ALNSAbstractRepair implements IALNSRepair {
      * @author Markus Z.
      * @date 11.08.2013
      */
-    private Job nextJob(Solution s) throws GeneralInfeasibilityException {
+    private Job nextJob(Solution s) {
         Integer thpFactor = 0;
         Integer rmFactor = 0;
         Double jobLengthFactor = 0.;

@@ -15,7 +15,7 @@ public class Qualification extends Identifiable implements Serializable {
     /**
      * Bin�res Z�hlen identifiziert jede Qualifikationskombi eindeutig -> Kein Iterieren n�tig -> bis zu 32 Q bei Integern m�glich
      */
-    private Integer qHash;
+    private final Integer qHash;
 
     private String name;
 

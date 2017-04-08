@@ -51,8 +51,8 @@ public class ProximityZoneDestroy extends ALNSAbstractOperation implements IALNS
     }
 
     class RelatedNode implements Comparable<RelatedNode> {
-        int d;
-        Removal r;
+        final int d;
+        final Removal r;
 
         RelatedNode(int r, Removal rem) {
             d = r;
@@ -69,8 +69,8 @@ public class ProximityZoneDestroy extends ALNSAbstractOperation implements IALNS
     }
 
     class Area {
-        int x_c;
-        int y_c;
+        final int x_c;
+        final int y_c;
         double d;
 
         @java.beans.ConstructorProperties({"x_c", "y_c", "d"})

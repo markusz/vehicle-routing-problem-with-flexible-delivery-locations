@@ -81,8 +81,8 @@ public class WorstCostDestroy extends ALNSAbstractOperation implements IALNSDest
     }
 
     class WorstCostNode implements Comparable<WorstCostNode> {
-        double c;
-        Removal n;
+        final double c;
+        final Removal n;
 
         WorstCostNode(double r, Removal n) {
             c = r;

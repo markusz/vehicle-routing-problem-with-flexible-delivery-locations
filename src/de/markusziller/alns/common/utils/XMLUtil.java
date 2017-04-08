@@ -30,25 +30,25 @@ public class XMLUtil {
             .append("markusziller").append(File.separator)
             .append("alns").toString();
 
-    private static String SYSTEM_CONFIG_PATH = BASE_PATH.concat(
+    private static final String SYSTEM_CONFIG_PATH = BASE_PATH.concat(
             new StringBuilder(File.separator)
                     .append("config").append(File.separator)
                     .append("system-config.xml").toString()
     );
 
-    private static String PROGRAM_CONFIG_PATH = BASE_PATH.concat(
+    private static final String PROGRAM_CONFIG_PATH = BASE_PATH.concat(
             new StringBuilder(File.separator)
                     .append("config").append(File.separator)
                     .append("program-config.xml").toString()
     );
 
-    private static String INSTANCE_LOG_PATH = BASE_PATH.concat(
+    private static final String INSTANCE_LOG_PATH = BASE_PATH.concat(
             new StringBuilder(File.separator)
                     .append("log").append(File.separator)
                     .append("instancelog.xml").toString()
     );
 
-    private static String COMPEXP_LOG_PATH =
+    private static final String COMPEXP_LOG_PATH =
             BASE_PATH.concat(
                     new StringBuilder(File.separator)
                             .append("log").append(File.separator)
@@ -148,7 +148,7 @@ public class XMLUtil {
         return routes;
     }
 
-    private static void writeDocument(Document doc, String destination) throws UnsupportedEncodingException, FileNotFoundException, IOException {
+    private static void writeDocument(Document doc, String destination) throws IOException {
 
         OutputFormat format = OutputFormat.createPrettyPrint();
         format.setEncoding("utf-8");
@@ -246,7 +246,7 @@ public class XMLUtil {
         return instance;
     }
 
-    public static String getSystemConfigXMLEntry(String entry) throws DocumentException {
+    private static String getSystemConfigXMLEntry(String entry) throws DocumentException {
 
         SAXReader reader = new SAXReader();
         Document document = reader.read(SYSTEM_CONFIG_PATH);

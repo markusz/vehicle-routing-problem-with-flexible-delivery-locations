@@ -6,15 +6,15 @@ public enum ALNSConfiguration implements IALNSConfig {
     DEFAULT(25000, 100, 0.1, 1, 0, 5, 0.99937, 0.05, 0.5),;
 
 
-    public final int omega;
-    public final int tau;
-    public final double r_p;
-    public final int sigma_1;
-    public final int sigma_2;
-    public final int sigma_3;
-    public final double c;
-    public final double delta;
-    public final double big_omega;
+    private final int omega;
+    private final int tau;
+    private final double r_p;
+    private final int sigma_1;
+    private final int sigma_2;
+    private final int sigma_3;
+    private final double c;
+    private final double delta;
+    private final double big_omega;
 
     ALNSConfiguration(int omega, int tau, double r_p, int sigma_1, int sigma_2, int sigma_3, double c, double delta, double big_omega) {
         this.omega = omega;

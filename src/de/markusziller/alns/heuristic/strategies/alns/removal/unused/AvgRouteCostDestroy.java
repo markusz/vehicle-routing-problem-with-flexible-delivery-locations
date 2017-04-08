@@ -17,8 +17,8 @@ import java.util.TreeSet;
 public class AvgRouteCostDestroy extends ALNSAbstractOperation implements IALNSDestroy {
 
 
-    int cost_greater = 1;
-    int cost_lower = -1;
+    private int cost_greater = 1;
+    private int cost_lower = -1;
 
     public AvgRouteCostDestroy(boolean highestCostFirst) {
         int modifier = highestCostFirst ? -1 : 1;

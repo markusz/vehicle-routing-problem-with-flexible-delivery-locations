@@ -29,12 +29,12 @@ public class Instance implements Serializable {
 
     private static final long serialVersionUID = -28317760558644109L;
     private final static Logger log = Logger.getLogger(Instance.class.getName());
-    private boolean isInstanceModifiable = true;
+    private final boolean isInstanceModifiable = true;
     private transient Long DBPrimaryKey = null;
     private transient String uid = UUID.randomUUID().toString();
     private SolomonInstance solomonInstance;
     private Integer numberOfTimeSlots;
-    private long timestamp = System.currentTimeMillis();
+    private final long timestamp = System.currentTimeMillis();
     private double c_max;
     private Set<Job> jobs;
     private Set<Room> rooms;
@@ -893,7 +893,7 @@ public class Instance implements Serializable {
         return distances.get(Math.min(roomId2, roomId1), Math.max(roomId2, roomId1)) * i_conf.getRoutingCostFactor();
     }
 
-    public Double getRouteCosts(int... ids) {
+    private Double getRouteCosts(int... ids) {
         if (ids.length == 1) {
             return 0.;
         }
@@ -932,7 +932,7 @@ public class Instance implements Serializable {
         return (int) Math.ceil(getRouteCosts(r, r2));
     }
 
-    public Set<Job> getEligibleJobs(Therapist t) {
+    private Set<Job> getEligibleJobs(Therapist t) {
         return eligibleJobsForTherapist.get(t);
     }
 
@@ -948,14 +948,14 @@ public class Instance implements Serializable {
         return roomsForJob.get(j);
     }
 
-    public Set<Job> getEligibleJobs(Room r) {
+    private Set<Job> getEligibleJobs(Room r) {
         return jobsForRoom.get(r);
     }
 
     class SolomonMeta {
-        private String name;
-        private double lamba;
-        private double rho;
+        private final String name;
+        private final double lamba;
+        private final double rho;
 
         @java.beans.ConstructorProperties({"name", "lamba", "rho"})
         public SolomonMeta(String name, double lamba, double rho) {

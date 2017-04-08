@@ -54,8 +54,8 @@ public class SubrouteDestroy extends ALNSAbstractOperation implements IALNSDestr
     }
 
     class RelatedNode implements Comparable<RelatedNode> {
-        int d;
-        Removal r;
+        final int d;
+        final Removal r;
 
         RelatedNode(int r, Removal rem) {
             d = r;

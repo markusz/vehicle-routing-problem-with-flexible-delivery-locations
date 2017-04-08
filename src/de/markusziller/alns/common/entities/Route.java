@@ -24,7 +24,7 @@ public class Route implements Comparable<Route>, Serializable {
         }
     }
 
-    public void addPathwayNode(Node pn) {
+    private void addPathwayNode(Node pn) {
         N.add(pn);
     }
 
@@ -40,7 +40,7 @@ public class Route implements Comparable<Route>, Serializable {
         return getEndNode().getTime().getEnd();
     }
 
-    public Node getEndNode() {
+    private Node getEndNode() {
         return N.last();
     }
 
@@ -48,7 +48,7 @@ public class Route implements Comparable<Route>, Serializable {
         return getStartNode().getRoom();
     }
 
-    public Node getStartNode() {
+    private Node getStartNode() {
         return N.first();
     }
 
@@ -141,7 +141,7 @@ public class Route implements Comparable<Route>, Serializable {
         return isJobOnPathway(j);
     }
 
-    public Node isJobOnPathway(Job j) throws RouteConstructionException {
+    private Node isJobOnPathway(Job j) throws RouteConstructionException {
         for (Node pathwayNode : N) {
             if (pathwayNode.getJob().equals(j)) {
                 return pathwayNode;

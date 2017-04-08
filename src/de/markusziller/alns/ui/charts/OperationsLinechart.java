@@ -22,16 +22,16 @@ import java.util.Map;
 public class OperationsLinechart implements IProcessVisualizer {
 
     final NumberAxis yAxis = new NumberAxis("p");
-    final NumberAxis xAxis = new NumberAxis("i");
-    Map<IALNSOperation, XYSeries> map = new HashMap<>();
-    ALNSProcess alns;
+    private final NumberAxis xAxis = new NumberAxis("i");
+    private final Map<IALNSOperation, XYSeries> map = new HashMap<>();
+    private final ALNSProcess alns;
 
-    public OperationsLinechart(ALNSProcess a) throws InterruptedException {
+    public OperationsLinechart(ALNSProcess a) {
         this.alns = a;
 
     }
 
-    public void render() {
+    private void render() {
         XYSeriesCollection data = new XYSeriesCollection();
         IALNSOperation[] o_d = alns.getDestroy_ops();
         IALNSOperation[] o_r = alns.getRepair_ops();

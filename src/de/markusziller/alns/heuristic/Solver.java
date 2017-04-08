@@ -11,8 +11,8 @@ import de.markusziller.alns.heuristic.strategies.phasetwo.ControlParameter;
 
 public class Solver {
     private static Solver solver = null;
-    ConstructionStrategy s1 = Constants.DEFAULT_PHASEONE_STRATEGY;
-    ImprovementStrategy s2 = Constants.DEFAULT_PHASETWO_STRATEGY;
+    private ConstructionStrategy s1 = Constants.DEFAULT_PHASEONE_STRATEGY;
+    private final ImprovementStrategy s2 = Constants.DEFAULT_PHASETWO_STRATEGY;
 
     private Solver() {
     }

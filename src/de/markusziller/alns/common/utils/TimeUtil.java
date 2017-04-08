@@ -28,11 +28,11 @@ public class TimeUtil {
         return end - duration + 1;
     }
 
-    public static Integer subsequent(Integer time) {
+    private static Integer subsequent(Integer time) {
         return time + 1;
     }
 
-    public static Integer prior(Integer time) {
+    private static Integer prior(Integer time) {
         return time - 1;
     }
 
@@ -42,7 +42,7 @@ public class TimeUtil {
      * @author Markus Z.
      * @date 01.07.2013
      */
-    public static boolean noGapBetween(Timeslot... timeslots) {
+    private static boolean noGapBetween(Timeslot... timeslots) {
 
         timeslots = orderedCopy(timeslots);
 
@@ -67,7 +67,7 @@ public class TimeUtil {
         );
     }
 
-    public static Timeslot[] orderedCopy(Timeslot... timeslots) {
+    private static Timeslot[] orderedCopy(Timeslot... timeslots) {
 
         List<Timeslot> temp = Arrays.asList(timeslots);
 

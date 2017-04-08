@@ -1,6 +1,6 @@
 package de.markusziller.alns.common.utils;
 
-public class SystemUtil {
+class SystemUtil {
 
     public static String getSystemStatus() {
         int mb = 1024 * 1024;
